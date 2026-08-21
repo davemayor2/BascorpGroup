@@ -99,29 +99,28 @@ export default function Hero() {
       id="home"
       ref={containerRef}
       className="relative flex flex-col justify-start md:justify-center items-start bg-black overflow-hidden"
-      style={{ minHeight: "780px" }}
+      style={{ minHeight: "820px" }}
     >
-      {/* Background Image */}
+      {/* Background Image - framed on both subjects */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
+        className="hero-bg-image absolute inset-0 bg-cover bg-no-repeat"
         style={{
           backgroundImage: "url('/images/hero section image.jpg')",
-          backgroundPosition: "center 20%",
         }}
       />
       {/* Dark overlay gradients matching reference */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20 z-10" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10 z-10" />
 
-      {/* Main Content - explicit paddingTop: 130px ensures full clearance below 98px navbar on all mobile viewports */}
+      {/* Main Content - paddingTop: 152px pushes content down cleanly below floating navbar */}
       <div
         className="relative z-20 container-custom flex flex-col gap-6 mb-auto md:mb-0"
-        style={{ paddingTop: "130px" }}
+        style={{ paddingTop: "152px" }}
       >
-        <div className="max-w-3xl flex flex-col gap-5">
+        <div className="max-w-3xl flex flex-col gap-6">
           <h1
             ref={titleRef}
-            className="text-[42px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-white font-medium font-clash-grotesk tracking-[-0.01em] leading-[1.1]"
+            className="text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-white font-medium font-clash-grotesk tracking-[-0.01em] leading-[1.18]"
           >
             Building Partnerships<br />
             That Create{" "}
@@ -132,7 +131,7 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="text-[16px] sm:text-[16px] md:text-[16px] text-white/80 font-instrument-sans font-normal leading-[1.65] max-w-lg"
+            className="text-[15.5px] sm:text-[16px] md:text-[16px] text-white/80 font-instrument-sans font-normal leading-[1.75] max-w-lg"
           >
             We partner with businesses across the Middle East, the Arabian Gulf and Asia,
             bringing strategic insight, market expertise and a strong network to support
@@ -140,7 +139,7 @@ export default function Hero() {
           </p>
 
           {/* CTA Button */}
-          <div ref={buttonRef} className="mt-2">
+          <div ref={buttonRef} className="mt-4">
             <ExploreButton href="#portfolio" />
           </div>
         </div>

@@ -105,3 +105,14 @@ h1, h2, h3, h4, h5, h6 {
     mask-image: linear-gradient(to right, black 0%, black 62%, transparent 100%);
   }
 }
+
+/* Hero Background Image - Focus on male & female subjects */
+.hero-bg-image {
+  background-position: 82% 15%;
+}
+
+@media (min-width: 768px) {
+  .hero-bg-image {
+    background-position: center 20%;
+  }
+}
