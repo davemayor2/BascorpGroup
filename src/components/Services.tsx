@@ -14,7 +14,7 @@ const BASE_SERVICES = [
   {
     title: "Debt Funding",
     description:
-      "Bascorp Group has financing solutions for everybody is a well-established and recognized investment and financial company. Obtaining the finance for your business needs can sometimes be difficult.",
+      "Bascorp Group provides tailored funding solutions designed to support businesses through strategic growth opportunities and changing market conditions. Obtaining the finance for your business needs can sometimes be difficult.",
     image: "/images/service 3.png",
   },
   {
