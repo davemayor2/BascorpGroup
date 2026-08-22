@@ -184,7 +184,7 @@ export default function Hero() {
           />
         </a>
         <a
-          href="tel:+97143975550"
+          href="tel:+97317530816"
           className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
           aria-label="Phone"
         >

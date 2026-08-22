@@ -46,7 +46,7 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="tel:+97143975550"
+                href="tel:+97317530816"
                 className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
                 aria-label="Phone"
               >
@@ -135,8 +135,8 @@ export default function Footer() {
             <ul className="flex flex-col gap-4 text-sm text-[#1A1A1A]/70 font-instrument-sans">
               <li className="flex gap-3 items-start">
                 <Phone className="w-4 h-4 text-[#00A2E2] shrink-0 mt-1" />
-                <a href="tel:+1234567890" className="hover:text-[#00A2E2] transition-colors">
-                  +123 456 7890
+                <a href="tel:+97317530816" className="hover:text-[#00A2E2] transition-colors">
+                  +973 1753 0816
                 </a>
               </li>
               <li className="flex gap-3 items-start">

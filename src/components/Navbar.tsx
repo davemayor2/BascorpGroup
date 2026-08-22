@@ -150,12 +150,12 @@ export default function Navbar() {
             href="#home"
             aria-label="Bascorp Home"
             className="flex items-center justify-center bg-white rounded-[12px] shrink-0 select-none transition-transform duration-200 hover:scale-[1.02] shadow-sm"
-            style={{ height: "58px", paddingLeft: "24px", paddingRight: "24px" }}
+            style={{ height: "62px", paddingLeft: "24px", paddingRight: "24px" }}
           >
             <img
               src="/logo.png"
               alt="Bascorp Group"
-              style={{ height: "34px", width: "auto", objectFit: "contain" }}
+              style={{ height: "42px", width: "auto", objectFit: "contain" }}
             />
           </a>
 
