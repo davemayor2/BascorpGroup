@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -45,8 +45,9 @@ export default function Navbar() {
   const isDisciplined = pathname === "/disciplined-investment-strategy";
   const isCorporateGovernance = pathname === "/corporate-governance";
   const isOurInvestments = pathname === "/our-investments" || pathname === "/our-investment";
+  const isContact = pathname === "/lets-connect" || pathname === "/contact";
   const isServicePage = isInvestmentApproach || isDisciplined || isCorporateGovernance;
-  const isHome = (pathname === "/" || !pathname) && !isAbout && !isServicePage && !isOurInvestments;
+  const isHome = (pathname === "/" || !pathname) && !isAbout && !isServicePage && !isOurInvestments && !isContact;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -497,16 +498,19 @@ export default function Navbar() {
 
         {/* Middle Navigation Links */}
         <div className="flex flex-col gap-5 my-auto py-4 px-1">
-          <p className="text-[12px] text-[#00A2E2] font-bold uppercase tracking-widest font-instrument-sans pb-1">
+          <p className="text-[11px] text-[#00A2E2] font-semibold uppercase tracking-[0.2em] font-instrument-sans pb-1">
             Menu
           </p>
-          <nav className="flex flex-col gap-3">
+          <nav className="flex flex-col gap-2.5">
             {/* Home */}
             <Link
               href="/"
-              onClick={() => setIsOpen(false)}
-              className={`mobile-nav-link text-2xl sm:text-3xl font-instrument-sans tracking-wide py-1 font-medium transition-colors ${
-                isHome && !isAbout && !isInvestmentApproach
+              onClick={() => {
+                setIsOpen(false);
+                setMobileServicesOpen(false);
+              }}
+              className={`mobile-nav-link text-[19px] sm:text-[21px] font-instrument-sans tracking-wide py-1.5 font-medium transition-colors ${
+                isHome
                   ? "text-[#00A2E2] font-semibold"
                   : "text-white hover:text-[#00A2E2]"
               }`}
@@ -519,40 +523,87 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className="flex items-center justify-between text-2xl sm:text-3xl font-instrument-sans tracking-wide py-1 text-white hover:text-[#00A2E2] font-medium transition-colors text-left"
+                className={`flex items-center justify-between text-[19px] sm:text-[21px] font-instrument-sans tracking-wide py-1.5 transition-colors text-left group cursor-pointer ${
+                  isServicePage || mobileServicesOpen
+                    ? "text-[#00A2E2] font-semibold"
+                    : "text-white hover:text-[#00A2E2] font-medium"
+                }`}
+                aria-expanded={mobileServicesOpen}
               >
                 <span>What We Do</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-white/70 transition-transform duration-200 ${
-                    mobileServicesOpen ? "rotate-180 text-[#00A2E2]" : ""
-                  }`}
-                />
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center transition-colors group-hover:bg-white/10 shrink-0">
+                  <ChevronDown
+                    className={`w-4 h-4 text-white/70 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      mobileServicesOpen ? "rotate-180 text-[#00A2E2]" : ""
+                    }`}
+                  />
+                </div>
               </button>
 
-              {mobileServicesOpen && (
-                <div className="flex flex-col gap-3 pl-3 pt-2 pb-1 border-l border-white/15 mt-2">
-                  {SERVICES_LIST.map((service) => (
-                    <Link
-                      key={service.title}
-                      href={service.href}
-                      onClick={() => {
-                        setIsOpen(false);
-                        setMobileServicesOpen(false);
-                      }}
-                      className="text-base text-white/80 hover:text-[#00A2E2] font-instrument-sans py-1 transition-colors"
-                    >
-                      {service.title}
-                    </Link>
-                  ))}
+              {/* Smooth Expanding Dropdown Container with Fluid Auto-Arrangement */}
+              <div
+                className="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden"
+                style={{
+                  gridTemplateRows: mobileServicesOpen ? "1fr" : "0fr",
+                  opacity: mobileServicesOpen ? 1 : 0,
+                  marginTop: mobileServicesOpen ? "8px" : "0px",
+                  marginBottom: mobileServicesOpen ? "4px" : "0px",
+                }}
+              >
+                <div className="min-h-0 overflow-hidden">
+                  <div className="flex flex-col gap-1.5 pl-3.5 pt-1.5 pb-2 border-l border-[#00A2E2]/35">
+                    {SERVICES_LIST.map((service, idx) => {
+                      const isServiceActive = pathname === service.href;
+                      return (
+                        <Link
+                          key={service.title}
+                          href={service.href}
+                          onClick={() => {
+                            setIsOpen(false);
+                            setMobileServicesOpen(false);
+                          }}
+                          style={{
+                            transitionDelay: mobileServicesOpen
+                              ? `${idx * 40 + 40}ms`
+                              : "0ms",
+                          }}
+                          className={`text-[14.5px] sm:text-[15.5px] font-instrument-sans py-1.5 px-2.5 rounded-[8px] transition-all duration-300 flex items-center justify-between group ${
+                            isServiceActive
+                              ? "text-[#00A2E2] font-semibold bg-white/5"
+                              : "text-white/75 hover:text-white hover:bg-white/5 font-normal"
+                          } ${
+                            mobileServicesOpen
+                              ? "opacity-100 translate-x-0"
+                              : "opacity-0 -translate-x-2"
+                          }`}
+                        >
+                          <span className="flex items-center gap-2.5">
+                            <span
+                              className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                                isServiceActive
+                                  ? "bg-[#00A2E2]"
+                                  : "bg-white/30 group-hover:bg-[#00A2E2]"
+                              }`}
+                            />
+                            {service.title}
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#00A2E2] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
 
             {/* About Us */}
             <Link
               href="/about"
-              onClick={() => setIsOpen(false)}
-              className={`mobile-nav-link text-2xl sm:text-3xl font-instrument-sans tracking-wide py-1 font-medium transition-colors ${
+              onClick={() => {
+                setIsOpen(false);
+                setMobileServicesOpen(false);
+              }}
+              className={`mobile-nav-link text-[19px] sm:text-[21px] font-instrument-sans tracking-wide py-1.5 font-medium transition-colors ${
                 isAbout
                   ? "text-[#00A2E2] font-semibold"
                   : "text-white hover:text-[#00A2E2]"
@@ -564,8 +615,11 @@ export default function Navbar() {
             {/* Our Investment */}
             <Link
               href="/our-investments"
-              onClick={() => setIsOpen(false)}
-              className={`mobile-nav-link text-2xl sm:text-3xl font-instrument-sans tracking-wide py-1 font-medium transition-colors ${
+              onClick={() => {
+                setIsOpen(false);
+                setMobileServicesOpen(false);
+              }}
+              className={`mobile-nav-link text-[19px] sm:text-[21px] font-instrument-sans tracking-wide py-1.5 font-medium transition-colors ${
                 isOurInvestments
                   ? "text-[#00A2E2] font-semibold"
                   : "text-white hover:text-[#00A2E2]"
@@ -577,8 +631,15 @@ export default function Navbar() {
             {/* Contact Us */}
             <Link
               href="/lets-connect"
-              onClick={() => setIsOpen(false)}
-              className="mobile-nav-link text-2xl sm:text-3xl font-instrument-sans tracking-wide py-1 text-white hover:text-[#00A2E2] font-medium transition-colors"
+              onClick={() => {
+                setIsOpen(false);
+                setMobileServicesOpen(false);
+              }}
+              className={`mobile-nav-link text-[19px] sm:text-[21px] font-instrument-sans tracking-wide py-1.5 font-medium transition-colors ${
+                isContact
+                  ? "text-[#00A2E2] font-semibold"
+                  : "text-white hover:text-[#00A2E2]"
+              }`}
             >
               Contact Us
             </Link>
@@ -586,15 +647,18 @@ export default function Navbar() {
         </div>
 
         {/* Bottom Actions: Let's Connect Button & Copyright */}
-        <div className="flex flex-col items-center gap-5 pt-6 mt-auto">
+        <div className="flex flex-col items-center gap-4 pt-6 mt-auto">
           <Link
             href="/lets-connect"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              setMobileServicesOpen(false);
+            }}
             className="flex items-center justify-center w-full max-w-[280px] sm:max-w-[320px] mx-auto bg-[#00A2E2] text-white font-instrument-sans font-semibold transition-all duration-200 hover:bg-[#008ec7] active:scale-[0.98] shadow-md"
             style={{
-              height: "58px",
-              minHeight: "58px",
-              fontSize: "17px",
+              height: "52px",
+              minHeight: "52px",
+              fontSize: "16px",
               borderRadius: "10px",
               backgroundColor: "#00A2E2",
               color: "#FFFFFF",
