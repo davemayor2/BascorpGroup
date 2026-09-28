@@ -116,3 +116,54 @@ h1, h2, h3, h4, h5, h6 {
     background-position: center 20%;
   }
 }
+
+/* Mission Section Guaranteed Permanent Spacing */
+.mission-dark-wrapper {
+  padding: clamp(36px, 4.5vw, 64px) !important;
+}
+
+.mission-card {
+  padding: clamp(24px, 2.6vw, 36px) !important;
+}
+
+/* Management Team Section Guaranteed Spacing */
+.team-photo-frame {
+  margin-bottom: clamp(28px, 3vw, 42px) !important;
+}
+
+.team-member-name {
+  margin-bottom: 0 !important;
+}
+
+.team-member-role {
+  margin-top: 4px !important;
+}
+
+/* Universal White Button Corner Radius (8pt) */
+a.bg-white:not([aria-label="Bascorp Home"]),
+button.bg-white,
+.btn-white {
+  border-radius: 8pt !important;
+}
+
+/* Continuous Horizontal Scrolling Ticker */
+@keyframes ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+

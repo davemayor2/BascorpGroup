@@ -43,7 +43,7 @@ export default function ExploreButton({
     paddingTop: "8px",
     paddingBottom: "8px",
     height: "52px",
-    borderRadius: "8px",
+    borderRadius: "8pt",
   };
 
   const baseClasses = `inline-flex items-center justify-between gap-6 bg-white text-black transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg group select-none ${className}`;

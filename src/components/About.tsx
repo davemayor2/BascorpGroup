@@ -21,7 +21,7 @@ export default function About() {
   // Structured vision statement blocks matching design reference & exact grammar
   const visionBlocks = [
     {
-      text: "Our Vision it to be a trusted gateway for businesses ",
+      text: "Our Vision is to be a trusted gateway for businesses ",
       isMuted: false,
     },
     {

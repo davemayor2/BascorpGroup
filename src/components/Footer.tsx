@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
@@ -10,13 +11,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8" style={{ paddingBottom: "64px" }}>
           {/* Brand & Logo Column */}
           <div className="flex flex-col gap-6">
-            <a href="#home" className="inline-block transition-transform duration-200 hover:scale-[1.02]">
+            <Link href="/" className="inline-block transition-transform duration-200 hover:scale-[1.02]">
               <img
                 src="/logo.png"
                 alt="Bascorp Group"
                 style={{ height: "42px", width: "auto", objectFit: "contain" }}
               />
-            </a>
+            </Link>
             <p className="font-instrument-sans text-sm text-[#1A1A1A]/70 leading-relaxed max-w-sm">
               Bascorp Group is a diversified investment company with a growing portfolio of businesses and strategic partnerships across the Arabian Gulf, Middle East, and Asia.
             </p>
@@ -66,39 +67,44 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[#1A1A1A]/70 font-instrument-sans">
               <li>
-                <a href="#about" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/about" className="hover:text-[#00A2E2] transition-colors duration-200">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#team" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/about#team" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Team
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/our-investments" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Our Investment
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/investment-approach" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Investment Approach
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/#services" className="hover:text-[#00A2E2] transition-colors duration-200">
                   About Consulting
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/disciplined-investment-strategy" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Disciplined Investment Strategy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/corporate-governance" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Corporate Governance
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/lets-connect" className="hover:text-[#00A2E2] transition-colors duration-200">
+                  Let&apos;s Connect
+                </Link>
               </li>
             </ul>
           </div>
@@ -110,19 +116,19 @@ export default function Footer() {
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[#1A1A1A]/70 font-instrument-sans">
               <li>
-                <a href="#services" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/#services" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Debt Funding
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/#services" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Finance Investments
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#00A2E2] transition-colors duration-200">
+                <Link href="/#services" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Business Development
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

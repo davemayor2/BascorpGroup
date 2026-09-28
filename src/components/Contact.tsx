@@ -15,20 +15,35 @@ export default function Contact() {
 
   useGSAP(
     () => {
-      gsap.fromTo(
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.fromTo(
+        containerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power2.out",
+          clearProps: "transform",
+        }
+      ).fromTo(
         contentRef.current,
-        { y: 40, opacity: 0 },
+        { y: 35, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.85,
+          duration: 0.75,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
+          clearProps: "transform",
+        },
+        "-=0.15"
       );
     },
     { scope: containerRef }
@@ -38,7 +53,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={containerRef}
-      className="relative bg-cover bg-no-repeat overflow-hidden flex items-center"
+      className="w-full relative bg-cover bg-no-repeat overflow-hidden flex items-center"
       style={{
         backgroundImage: "url('/images/request a callback.jpg')",
         backgroundPosition: "center 35%",
@@ -80,12 +95,13 @@ export default function Contact() {
           <div className="pt-2">
             <a
               href="mailto:info@bascorpgroup.com"
-              className="inline-flex items-center justify-center gap-3 bg-white text-[#1A1A1A] font-instrument-sans font-semibold rounded-[8px] transition-all duration-200 hover:bg-white/95 hover:scale-[1.02] active:scale-[0.98] shadow-md select-none group"
+              className="inline-flex items-center justify-center gap-3 bg-white text-[#1A1A1A] font-instrument-sans font-semibold rounded-[8pt] transition-all duration-200 hover:bg-white/95 hover:scale-[1.02] active:scale-[0.98] shadow-md select-none group"
               style={{
                 height: "54px",
                 paddingLeft: "32px",
                 paddingRight: "28px",
                 fontSize: "17px",
+                borderRadius: "8pt",
               }}
             >
               <span>Let&apos;s Connect</span>
