@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 // Bento grid card definitions — exact dimensions per spec
 const col1 = [
   {
-    title: "Debt Funding",
+    title: "Healthcare & Pharmaceuticals",
     description:
       "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
     image: "/images/health.jpg",

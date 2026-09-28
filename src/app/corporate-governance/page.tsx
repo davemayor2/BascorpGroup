@@ -200,10 +200,9 @@ export default function CorporateGovernancePage() {
            ===================================================================== */}
         <section
           ref={heroRef}
-          className="relative bg-cover bg-center bg-no-repeat overflow-hidden flex flex-col justify-end min-h-screen"
+          className="relative bg-cover bg-no-repeat overflow-hidden flex flex-col justify-end min-h-screen [background-position:center_70px] md:[background-position:center_30%]"
           style={{
             backgroundImage: "url('/images/corporate_governance_1.png')",
-            backgroundPosition: "center 30%",
             minHeight: "100vh",
             paddingTop: "160px",
             paddingBottom: "clamp(44px, 5.5vh, 76px)",
@@ -278,7 +277,7 @@ export default function CorporateGovernancePage() {
                       style={{
                         width: "36px",
                         height: "36px",
-                        borderRadius: "6px",
+                        borderRadius: "4px",
                       }}
                     >
                       <img

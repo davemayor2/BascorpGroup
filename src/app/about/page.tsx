@@ -485,7 +485,7 @@ export default function AboutPage() {
                   paddingTop: "8px",
                   paddingBottom: "8px",
                   height: "52px",
-                  borderRadius: "10px",
+                  borderRadius: "8px",
                 }}
               >
                 <span
@@ -496,7 +496,7 @@ export default function AboutPage() {
                 </span>
                 <div
                   className="flex items-center justify-center bg-[#00A2E2] group-hover:bg-[#008bc4] transition-all duration-300 shrink-0"
-                  style={{ width: "36px", height: "36px", borderRadius: "6px" }}
+                  style={{ width: "36px", height: "36px", borderRadius: "4px" }}
                 >
                   <img
                     src="/button arrow.svg"
@@ -709,7 +709,7 @@ export default function AboutPage() {
                       paddingTop: "8px",
                       paddingBottom: "8px",
                       height: "52px",
-                      borderRadius: "10px",
+                      borderRadius: "8px",
                     }}
                   >
                     <span
@@ -720,7 +720,7 @@ export default function AboutPage() {
                     </span>
                     <div
                       className="flex items-center justify-center bg-[#00A2E2] group-hover:bg-[#008bc4] transition-all duration-300 shrink-0"
-                      style={{ width: "36px", height: "36px", borderRadius: "6px" }}
+                      style={{ width: "36px", height: "36px", borderRadius: "4px" }}
                     >
                       <img
                         src="/button arrow.svg"

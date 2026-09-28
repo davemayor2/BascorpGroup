@@ -205,7 +205,7 @@ export default function OurInvestmentsPage() {
                     style={{
                       width: "36px",
                       height: "36px",
-                      borderRadius: "6px",
+                      borderRadius: "4px",
                     }}
                   >
                     <img
@@ -361,10 +361,10 @@ export default function OurInvestmentsPage() {
                           </span>
                         </div>
 
-                        {/* Top Right: "Get Started" button with sharp 0px radius, 15px text, 15px left / 8px right padding, increased top padding */}
+                        {/* Top Right: "Get Started" button with sharp 0px radius, 15px text, 15px left / 8px right padding, increased top padding - desktop/tablet only */}
                         <a
                           href="#contact"
-                          className="inline-flex items-center text-white font-instrument-sans transition-all duration-300 hover:bg-white/10 shrink-0 group/btn select-none"
+                          className="hidden md:inline-flex items-center text-white font-instrument-sans transition-all duration-300 hover:bg-white/10 shrink-0 group/btn select-none"
                           style={{
                             borderRadius: "0px",
                             border: "1px solid rgba(255, 255, 255, 0.75)",
@@ -410,6 +410,13 @@ export default function OurInvestmentsPage() {
                         >
                           {card.description}
                         </p>
+                        {/* Mobile view: standalone Get Started text below subheading (not in a box) */}
+                        <a
+                          href="#contact"
+                          className="md:hidden inline-block text-white font-instrument-sans font-medium text-[15px] pt-1 underline underline-offset-4 hover:text-[#00A2E2] transition-colors select-none self-start"
+                        >
+                          Get Started
+                        </a>
                       </div>
                     </div>
                   </div>

@@ -312,7 +312,7 @@ export default function DisciplinedInvestmentStrategyPage() {
                       paddingTop: "8px",
                       paddingBottom: "8px",
                       height: "52px",
-                      borderRadius: "8pt",
+                      borderRadius: "8px",
                     }}
                   >
                     <span
@@ -326,7 +326,7 @@ export default function DisciplinedInvestmentStrategyPage() {
                       style={{
                         width: "36px",
                         height: "36px",
-                        borderRadius: "6px",
+                        borderRadius: "4px",
                       }}
                     >
                       <img
