@@ -373,7 +373,7 @@ export default function Navbar() {
           <div className="absolute -top-9 left-0 right-0 h-11 bg-transparent" />
 
           <div
-            className="w-full bg-[#272727] text-white shadow-2xl border border-white/[0.08]"
+            className="w-full bg-white text-black shadow-2xl border border-black/[0.08]"
             style={{
               borderRadius: "20px",
               padding: "16px 16px 16px 36px",
@@ -383,7 +383,7 @@ export default function Navbar() {
               {/* Left Side: Services List */}
               <div className="flex-1 flex flex-col justify-center pr-2 py-4">
                 <div>
-                  <h3 className="text-white text-[20px] lg:text-[22px] font-semibold font-instrument-sans tracking-tight">
+                  <h3 className="text-black text-[20px] lg:text-[22px] font-semibold font-instrument-sans tracking-tight">
                     Services
                   </h3>
                   <div
@@ -391,7 +391,7 @@ export default function Navbar() {
                       marginTop: "16px",
                       marginBottom: "36px",
                       height: "1px",
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      backgroundColor: "rgba(0, 0, 0, 0.08)",
                       width: "100%",
                     }}
                   />
@@ -412,7 +412,7 @@ export default function Navbar() {
                         className="group flex items-start gap-4 py-2 px-1.5 cursor-pointer"
                       >
                         {/* Icon Box */}
-                        <div className="w-[50px] h-[50px] lg:w-[54px] lg:h-[54px] rounded-[10px] bg-white flex items-center justify-center shrink-0 shadow-sm">
+                        <div className="w-[50px] h-[50px] lg:w-[54px] lg:h-[54px] rounded-[10px] bg-[#F5F5F7] border border-black/[0.06] flex items-center justify-center shrink-0 shadow-xs">
                           <img
                             src={service.iconSrc}
                             alt=""
@@ -422,10 +422,10 @@ export default function Navbar() {
 
                         {/* Title & Description */}
                         <div className="flex flex-col pt-0.5">
-                          <span className="text-[17px] lg:text-[18px] font-semibold text-white group-hover:text-[#00A2E2] transition-colors duration-200 font-instrument-sans tracking-tight">
+                          <span className="text-[17px] lg:text-[18px] font-semibold text-black group-hover:text-[#00A2E2] transition-colors duration-200 font-instrument-sans tracking-tight">
                             {service.title}
                           </span>
-                          <p className="text-[13px] lg:text-[13.5px] text-[#A0A0A0] leading-snug mt-1 font-instrument-sans">
+                          <p className="text-[13px] lg:text-[13.5px] text-[#666666] leading-snug mt-1 font-instrument-sans">
                             {service.description}
                           </p>
                         </div>
