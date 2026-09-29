@@ -230,15 +230,15 @@ export default function Navbar() {
         {/* Main Floating Navigation Bar Container */}
         <div
           ref={navRef}
-          className="pointer-events-auto flex items-center justify-between w-full bg-[#272727] text-white rounded-[14px] shadow-xl relative z-20"
+          className="pointer-events-auto flex items-center justify-between w-full bg-white text-black border border-black/[0.08] rounded-[14px] shadow-lg relative z-20"
           style={{ height: "80px", paddingLeft: "16px", paddingRight: "16px" }}
         >
-          {/* Logo Badge */}
+          {/* Logo Badge (No drop shadow) */}
           <Link
             href="/"
             aria-label="Bascorp Home"
             onClick={() => setIsMegaMenuOpen(false)}
-            className="flex items-center justify-center bg-white rounded-[12px] shrink-0 select-none transition-transform duration-200 hover:scale-[1.02] shadow-sm"
+            className="flex items-center justify-center bg-white rounded-[12px] shrink-0 select-none transition-transform duration-200 hover:scale-[1.02] shadow-none"
             style={{ height: "62px", paddingLeft: "24px", paddingRight: "24px" }}
           >
             <img
@@ -256,8 +256,8 @@ export default function Navbar() {
               onClick={() => setIsMegaMenuOpen(false)}
               className={`font-instrument-sans transition-colors duration-200 whitespace-nowrap text-[17px] lg:text-[18px] ${
                 isHome
-                  ? "text-white font-bold"
-                  : "text-white/85 hover:text-white font-medium"
+                  ? "text-black font-bold"
+                  : "text-black/75 hover:text-black font-medium"
               }`}
             >
               Home
@@ -274,8 +274,8 @@ export default function Navbar() {
                 onClick={() => setIsMegaMenuOpen((prev) => !prev)}
                 className={`flex items-center gap-1.5 font-instrument-sans transition-all duration-200 whitespace-nowrap text-[17px] lg:text-[18px] cursor-pointer outline-none focus:outline-none ${
                   isMegaMenuOpen || isServicePage
-                    ? "text-white font-bold"
-                    : "text-white/85 hover:text-white font-medium"
+                    ? "text-black font-bold"
+                    : "text-black/75 hover:text-black font-medium"
                 }`}
                 aria-expanded={isMegaMenuOpen}
                 aria-haspopup="true"
@@ -283,7 +283,7 @@ export default function Navbar() {
                 <span>What We Do</span>
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-300 ${
-                    isMegaMenuOpen ? "rotate-180 text-white" : "text-white/70"
+                    isMegaMenuOpen ? "rotate-180 text-black" : "text-black/70"
                   }`}
                   strokeWidth={2.5}
                 />
@@ -296,8 +296,8 @@ export default function Navbar() {
               onClick={() => setIsMegaMenuOpen(false)}
               className={`font-instrument-sans transition-colors duration-200 whitespace-nowrap text-[17px] lg:text-[18px] ${
                 isAbout
-                  ? "text-white font-bold"
-                  : "text-white/85 hover:text-white font-medium"
+                  ? "text-black font-bold"
+                  : "text-black/75 hover:text-black font-medium"
               }`}
             >
               About Us
@@ -309,8 +309,8 @@ export default function Navbar() {
               onClick={() => setIsMegaMenuOpen(false)}
               className={`font-instrument-sans transition-colors duration-200 whitespace-nowrap text-[17px] lg:text-[18px] ${
                 isOurInvestments
-                  ? "text-white font-bold"
-                  : "text-white/85 hover:text-white font-medium"
+                  ? "text-black font-bold"
+                  : "text-black/75 hover:text-black font-medium"
               }`}
             >
               Our Investment
@@ -320,7 +320,7 @@ export default function Navbar() {
             <Link
               href="/lets-connect"
               onClick={() => setIsMegaMenuOpen(false)}
-              className="font-instrument-sans transition-colors duration-200 whitespace-nowrap text-[17px] lg:text-[18px] text-white/85 hover:text-white font-medium"
+              className="font-instrument-sans transition-colors duration-200 whitespace-nowrap text-[17px] lg:text-[18px] text-black/75 hover:text-black font-medium"
             >
               Contact Us
             </Link>
@@ -347,13 +347,13 @@ export default function Navbar() {
           {/* Mobile Hamburger / Transform to X Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white/10 hover:bg-white/20 active:scale-95 transition-all duration-200 md:hidden text-white focus:outline-none"
+            className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-black/5 hover:bg-black/10 active:scale-95 transition-all duration-200 md:hidden text-black focus:outline-none"
             aria-label={isOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
           >
             {isOpen ? (
-              <X className="w-6 h-6 text-white transition-transform duration-200" />
+              <X className="w-6 h-6 text-black transition-transform duration-200" />
             ) : (
-              <Menu className="w-6 h-6 text-white transition-transform duration-200" />
+              <Menu className="w-6 h-6 text-black transition-transform duration-200" />
             )}
           </button>
         </div>

@@ -173,7 +173,7 @@ export default function OurInvestmentsPage() {
               <p
                 className="hero-fade-item font-instrument-sans text-[#666666] leading-relaxed max-w-2xl font-normal"
                 style={{
-                  fontSize: "clamp(15px, 1.25vw, 17px)",
+                  fontSize: "clamp(17px, 1.25vw, 19px)",
                   marginBottom: "36px",
                 }}
               >

@@ -131,7 +131,7 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="text-[15.5px] sm:text-[16px] md:text-[16px] text-white/80 font-instrument-sans font-normal leading-[1.75] max-w-lg"
+            className="text-[17.5px] sm:text-[18px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.75] max-w-xl"
           >
             We partner with businesses across the Middle East, the Arabian Gulf and Asia,
             bringing strategic insight, market expertise and a strong network to support

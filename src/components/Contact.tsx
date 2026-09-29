@@ -86,7 +86,7 @@ export default function Contact() {
           {/* Subheading */}
           <p
             className="font-instrument-sans font-normal text-white/85 leading-relaxed max-w-xl"
-            style={{ fontSize: "clamp(15px, 1.6vw, 17px)" }}
+            style={{ fontSize: "clamp(17px, 1.6vw, 19px)" }}
           >
             Whether you&apos;re seeking investment, exploring a strategic partnership, or looking to expand into the Middle East, we&apos;re ready to start the conversation.
           </p>

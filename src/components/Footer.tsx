@@ -18,7 +18,7 @@ export default function Footer() {
                 style={{ height: "42px", width: "auto", objectFit: "contain" }}
               />
             </Link>
-            <p className="font-instrument-sans text-sm text-[#1A1A1A]/70 leading-relaxed max-w-sm">
+            <p className="font-instrument-sans text-[16px] text-[#1A1A1A]/75 leading-relaxed max-w-sm">
               Bascorp Group is a diversified investment company with a growing portfolio of businesses and strategic partnerships across the Arabian Gulf, Middle East, and Asia.
             </p>
             <div className="flex items-center gap-3">
@@ -62,10 +62,13 @@ export default function Footer() {
 
           {/* Pages Directory Column */}
           <div className="flex flex-col gap-6 lg:pl-8">
-            <h3 className="font-clash-grotesk text-lg font-semibold tracking-wide text-[#00A2E2] uppercase">
+            <h3
+              className="font-clash-grotesk font-semibold tracking-wide text-[#00A2E2] uppercase"
+              style={{ fontSize: "20px" }}
+            >
               Pages
             </h3>
-            <ul className="flex flex-col gap-3 text-sm text-[#1A1A1A]/70 font-instrument-sans">
+            <ul className="flex flex-col gap-3 font-instrument-sans text-[#1A1A1A]/75" style={{ fontSize: "16px" }}>
               <li>
                 <Link href="/about" className="hover:text-[#00A2E2] transition-colors duration-200">
                   About Us
@@ -111,10 +114,13 @@ export default function Footer() {
 
           {/* Services Column */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-clash-grotesk text-lg font-semibold tracking-wide text-[#00A2E2] uppercase">
+            <h3
+              className="font-clash-grotesk font-semibold tracking-wide text-[#00A2E2] uppercase"
+              style={{ fontSize: "20px" }}
+            >
               Services
             </h3>
-            <ul className="flex flex-col gap-3 text-sm text-[#1A1A1A]/70 font-instrument-sans">
+            <ul className="flex flex-col gap-3 font-instrument-sans text-[#1A1A1A]/75" style={{ fontSize: "16px" }}>
               <li>
                 <Link href="/#services" className="hover:text-[#00A2E2] transition-colors duration-200">
                   Debt Funding
@@ -135,10 +141,13 @@ export default function Footer() {
 
           {/* Contact Details Column */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-clash-grotesk text-lg font-semibold tracking-wide text-[#00A2E2] uppercase">
+            <h3
+              className="font-clash-grotesk font-semibold tracking-wide text-[#00A2E2] uppercase"
+              style={{ fontSize: "20px" }}
+            >
               Contact Us
             </h3>
-            <ul className="flex flex-col gap-4 text-sm text-[#1A1A1A]/70 font-instrument-sans">
+            <ul className="flex flex-col gap-4 font-instrument-sans text-[#1A1A1A]/75" style={{ fontSize: "16px" }}>
               <li className="flex gap-3 items-start">
                 <Phone className="w-4 h-4 text-[#00A2E2] shrink-0 mt-1" />
                 <a href="tel:+97317530816" className="hover:text-[#00A2E2] transition-colors">
@@ -163,7 +172,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-[#D9D9D9] flex justify-center items-center text-xs text-[#1A1A1A]/50 font-instrument-sans" style={{ paddingTop: "40px", paddingBottom: "40px" }}>
+        <div className="border-t border-[#D9D9D9] flex justify-center items-center text-[#1A1A1A]/60 font-instrument-sans" style={{ paddingTop: "40px", paddingBottom: "40px", fontSize: "14px" }}>
           <p>@Bascorpgroup 2026. All rights Reserved</p>
         </div>
       </div>

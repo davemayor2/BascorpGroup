@@ -135,7 +135,7 @@ export default function Services() {
     <section
       id="services"
       ref={containerRef}
-      style={{ backgroundColor: "#0A0A0A", paddingTop: "140px", paddingBottom: "140px" }}
+      style={{ backgroundColor: "#00194C", paddingTop: "140px", paddingBottom: "140px" }}
     >
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-0">
@@ -153,7 +153,7 @@ export default function Services() {
               />
               <span
                 className="font-instrument-sans font-bold uppercase tracking-widest text-white"
-                style={{ fontSize: "13px" }}
+                style={{ fontSize: "15px" }}
               >
                 Services
               </span>
@@ -167,20 +167,20 @@ export default function Services() {
               Strategic Services<br />for Organization
             </h2>
 
-            {/* Description */}
+            {/* Description — All texts white */}
             <p
-              className="font-instrument-sans font-normal leading-relaxed"
-              style={{ fontSize: "14px", color: "#AAAAAA" }}
+              className="font-instrument-sans font-normal leading-relaxed text-white"
+              style={{ fontSize: "16px", color: "#FFFFFF" }}
             >
               We partner with businesses across the Middle East, the Arabian Gulf
               and Asia, bringing strategic insight, market expertise and a strong
               network to support sustainable growth.
             </p>
 
-            {/* Discover More — #323232 bg, white text, 8pt outer radius, 4pt arrow box, 1pt #636363 border */}
+            {/* Discover More — White button, black text */}
             <a
               href="#contact"
-              className="inline-flex items-center justify-between gap-6 transition-all duration-300 hover:opacity-90 group select-none"
+              className="inline-flex items-center justify-between gap-6 transition-all duration-300 hover:opacity-90 group select-none shadow-md"
               style={{
                 paddingLeft: "24px",
                 paddingRight: "8px",
@@ -188,13 +188,13 @@ export default function Services() {
                 paddingBottom: "8px",
                 height: "52px",
                 borderRadius: "8px",
-                border: "1px solid #636363",
-                backgroundColor: "#323232",
+                border: "1px solid #FFFFFF",
+                backgroundColor: "#FFFFFF",
                 width: "fit-content",
               }}
             >
               <span
-                className="font-instrument-sans font-semibold text-white leading-none"
+                className="font-instrument-sans font-semibold text-black leading-none"
                 style={{ fontSize: "17px" }}
               >
                 Discover More
@@ -220,7 +220,7 @@ export default function Services() {
                 className="flex items-center justify-center transition-all duration-200 hover:opacity-80"
                 style={{
                   width: "48px", height: "48px", borderRadius: "8px",
-                  backgroundColor: "#1D1D1D", border: "1px solid #787878", color: "#FFFFFF",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)", border: "1px solid rgba(255, 255, 255, 0.25)", color: "#FFFFFF",
                 }}
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -249,13 +249,13 @@ export default function Services() {
               style={{ gap: `${CARD_GAP}px`, willChange: "transform", alignItems: "flex-start" }}
             >
               {services.map((service, idx) => (
-                /* ── OUTER CARD: responsive on mobile, 494×538 on desktop ── */
+                /* ── OUTER CARD: primary blue (#00A2E2), all text white ── */
                 <div
                   key={idx}
-                  className="shrink-0 flex flex-col w-[85vw] max-w-[340px] sm:w-[380px] sm:max-w-none lg:w-[494px]"
+                  className="shrink-0 flex flex-col w-[85vw] max-w-[340px] sm:w-[380px] sm:max-w-none lg:w-[494px] shadow-lg"
                   style={{
-                    backgroundColor: "#1D1D1D",
-                    border: "1px solid #787878",
+                    backgroundColor: "#00A2E2",
+                    border: "1px solid rgba(255, 255, 255, 0.25)",
                     borderRadius: "16px",
                     padding: "13px",
                     boxSizing: "border-box",
@@ -278,7 +278,7 @@ export default function Services() {
                     />
                   </div>
 
-                  {/* Card text body — balanced spacing with generous bottom clearance */}
+                  {/* Card text body — all white text */}
                   <div
                     className="flex flex-col flex-1"
                     style={{
@@ -289,15 +289,16 @@ export default function Services() {
                     }}
                   >
                     <h3
-                      className="font-clash-grotesk font-semibold leading-tight"
-                      style={{ fontSize: "20px", color: "#00A2E2" }}
+                      className="font-clash-grotesk font-semibold leading-tight text-white"
+                      style={{ fontSize: "20px", color: "#FFFFFF" }}
                     >
                       {service.title}
                     </h3>
                     <p
-                      className="font-instrument-sans font-normal leading-relaxed text-[#AAAAAA]"
+                      className="font-instrument-sans font-normal leading-relaxed text-white/95"
                       style={{
                         fontSize: "13.5px",
+                        color: "#FFFFFF",
                       }}
                     >
                       {service.description}
@@ -318,7 +319,7 @@ export default function Services() {
             style={{
               width: "50%",
               height: "3px",
-              backgroundColor: "#2A2A2A",
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
               borderRadius: "2px",
               overflow: "hidden",
             }}

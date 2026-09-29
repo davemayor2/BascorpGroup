@@ -678,11 +678,12 @@ export default function AboutPage() {
           className="relative"
         >
           <div className="container-custom">
-            {/* 1. Main Container (The Dark Wrapper) */}
+            {/* 1. Main Container (The 00194C Wrapper) */}
             <div
               ref={pillarsRef}
-              className="mission-dark-wrapper bg-[#000000] rounded-[32px] p-8 sm:p-12 md:p-14 lg:p-16 flex flex-col md:flex-row items-stretch gap-8 md:gap-12 lg:gap-16 shadow-2xl relative"
+              className="mission-dark-wrapper bg-[#00194C] rounded-[32px] p-8 sm:p-12 md:p-14 lg:p-16 flex flex-col md:flex-row items-stretch gap-8 md:gap-12 lg:gap-16 shadow-2xl relative"
               style={{
+                backgroundColor: "#00194C",
                 padding: "clamp(36px, 4.5vw, 60px)",
               }}
             >
@@ -695,7 +696,7 @@ export default function AboutPage() {
 
                 {/* Bottom Element Wrapper */}
                 <div className="mt-8 md:mt-0 pt-6 md:pt-10 flex flex-col items-start" style={{ gap: "32px" }}>
-                  <p className="font-instrument-sans text-sm sm:text-base text-[#D9D9D9] leading-relaxed max-w-sm">
+                  <p className="font-instrument-sans text-sm sm:text-base text-white leading-relaxed max-w-sm">
                     Connecting businesses with opportunities across the Middle East and wider Asian markets.
                   </p>
 
@@ -734,7 +735,7 @@ export default function AboutPage() {
               </div>
 
               {/* 3. The Custom Vertical Divider & Scroll Slider (Desktop Only) */}
-              <div className="hidden md:block w-[2px] shrink-0 self-stretch rounded-full my-1 relative overflow-hidden bg-[#333333]">
+              <div className="hidden md:block w-[2px] shrink-0 self-stretch rounded-full my-1 relative overflow-hidden bg-white/20">
                 {/* Sliding Blue Indicator Line */}
                 <div
                   className="mission-slider-indicator absolute left-0 top-0 w-full rounded-full bg-[#00A2E2]"
@@ -747,13 +748,14 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* 4. Right Column (The 3 Stacked Cards) */}
+              {/* 4. Right Column (The 3 Stacked Cards in Primary Blue with All White Text) */}
               <div className="w-full md:flex-1 min-w-0 flex flex-col gap-4 sm:gap-5 justify-between">
                 {CORE_PILLARS.map((pillar) => (
                   <div
                     key={pillar.id}
-                    className="pillar-card mission-card bg-[#222222] rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col justify-center border border-white/5 transition-all duration-300 hover:border-[#00A2E2]/40 opacity-100"
+                    className="pillar-card mission-card bg-[#00A2E2] rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col justify-center border border-white/20 shadow-md transition-all duration-300 hover:border-white/40 opacity-100"
                     style={{
+                      backgroundColor: "#00A2E2",
                       padding: "clamp(24px, 2.6vw, 36px)",
                       opacity: 1,
                     }}
@@ -763,13 +765,13 @@ export default function AboutPage() {
                       <h3 className="font-instrument-sans font-medium text-lg sm:text-xl text-white">
                         {pillar.title}
                       </h3>
-                      <span className="font-instrument-sans font-normal text-base sm:text-lg text-[#787878] shrink-0">
+                      <span className="font-instrument-sans font-medium text-base sm:text-lg text-white shrink-0">
                         {pillar.id}
                       </span>
                     </div>
 
                     {/* Body Text */}
-                    <p className="font-instrument-sans font-normal text-xs sm:text-[14px] md:text-[15px] leading-relaxed text-[#D9D9D9]">
+                    <p className="font-instrument-sans font-normal text-xs sm:text-[14px] md:text-[15px] leading-relaxed text-white">
                       {pillar.description}
                     </p>
                   </div>

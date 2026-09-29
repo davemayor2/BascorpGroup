@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 
 export default function LetsConnectPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -99,7 +100,7 @@ export default function LetsConnectPage() {
               <p
                 className="font-instrument-sans text-[#666666] leading-relaxed max-w-[420px] text-left md:text-left select-none"
                 style={{
-                  fontSize: "clamp(15px, 1.15vw, 16px)",
+                  fontSize: "clamp(17px, 1.15vw, 18px)",
                   fontWeight: 400,
                 }}
               >
@@ -121,12 +122,13 @@ export default function LetsConnectPage() {
           ref={cardRef}
           className="w-full flex justify-center"
           style={{
-            paddingBottom: "clamp(80px, 9vw, 140px)",
+            paddingBottom: "clamp(36px, 4.5vw, 60px)",
           }}
         >
           <div className="container-custom w-full">
             {/* The Big White Box */}
             <div
+              id="contact-card"
               className="w-full bg-white border border-black/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
               style={{
                 borderRadius: "0px",
@@ -151,7 +153,7 @@ export default function LetsConnectPage() {
                     </h2>
                     <p
                       className="font-instrument-sans font-normal text-[#666666] leading-relaxed mt-4 max-w-lg"
-                      style={{ fontSize: "clamp(14px, 1.1vw, 16px)" }}
+                      style={{ fontSize: "clamp(16px, 1.1vw, 18px)" }}
                     >
                       Provide context, describe your current situation, and outline what you’d like support with. The more detail you share, the more productive our first call will be.
                     </p>
@@ -541,6 +543,13 @@ export default function LetsConnectPage() {
             </div>
           </div>
         </section>
+
+        {/* =====================================================================
+            FREQUENTLY ASKED QUESTIONS SECTION
+            - Questions & Answers heading + Can't find an answer call booking card
+            - Interactive accordion FAQ items with custom divider lines
+           ===================================================================== */}
+        <FAQSection />
       </main>
 
       {/* 3. Global Footer */}

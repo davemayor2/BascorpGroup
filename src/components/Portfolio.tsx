@@ -113,7 +113,7 @@ function PortfolioCard({ title, description, image, height }: PortfolioCardProps
         </h3>
         <p
           className="font-instrument-sans font-normal leading-snug text-white/85"
-          style={{ fontSize: "13px" }}
+          style={{ fontSize: "15px" }}
         >
           {description}
         </p>
@@ -184,7 +184,7 @@ export default function Portfolio() {
             />
             <span
               className="font-instrument-sans font-bold uppercase tracking-widest text-navbar-bg"
-              style={{ fontSize: "13px" }}
+              style={{ fontSize: "15px" }}
             >
               Our Portfolio
             </span>
@@ -200,7 +200,7 @@ export default function Portfolio() {
 
           <p
             className="portfolio-header-reveal font-instrument-sans font-normal leading-relaxed text-grey-medium max-w-xl"
-            style={{ fontSize: "15px" }}
+            style={{ fontSize: "17px" }}
           >
             Our portfolio reflects our commitment to partnering with businesses to
             support sustainable growth and create value across multiple sectors.
