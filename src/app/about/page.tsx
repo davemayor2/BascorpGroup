@@ -57,23 +57,71 @@ const CORE_PILLARS = [
   },
 ];
 
-// ── Management Team Data ──
+// ── Team Email & WhatsApp Icons (from /public/team email.svg & /public/team_whatsapp.svg) ──
+const TeamEmailIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 34 34"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M30.8125 5.3125H3.1875C2.5998 5.3125 2.125 5.7873 2.125 6.375V27.625C2.125 28.2127 2.5998 28.6875 3.1875 28.6875H30.8125C31.4002 28.6875 31.875 28.2127 31.875 27.625V6.375C31.875 5.7873 31.4002 5.3125 30.8125 5.3125ZM29.4844 8.99141V26.2969H4.51562V8.99141L3.59922 8.27754L4.9041 6.60078L6.3252 7.70645H27.6781L29.0992 6.60078L30.4041 8.27754L29.4844 8.99141ZM27.6781 7.70312L17 16.0039L6.32187 7.70312L4.90078 6.59746L3.5959 8.27422L4.5123 8.98809L15.8545 17.8068C16.1807 18.0602 16.582 18.1978 16.995 18.1978C17.4081 18.1978 17.8094 18.0602 18.1355 17.8068L29.4844 8.99141L30.4008 8.27754L29.0959 6.60078L27.6781 7.70312Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const TeamWhatsAppIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 34 34"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M24.6712 20.3745C24.2491 20.1635 22.1793 19.1463 21.794 19.0046C21.4087 18.863 21.1282 18.795 20.8462 19.2171C20.5657 19.6379 19.7597 20.5856 19.5146 20.8661C19.2681 21.148 19.023 21.182 18.6022 20.9724C18.1815 20.7599 16.8243 20.3165 15.2164 18.8828C13.9655 17.7665 13.1197 16.388 12.8747 15.9659C12.6296 15.5451 12.8477 15.317 13.0588 15.1074C13.2487 14.919 13.4796 14.6158 13.6907 14.3707C13.9017 14.1256 13.9712 13.9485 14.1114 13.6666C14.2531 13.3861 14.1822 13.141 14.076 12.93C13.9712 12.7189 13.1297 10.6463 12.7783 9.80338C12.4369 8.98313 12.0898 9.09505 11.832 9.08088C11.5855 9.06955 11.305 9.06671 11.0245 9.06671C10.744 9.06671 10.2878 9.17155 9.9025 9.59371C9.51575 10.0145 8.42917 11.033 8.42917 13.1056C8.42917 15.1768 9.9365 17.1785 10.1476 17.4605C10.3587 17.7424 13.1155 21.9938 17.3386 23.817C18.3444 24.2505 19.1278 24.5098 19.7384 24.7025C20.7471 25.024 21.6651 24.9787 22.3904 24.8696C23.1979 24.7492 24.8809 23.851 25.2322 22.8679C25.5836 21.8847 25.5822 21.0418 25.4773 20.8661C25.3725 20.6905 25.092 20.5856 24.6698 20.3745M16.9887 30.8621H16.983C14.4747 30.8626 12.0124 30.1883 9.85433 28.91L9.34433 28.6068L4.04317 29.998L5.45842 24.83L5.1255 24.3001C3.72312 22.068 2.98101 19.4846 2.98492 16.8485C2.98775 9.12763 9.26925 2.84613 16.9943 2.84613C18.8343 2.84054 20.657 3.20073 22.3565 3.90578C24.0559 4.61082 25.5983 5.64665 26.894 6.95305C28.198 8.25113 29.2316 9.795 29.9348 11.4953C30.6381 13.1955 30.9971 15.0184 30.991 16.8584C30.9882 24.5792 24.7067 30.8621 16.9887 30.8621ZM28.9057 4.94138C27.3447 3.37068 25.4877 2.12518 23.4421 1.277C21.3966 0.428819 19.2031 -0.00520668 16.9887 4.71322e-05C7.70383 4.71322e-05 0.1445 7.55796 0.141667 16.847C0.137096 19.8033 0.912614 22.7084 2.38992 25.2691L0 34L8.93067 31.6569C11.4016 33.0018 14.1698 33.707 16.983 33.7082H16.9901C26.2749 33.7082 33.8342 26.1503 33.8371 16.8598C33.844 14.6459 33.4119 12.4527 32.5656 10.4069C31.7194 8.36111 30.4759 6.50345 28.9071 4.94138"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+// ── Management Team Data (Exact Reference) ──
 const MANAGEMENT_TEAM = [
   {
-    name: "H.H. Sheikh Mohammed Al Issa",
-    role: "Chairman and Chief Executive Officer - Bascorp Group",
+    name: "H.H. Sheikh\nMohammed Al Issa",
+    role: "Chairman and Chief Executive Officer - CEO",
+    email: "ceo@bascorpgroup.com",
+    hasWhatsApp: false,
   },
   {
-    name: "Mohammad Al Nahyan",
-    role: "Member of Executive Committee and Chief Financial Officer (CFO)",
+    name: "G.C Henderson",
+    role: "President, Finance & Budgets.",
+    email: "finance@bascorpgroup.com",
+    hasWhatsApp: false,
+  },
+  {
+    name: "Dr. Fahad Ali Al\nShammari.",
+    role: "Executive Director\nInvestment, Finance and Budget",
+    email: "investment@bascorpgroup.com",
+    whatsapp: "https://wa.me/13025369761",
+    hasWhatsApp: true,
   },
   {
     name: "Dr Ismail Hussain",
-    role: "Executive Director, Consulting Group CFO, and Head of Investment Committee, Bascorp Group",
+    role: "Executive Director\nDeputy Group CFO and CEO Investment,\nMerger And Acquisition",
+    email: "ismail@bascorpgroup.com",
+    whatsapp: "https://wa.me/12537773485",
+    hasWhatsApp: true,
   },
   {
-    name: "G.C. Henderson",
-    role: "Senior Executive Director",
+    name: "Mohammad Al Nahyan",
+    role: "Member of Executive Committee,\nChief Financial Officer – CFO",
+    email: "cfo@bascorpgroup.com",
+    whatsapp: "https://wa.me/971552479263",
+    hasWhatsApp: true,
   },
 ];
 
@@ -325,54 +373,40 @@ export default function AboutPage() {
         });
 
       // 4. Team Section ScrollTrigger
-      gsap.from(".team-header-content", {
-        scrollTrigger: {
-          trigger: teamRef.current,
-          start: "top 80%",
-        },
-        opacity: 0,
-        x: -30,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.from(".team-card", {
-        scrollTrigger: {
-          trigger: teamRef.current,
-          start: "top 75%",
-        },
-        opacity: 0,
-        y: 35,
-        stagger: 0.14,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      // Parallax scroll effect: The management team text section smoothly scrolls down with the user and stops at the end of the section
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 1024px)", () => {
-        const cardsGrid = teamGridRef.current;
-        const textEl = teamParallaxRef.current;
-        if (!cardsGrid || !textEl) return;
-
-        const getDistance = () => {
-          const cardsH = cardsGrid.offsetHeight;
-          const textH = textEl.offsetHeight;
-          return Math.max(0, cardsH - textH);
-        };
-
-        gsap.to(textEl, {
-          y: () => getDistance(),
-          ease: "none",
+      gsap.fromTo(
+        ".team-header-content",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "all",
           scrollTrigger: {
-            trigger: cardsGrid,
-            start: "top 22%",
-            end: "bottom 78%",
-            scrub: 0.5,
-            invalidateOnRefresh: true,
+            trigger: teamRef.current,
+            start: "top 85%",
+            once: true,
           },
-        });
-      });
+        }
+      );
+
+      gsap.fromTo(
+        ".team-card-wrapper",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "all",
+          scrollTrigger: {
+            trigger: teamRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
 
 
 
@@ -782,81 +816,116 @@ export default function AboutPage() {
         </section>
 
         {/* =====================================================================
-            4. "MEET BASCORP GROUP" TEAM SECTION
+            4. "MEET BASCORP GROUP" TEAM SECTION (REDESIGNED PER REFERENCE)
            ===================================================================== */}
         <section
           id="team"
           ref={teamRef}
-          style={{ paddingTop: "clamp(80px, 9vw, 120px)", paddingBottom: "clamp(80px, 9vw, 120px)" }}
-          className="relative"
+          style={{
+            paddingTop: "clamp(60px, 7vw, 100px)",
+            paddingBottom: "clamp(90px, 10vw, 150px)",
+          }}
+          className="relative bg-[#F3F3F3]"
         >
           <div className="container-custom">
+            {/* Top Divider Line matching reference */}
             <div
-              className="grid grid-cols-1 lg:grid-cols-12 items-start"
-              style={{ columnGap: "clamp(48px, 6vw, 100px)", rowGap: "48px" }}
-            >
-              {/* Left Column: Heading & Description */}
-              <div className="team-header-content lg:col-span-4 lg:pr-6 xl:pr-10">
-                <div ref={teamParallaxRef} className="team-parallax-inner will-change-transform">
-                  <span className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block mb-3">
-                    Management Team
-                  </span>
-                  <h2 className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[42px] leading-[1.15] text-[#111111] mb-5">
-                    Meet Bascorp Group
-                  </h2>
-                  <p className="font-instrument-sans text-sm sm:text-[15.5px] text-neutral-600 leading-[1.7] max-w-md">
-                    We are dedicated to building long-term value for our clients. We
-                    have fostered seasoned leadership to drive exceptional
-                    execution across all of our business segments.
-                  </p>
-                </div>
-              </div>
+              className="w-full h-[1px] bg-[#CDCDCD]"
+              style={{ marginBottom: "clamp(10px, 1.2vw, 14px)" }}
+            />
 
-              {/* Right Column: 2x2 Grid of Team Cards */}
-              <div
-                ref={teamGridRef}
-                className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2"
-                style={{
-                  columnGap: "clamp(32px, 3.5vw, 56px)",
-                  rowGap: "clamp(48px, 5.5vw, 72px)",
-                }}
+            {/* Header Content: Eyebrow + Heading + Description */}
+            <div
+              className="team-header-content flex flex-col items-start"
+              style={{ marginBottom: "clamp(56px, 6vw, 88px)" }}
+            >
+              <span
+                className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block select-none"
+                style={{ marginBottom: "clamp(28px, 3.2vw, 42px)" }}
               >
-                {MANAGEMENT_TEAM.map((member, idx) => (
+                Management Team
+              </span>
+              <h2
+                className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] leading-[1.12] text-[#111111] mb-6 sm:mb-7 tracking-tight"
+              >
+                Meet Bascorp Group
+              </h2>
+              <p
+                className="font-instrument-sans text-sm sm:text-[15.5px] text-[#737373] leading-[1.7] max-w-xl font-normal"
+              >
+                We are dedicated to building a diverse team in all aspects. While we
+                haven&apos;t reached full diversity yet, here&apos;s our current progress with
+                open and honest communication.
+              </p>
+            </div>
+
+            {/* Team Cards Grid: 3 columns on desktop, 5 cards matching reference layout */}
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+            >
+              {MANAGEMENT_TEAM.map((member, idx) => (
+                <div key={idx} className="team-card-wrapper w-full h-full flex flex-col">
                   <div
-                    key={idx}
-                    className="team-card flex flex-col group cursor-pointer"
+                    className="w-full h-full bg-white rounded-none border border-black/[0.04] shadow-[0_2px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center text-center select-none"
+                    style={{
+                      paddingTop: "clamp(48px, 5.2vw, 68px)",
+                      paddingBottom: "clamp(48px, 5.2vw, 68px)",
+                      paddingLeft: "clamp(28px, 3vw, 44px)",
+                      paddingRight: "clamp(28px, 3vw, 44px)",
+                      minHeight: "clamp(330px, 32vw, 390px)",
+                    }}
                   >
-                    {/* Placeholder Photo Box */}
-                    <div
-                      className="team-photo-frame w-full aspect-[4/4.7] bg-[#D9D9D9] rounded-[20px] overflow-hidden relative shadow-xs transition-transform duration-300 group-hover:scale-[1.015] border border-gray-200/60 flex items-center justify-center"
-                      style={{ marginBottom: "clamp(28px, 3vw, 42px)" }}
-                    >
-                      {/* Subtle elegant avatar icon / monogram watermark */}
-                      <div className="w-16 h-16 rounded-full bg-white/40 flex items-center justify-center text-neutral-500 font-clash-grotesk text-xl font-medium tracking-wider">
-                        {member.name
-                          .split(" ")
-                          .filter((w) => !w.startsWith("H."))
-                          .slice(0, 2)
-                          .map((n) => n[0])
-                          .join("")}
-                      </div>
+                    {/* Name and Role Block */}
+                    <div className="flex flex-col items-center justify-center w-full">
+                      {/* Member Name */}
+                      <h3
+                        className="font-clash-grotesk font-medium text-[22px] sm:text-[24px] lg:text-[26px] text-[#111111] leading-[1.24] tracking-tight mb-3 whitespace-pre-line"
+                      >
+                        {member.name}
+                      </h3>
+
+                      {/* Member Role */}
+                      <p
+                        className="font-instrument-sans font-normal text-[13.5px] sm:text-[14px] text-[#787878] leading-relaxed max-w-[270px] whitespace-pre-line"
+                      >
+                        {member.role}
+                      </p>
                     </div>
 
-                    {/* Name */}
-                    <h3 className="team-member-name font-clash-grotesk font-semibold text-lg sm:text-[21px] text-[#111111] leading-snug group-hover:text-[#00A2E2] transition-colors duration-200">
-                      {member.name}
-                    </h3>
-
-                    {/* Role Title */}
-                    <p
-                      className="team-member-role font-instrument-sans text-xs sm:text-[14px] text-neutral-500 leading-relaxed"
-                      style={{ marginTop: "4px" }}
+                    {/* Social Action Icon Buttons */}
+                    <div
+                      className="flex items-center justify-center gap-3"
+                      style={{ marginTop: "clamp(34px, 3.8vw, 48px)" }}
                     >
-                      {member.role}
-                    </p>
+                      {/* Mail Button */}
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-[4px] bg-[#ECECEC] hover:bg-[#00A2E2] flex items-center justify-center transition-all duration-200 group/icon cursor-pointer shadow-none"
+                        aria-label={`Email ${member.name.replace("\n", " ")}`}
+                      >
+                        <TeamEmailIcon
+                          className="w-[19px] h-[19px] text-[#A8A8A8] group-hover/icon:text-white transition-colors duration-200"
+                        />
+                      </a>
+
+                      {/* WhatsApp Button (if member has WhatsApp) */}
+                      {member.hasWhatsApp && member.whatsapp && (
+                        <a
+                          href={member.whatsapp}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 sm:w-11 sm:h-11 rounded-[4px] bg-[#ECECEC] hover:bg-[#00A2E2] flex items-center justify-center transition-all duration-200 group/icon cursor-pointer shadow-none"
+                          aria-label={`WhatsApp ${member.name.replace("\n", " ")}`}
+                        >
+                          <TeamWhatsAppIcon
+                            className="w-[19px] h-[19px] text-[#A8A8A8] group-hover/icon:text-white transition-colors duration-200"
+                          />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
