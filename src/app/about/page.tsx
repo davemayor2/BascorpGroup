@@ -837,7 +837,7 @@ export default function AboutPage() {
             {/* Header Content: Eyebrow + Heading + Description */}
             <div
               className="team-header-content flex flex-col items-start"
-              style={{ marginBottom: "clamp(56px, 6vw, 88px)" }}
+              style={{ marginBottom: "clamp(85px, 9.5vw, 140px)" }}
             >
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block select-none"
@@ -846,7 +846,7 @@ export default function AboutPage() {
                 Management Team
               </span>
               <h2
-                className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] leading-[1.12] text-[#111111] mb-6 sm:mb-7 tracking-tight"
+                className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] leading-[1.12] text-[#111111] mb-7 sm:mb-8 tracking-tight"
               >
                 Meet Bascorp Group
               </h2>
