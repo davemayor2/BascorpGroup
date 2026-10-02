@@ -259,7 +259,7 @@ export default function AboutPage() {
           y: 0,
           duration: 0.75,
           ease: "power3.out",
-          clearProps: "all",
+          clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: overviewRef.current,
             start: "top 85%",
@@ -277,7 +277,7 @@ export default function AboutPage() {
           y: 0,
           duration: 0.8,
           ease: "power3.out",
-          clearProps: "all",
+          clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: overviewRef.current,
             start: "top 85%",
@@ -395,7 +395,7 @@ export default function AboutPage() {
           y: 0,
           duration: 0.8,
           ease: "power3.out",
-          clearProps: "all",
+          clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: teamRef.current,
             start: "top 85%",
@@ -413,7 +413,7 @@ export default function AboutPage() {
           stagger: 0.1,
           duration: 0.8,
           ease: "power3.out",
-          clearProps: "all",
+          clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: teamRef.current,
             start: "top 85%",
@@ -469,7 +469,7 @@ export default function AboutPage() {
           ref={heroRef}
           style={{
             paddingTop: "148px",
-            paddingBottom: "clamp(48px, 5vw, 68px)",
+            paddingBottom: "110px",
             marginLeft: "auto",
             marginRight: "auto",
             width: "calc(100% - 32px)",
@@ -523,7 +523,7 @@ export default function AboutPage() {
             </p>
 
             {/* White CTA Button: Book A Call (Home Page Component Style) */}
-            <div className="hero-fade-up" style={{ marginBottom: "clamp(32px, 3.5vw, 44px)" }}>
+            <div className="hero-fade-up" style={{ marginBottom: "70px" }}>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-between gap-6 sm:gap-8 bg-white text-black transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-xs hover:shadow-md border border-gray-200/80 group select-none cursor-pointer"
@@ -560,7 +560,7 @@ export default function AboutPage() {
             <div
               ref={statsRef}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8 w-full max-w-5xl"
-              style={{ marginTop: "12px" }}
+              style={{ marginTop: "24px" }}
             >
               {HERO_STATS.map((stat, idx) => (
                 <div
@@ -597,7 +597,7 @@ export default function AboutPage() {
         <section
           id="overview"
           ref={overviewRef}
-          style={{ paddingTop: "clamp(44px, 5vw, 68px)", paddingBottom: "clamp(36px, 4vw, 52px)" }}
+          style={{ paddingTop: "130px", paddingBottom: "clamp(36px, 4vw, 52px)" }}
           className="relative w-full"
         >
           {/* Header remains inside container-custom */}
@@ -609,7 +609,13 @@ export default function AboutPage() {
             />
 
             {/* Section Header */}
-            <div className="overview-header" style={{ marginBottom: "clamp(30px, 3.5vw, 42px)" }}>
+            <div
+              className="overview-header"
+              style={{
+                marginBottom: "clamp(68px, 7.5vw, 104px)",
+                paddingBottom: "clamp(12px, 1.5vw, 20px)",
+              }}
+            >
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block"
                 style={{ marginBottom: "24px" }}
@@ -627,7 +633,7 @@ export default function AboutPage() {
             ref={bannerRef}
             className="overview-banner relative w-full overflow-hidden border-y border-[#989898]/40 flex items-end shadow-xs"
             style={{
-              minHeight: "380px",
+              minHeight: "clamp(520px, 50vw, 660px)",
             }}
           >
             {/* Parallax Background Image Container with Expanded Bleed */}
@@ -659,8 +665,8 @@ export default function AboutPage() {
             <div
               className="container-custom relative z-20 w-full"
               style={{
-                paddingTop: "40px",
-                paddingBottom: "52px",
+                paddingTop: "clamp(48px, 6vw, 80px)",
+                paddingBottom: "clamp(56px, 7vw, 90px)",
               }}
             >
               <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-5">
@@ -857,7 +863,10 @@ export default function AboutPage() {
             {/* Header Content: Eyebrow + Heading + Description */}
             <div
               className="team-header-content flex flex-col items-start"
-              style={{ marginBottom: "clamp(85px, 9.5vw, 140px)" }}
+              style={{
+                marginBottom: "clamp(64px, 7vw, 100px)",
+                paddingBottom: "clamp(16px, 2vw, 24px)",
+              }}
             >
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block select-none"
@@ -881,7 +890,8 @@ export default function AboutPage() {
 
             {/* Team Cards Grid: 3 columns on desktop, 5 cards matching reference layout */}
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+              className="team-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
+              style={{ marginTop: "clamp(28px, 3vw, 48px)" }}
             >
               {MANAGEMENT_TEAM.map((member, idx) => (
                 <div key={idx} className="team-card-wrapper w-full h-full flex flex-col">

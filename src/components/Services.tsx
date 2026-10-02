@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,7 +47,10 @@ export default function Services() {
   const carouselRef = useRef<HTMLDivElement>(null);
   // Start at the middle set (index = BASE_COUNT) so we can go prev & next indefinitely
   const [currentIndex, setCurrentIndex] = useState(BASE_COUNT);
+  const [displayIndex, setDisplayIndex] = useState(0);
   const isAnimating = useRef(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   useGSAP(
     () => {
@@ -68,16 +71,41 @@ export default function Services() {
           duration: 0.75,
           stagger: 0.15,
           ease: "power3.out",
+          clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 78%",
+            start: "top 85%",
             toggleActions: "play none none none",
+            once: true,
           },
         }
       );
     },
     { scope: containerRef }
   );
+
+  useEffect(() => {
+    const handleLoad = () => {
+      ScrollTrigger.refresh();
+    };
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        ScrollTrigger.refresh();
+      } else {
+        window.addEventListener("load", handleLoad);
+      }
+    }
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 400);
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleLoad);
+      }
+      clearTimeout(timer);
+    };
+  }, []);
 
   const goTo = useCallback(
     (index: number) => {
@@ -95,6 +123,10 @@ export default function Services() {
         isAnimating.current = false;
         return;
       }
+
+      // Immediately sync active display index for instant, smooth progress bar animation
+      const nextBaseIdx = ((index % BASE_COUNT) + BASE_COUNT) % BASE_COUNT;
+      setDisplayIndex(nextBaseIdx);
 
       gsap.to(carousel, {
         x: -cardEl.offsetLeft,
@@ -127,9 +159,37 @@ export default function Services() {
   const prevSlide = () => goTo(currentIndex - 1);
   const nextSlide = () => goTo(currentIndex + 1);
 
-  // Map back to 0-2 for progress bar
-  const baseIdx = ((currentIndex % BASE_COUNT) + BASE_COUNT) % BASE_COUNT;
-  const progressPercent = ((baseIdx + 1) / BASE_COUNT) * 100;
+  // Touch gesture support for mobile & tablet horizontal swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        goTo(currentIndex + 1);
+      } else {
+        goTo(currentIndex - 1);
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
+  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+    const targetIdx = Math.min(Math.floor(ratio * BASE_COUNT), BASE_COUNT - 1);
+    goTo(BASE_COUNT + targetIdx);
+  };
+
+  // Map to percentage based on active display index
+  const progressPercent = ((displayIndex + 1) / BASE_COUNT) * 100;
 
   return (
     <section
@@ -138,11 +198,11 @@ export default function Services() {
       style={{ backgroundColor: "#00194C", paddingTop: "140px", paddingBottom: "140px" }}
     >
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-14 xl:gap-20">
 
           {/* ── LEFT INFO COLUMN — col-span-4 gives heading room, pushes carousel right ── */}
           <div
-            className="lg:col-span-4 flex flex-col gap-6 lg:gap-8 services-reveal lg:pr-12"
+            className="lg:col-span-4 flex flex-col gap-6 lg:gap-8 services-reveal lg:pr-4 xl:pr-6"
           >
             {/* Services tag */}
             <div className="flex items-center gap-2">
@@ -167,9 +227,9 @@ export default function Services() {
               Strategic Services<br />for Organization
             </h2>
 
-            {/* Description — All texts white */}
+            {/* Description — All texts white with generous clearance to the cards */}
             <p
-              className="font-instrument-sans font-normal leading-relaxed text-white"
+              className="font-instrument-sans font-normal leading-relaxed text-white max-w-sm lg:max-w-[330px] xl:max-w-[370px]"
               style={{ fontSize: "16px", color: "#FFFFFF" }}
             >
               We partner with businesses across the Middle East, the Arabian Gulf
@@ -239,14 +299,22 @@ export default function Services() {
             </div>
           </div>
 
-          {/* ── RIGHT CAROUSEL — fade cutout applied on desktop only ── */}
+          {/* ── RIGHT CAROUSEL — fade cutout applied between subheading and cards, and trailing edge ── */}
           <div
-            className="lg:col-span-8 services-reveal services-carousel-mask relative overflow-hidden"
+            className="lg:col-span-8 services-reveal services-carousel-mask relative overflow-hidden pb-4 sm:pb-6"
           >
+            {/* Right fade cut out overlay on trailing edge */}
+            <div
+              className="absolute top-0 bottom-0 right-0 w-16 sm:w-24 lg:w-36 z-10 pointer-events-none bg-gradient-to-l from-[#00194C] to-transparent"
+              aria-hidden="true"
+            />
+
             <div
               ref={carouselRef}
               className="flex"
               style={{ gap: `${CARD_GAP}px`, willChange: "transform", alignItems: "flex-start" }}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
               {services.map((service, idx) => (
                 /* ── OUTER CARD: primary blue (#00A2E2), all text white ── */
@@ -310,29 +378,33 @@ export default function Services() {
           </div>
         </div>
 
-        {/* ── PROGRESS BAR — centered ── */}
+        {/* ── PROGRESS BAR — centered with balanced spacing and smooth indicator ── */}
         <div
-          className="services-reveal"
-          style={{ marginTop: "56px", display: "flex", justifyContent: "center" }}
+          className="services-reveal services-progress-wrapper w-full flex flex-col items-center justify-center select-none"
+          style={{
+            marginTop: "clamp(84px, 9vw, 120px)",
+          }}
         >
-          <div
-            style={{
-              width: "50%",
-              height: "3px",
-              backgroundColor: "rgba(255, 255, 255, 0.2)",
-              borderRadius: "2px",
-              overflow: "hidden",
-            }}
-          >
+          <div className="w-full max-w-[280px] sm:max-w-[360px] md:max-w-[420px]">
+            {/* Progress track */}
             <div
-              style={{
-                height: "100%",
-                width: `${progressPercent}%`,
-                backgroundColor: "#00A2E2",
-                borderRadius: "2px",
-                transition: "width 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
-              }}
-            />
+              className="relative w-full h-[5px] sm:h-[6px] bg-white/[0.18] rounded-full overflow-hidden backdrop-blur-xs cursor-pointer group"
+              onClick={handleTrackClick}
+              role="progressbar"
+              aria-valuenow={progressPercent}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              title="Click to jump between services"
+            >
+              {/* Animated Progress Fill */}
+              <div
+                className="absolute top-0 bottom-0 left-0 bg-[#00A2E2] rounded-full shadow-[0_0_12px_rgba(0,162,226,0.8)]"
+                style={{
+                  width: `${progressPercent}%`,
+                  transition: "width 0.55s cubic-bezier(0.25, 1, 0.5, 1)",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

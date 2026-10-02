@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Navbar from "@/components/Navbar";
@@ -47,25 +47,48 @@ export default function LetsConnectPage() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
-        heroRef.current,
+        ".lets-connect-hero-content",
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7, delay: 0.1 }
+        { opacity: 1, y: 0, duration: 0.7, delay: 0.1, clearProps: "transform,opacity" }
       )
         .fromTo(
           cardRef.current,
           { opacity: 0, y: 28 },
-          { opacity: 1, y: 0, duration: 0.75 },
+          { opacity: 1, y: 0, duration: 0.75, clearProps: "transform,opacity" },
           "-=0.35"
         )
         .fromTo(
           mapRef.current,
           { opacity: 0, y: 28 },
-          { opacity: 1, y: 0, duration: 0.75 },
+          { opacity: 1, y: 0, duration: 0.75, clearProps: "transform,opacity" },
           "-=0.4"
         );
     },
     { scope: containerRef }
   );
+
+  useEffect(() => {
+    const handleLoad = () => {
+      if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
+        (window as any).ScrollTrigger.refresh();
+      }
+    };
+    if (typeof window !== "undefined") {
+      window.addEventListener("load", handleLoad);
+    }
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
+        (window as any).ScrollTrigger.refresh();
+      }
+    }, 450);
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleLoad);
+      }
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div
@@ -78,7 +101,7 @@ export default function LetsConnectPage() {
       <main className="w-full flex-1 flex flex-col items-center">
         {/* =====================================================================
             HERO INTRO SECTION
-            - Centered container matching Navbar (.container-custom)
+            - Positioned securely below floating Navbar (190px - 230px top padding)
             - "Let's Talk." size 68, "Talk" in primary blue, Clash display font.
             - Aligned to border left.
             - Subheading aligned to far border right.
@@ -87,11 +110,11 @@ export default function LetsConnectPage() {
           ref={heroRef}
           className="w-full flex justify-center"
           style={{
-            paddingTop: "clamp(136px, 14vw, 168px)",
-            paddingBottom: "clamp(32px, 3.5vw, 52px)",
+            paddingTop: "clamp(190px, 18vw, 230px)",
+            paddingBottom: "clamp(36px, 4vw, 56px)",
           }}
         >
-          <div className="container-custom w-full">
+          <div className="container-custom w-full lets-connect-hero-content">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12 w-full">
               {/* Big Heading aligned to border left */}
               <h1
@@ -128,10 +151,7 @@ export default function LetsConnectPage() {
            ===================================================================== */}
         <section
           ref={cardRef}
-          className="w-full flex justify-center"
-          style={{
-            paddingBottom: "clamp(36px, 4.5vw, 60px)",
-          }}
+          className="w-full flex justify-center pb-12 sm:pb-16 md:pb-20"
         >
           <div className="container-custom w-full">
             {/* The Big White Box */}
@@ -587,11 +607,26 @@ export default function LetsConnectPage() {
               }}
             >
               {/* Header inside the Card with Generous Spacing */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#E8E8E8]">
+              <div
+                className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E8E8E8]"
+                style={{ paddingBottom: "36px" }}
+              >
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00A2E2]/10 text-[#00A2E2] text-[12px] font-semibold uppercase tracking-wider rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00A2E2] animate-pulse" />
+                  <div className="flex items-center gap-2" style={{ marginBottom: "28px" }}>
+                    <span
+                      className="inline-flex items-center gap-2 bg-[#00A2E2]/10 text-[#00A2E2] text-[12px] font-semibold uppercase tracking-wider rounded-full"
+                      style={{
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        paddingLeft: "18px",
+                        paddingRight: "18px",
+                        lineHeight: 1,
+                      }}
+                    >
+                      <span
+                        className="rounded-full bg-[#00A2E2] animate-pulse shrink-0"
+                        style={{ width: "6px", height: "6px" }}
+                      />
                       Office Location
                     </span>
                   </div>
@@ -602,7 +637,7 @@ export default function LetsConnectPage() {
                     Find Us on Google Maps
                   </h2>
                   <p
-                    className="font-instrument-sans font-normal text-[#666666] leading-relaxed mt-2 max-w-xl"
+                    className="font-instrument-sans font-normal text-[#666666] leading-relaxed mt-3 sm:mt-4 max-w-xl"
                     style={{ fontSize: "clamp(15px, 1.05vw, 17px)" }}
                   >
                     1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain
@@ -657,8 +692,8 @@ export default function LetsConnectPage() {
                 </div>
               </div>
 
-              {/* Map Viewport Frame with Generous Padding */}
-              <div className="pt-8">
+              {/* Map Viewport Frame with Generous Padding top (36px) and bottom (36px) */}
+              <div style={{ paddingTop: "36px", paddingBottom: "36px" }}>
                 <div
                   className="w-full relative overflow-hidden border border-black/[0.08] shadow-[0_2px_12px_rgba(0,0,0,0.04)] bg-[#F5F5F5]"
                   style={{
@@ -680,8 +715,11 @@ export default function LetsConnectPage() {
                 </div>
               </div>
 
-              {/* Bottom Quick Reference Grid with Generous Spacing */}
-              <div className="pt-8 mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-[#E8E8E8]">
+              {/* Bottom Quick Reference Grid with Generous Spacing below Map */}
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 border-t border-[#E8E8E8]"
+                style={{ paddingTop: "36px" }}
+              >
                 <div className="flex flex-col gap-1">
                   <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
                     Premises

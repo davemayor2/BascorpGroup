@@ -75,9 +75,8 @@ interface PortfolioCardProps {
 function PortfolioCard({ title, description, image, height }: PortfolioCardProps) {
   return (
     <div
-      className="portfolio-card relative overflow-hidden shrink-0 group"
+      className="portfolio-card relative overflow-hidden group w-full"
       style={{
-        width: `${CARD_W}px`,
         height: `${height}px`,
         borderRadius: `${CARD_RADIUS}px`,
       }}
@@ -101,7 +100,7 @@ function PortfolioCard({ title, description, image, height }: PortfolioCardProps
       <div
         className="absolute left-0 right-0 bottom-0 flex flex-col gap-2 text-white"
         style={{
-          padding: "20px 22px 24px 22px",
+          padding: "24px 26px 28px 26px",
           backdropFilter: "blur(0px)",
         }}
       >
@@ -171,10 +170,10 @@ export default function Portfolio() {
       className="bg-bg-custom"
       style={{ paddingTop: "140px", paddingBottom: "140px" }}
     >
-      <div className="container-custom flex flex-col gap-16">
+      <div className="container-custom flex flex-col gap-16 items-center w-full">
 
         {/* ── Section Header ── */}
-        <div className="flex flex-col items-center text-center gap-4">
+        <div className="flex flex-col items-center text-center gap-4 w-full">
           {/* Portfolio tag with portfolio_icon.svg */}
           <div className="flex items-center gap-2 portfolio-header-reveal">
             <img
@@ -207,36 +206,35 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {/* ── Bento Grid — 3 equal-width columns, exact card heights per spec ── */}
-        {/* Desktop: side-scroll if narrower than 3×391 + gaps */}
+        {/* ── Bento Grid — 3 equal-width columns, perfectly centered on the screen ── */}
         <div
-          className="portfolio-bento-grid hidden lg:flex"
-          style={{ gap: `${COL_GAP}px`, alignItems: "flex-start" }}
+          className="portfolio-bento-grid hidden lg:flex justify-center items-start w-full max-w-[1221px] mx-auto self-center"
+          style={{ gap: `${COL_GAP}px`, marginLeft: "auto", marginRight: "auto" }}
         >
           {/* Column 1 */}
-          <div className="flex flex-col" style={{ gap: `${COL_GAP}px` }}>
+          <div className="flex flex-col flex-1 max-w-[391px]" style={{ gap: `${COL_GAP}px` }}>
             {col1.map((item, i) => (
               <PortfolioCard key={i} {...item} />
             ))}
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col" style={{ gap: `${COL_GAP}px` }}>
+          <div className="flex flex-col flex-1 max-w-[391px]" style={{ gap: `${COL_GAP}px` }}>
             {col2.map((item, i) => (
               <PortfolioCard key={i} {...item} />
             ))}
           </div>
 
           {/* Column 3 */}
-          <div className="flex flex-col" style={{ gap: `${COL_GAP}px` }}>
+          <div className="flex flex-col flex-1 max-w-[391px]" style={{ gap: `${COL_GAP}px` }}>
             {col3.map((item, i) => (
               <PortfolioCard key={i} {...item} />
             ))}
           </div>
         </div>
 
-        {/* Mobile: single column stacked */}
-        <div className="lg:hidden flex flex-col gap-6 px-2 sm:px-4">
+        {/* Mobile / Tablet: single column stacked, centered */}
+        <div className="lg:hidden flex flex-col gap-6 px-2 sm:px-4 max-w-xl mx-auto w-full items-center">
           {[...col1, ...col2, ...col3].map((item, i) => (
             <div
               key={i}

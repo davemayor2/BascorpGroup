@@ -98,8 +98,10 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="relative flex flex-col justify-start md:justify-center items-start bg-black overflow-hidden"
-      style={{ minHeight: "clamp(680px, 86vh, 820px)" }}
+      className="relative flex flex-col justify-start items-start bg-black overflow-hidden"
+      style={{
+        minHeight: "clamp(780px, 92vh, 920px)",
+      }}
     >
       {/* Background Image - framed on both subjects */}
       <div
@@ -112,15 +114,18 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20 z-10" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10 z-10" />
 
-      {/* Main Content - paddingTop: 152px pushes content down cleanly below floating navbar */}
+      {/* Main Content - lowered farther from navbar for balanced breathing room */}
       <div
-        className="relative z-20 container-custom flex flex-col gap-6 mb-auto md:mb-0"
-        style={{ paddingTop: "152px" }}
+        className="relative z-20 container-custom flex flex-col gap-4 sm:gap-6 mb-auto md:mb-0"
+        style={{
+          paddingTop: "clamp(220px, 20vw, 260px)",
+          paddingBottom: "clamp(80px, 10vh, 120px)",
+        }}
       >
-        <div className="max-w-3xl flex flex-col gap-6">
+        <div className="max-w-[310px] xs:max-w-[340px] sm:max-w-2xl md:max-w-3xl flex flex-col gap-2.5 sm:gap-4 md:gap-5">
           <h1
             ref={titleRef}
-            className="text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-white font-medium font-clash-grotesk tracking-[-0.01em] leading-[1.18]"
+            className="text-[36px] xs:text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-white font-medium font-clash-grotesk tracking-[-0.01em] leading-[1.14] sm:leading-[1.16] max-w-[290px] xs:max-w-[320px] sm:max-w-none"
           >
             Building Partnerships<br />
             That Create{" "}
@@ -131,67 +136,64 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="text-[17.5px] sm:text-[18px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.75] max-w-xl"
+            className="text-[16px] sm:text-[17px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.55] sm:leading-[1.65] max-w-[290px] xs:max-w-[320px] sm:max-w-lg md:max-w-xl"
           >
             We partner with businesses across the Middle East, the Arabian Gulf and Asia,
             bringing strategic insight, market expertise and a strong network to support
             sustainable growth.
           </p>
 
-          {/* CTA Button */}
-          <div ref={buttonRef} className="mt-4">
+          {/* CTA Button with comfortable separation */}
+          <div ref={buttonRef} className="mt-2 sm:mt-3">
             <ExploreButton href="#portfolio" />
           </div>
         </div>
       </div>
 
-      {/* Social/Contact Shortcut Widget - absolute bottom-left touching the screen edge */}
+      {/* Social/Contact Shortcut Widget - absolute bottom-left with equal left & right padding */}
       <div
         ref={socialsRef}
-        className="absolute bottom-0 left-0 z-20 bg-[#F3F3F3] rounded-tr-[9px] shadow-xl flex items-center gap-3"
+        className="absolute bottom-0 left-0 z-20 bg-[#F3F3F3] rounded-tr-[10px] shadow-xl flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3 sm:py-3.5 h-[64px] sm:h-[74px]"
         style={{
-          height: "74px",
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          paddingLeft: "32px",
-          paddingRight: "24px",
-          borderTopRightRadius: "9px",
+          borderTopRightRadius: "10px",
           backgroundColor: "#F3F3F3",
+          paddingLeft: "clamp(24px, 2.5vw, 32px)",
+          paddingRight: "clamp(24px, 2.5vw, 32px)",
         }}
       >
         <a
           href="https://linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
+          className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
           aria-label="LinkedIn"
         >
           <img
             src="/linkedin_black.svg"
             alt="LinkedIn"
-            className="w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-110"
+            className="w-4 h-4 sm:w-5 sm:h-5 object-contain transition-transform duration-200 group-hover:scale-110"
           />
         </a>
         <a
           href="mailto:info@bascorpgroup.com"
-          className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
+          className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
           aria-label="Email"
         >
           <img
             src="/email_icon.svg"
             alt="Email"
-            className="w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-110"
+            className="w-4 h-4 sm:w-5 sm:h-5 object-contain transition-transform duration-200 group-hover:scale-110"
           />
         </a>
         <a
           href="tel:+97317530816"
-          className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
+          className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
           aria-label="Phone"
         >
           <img
             src="/call_icon_black.svg"
             alt="Phone"
-            className="w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-110"
+            className="w-4 h-4 sm:w-5 sm:h-5 object-contain transition-transform duration-200 group-hover:scale-110"
           />
         </a>
       </div>
@@ -199,12 +201,12 @@ export default function Hero() {
       {/* Bottom Row Container */}
       <div className="absolute bottom-0 left-0 right-0 z-20 container-custom pointer-events-none">
         <div className="relative w-full pointer-events-auto">
-          {/* Scroll Down indicator - positioned above on mobile */}
+          {/* Scroll Down indicator - tightly aligned with Where We Operate row on mobile */}
           <div
             ref={scrollRef}
-            className="absolute bottom-[170px] md:bottom-[90px] left-0 flex items-center gap-2.5 select-none"
+            className="absolute bottom-[82px] sm:bottom-[88px] md:bottom-[90px] left-0 flex items-center gap-2 sm:gap-2.5 select-none"
           >
-            <span className="text-[13px] md:text-[14px] text-white/80 font-instrument-sans font-normal tracking-wide">
+            <span className="text-[12.5px] sm:text-[13px] md:text-[14px] text-white/80 font-instrument-sans font-normal tracking-wide">
               Scroll Down
             </span>
             <ArrowDown className="scroll-arrow w-3.5 h-3.5 md:w-4 md:h-4 text-white/80" />
@@ -213,22 +215,22 @@ export default function Hero() {
           {/* Where We Operate - positioned above social box on mobile, bottom right on desktop */}
           <div
             ref={locationsRef}
-            className="absolute bottom-[92px] md:bottom-8 right-0 flex flex-col items-end gap-2.5 select-none"
+            className="absolute bottom-[76px] sm:bottom-[82px] md:bottom-8 right-0 flex flex-col items-end gap-2 sm:gap-2.5 select-none"
           >
-            <div className="flex items-center gap-2">
-              <span className="text-[15px] md:text-[17px] text-white font-instrument-sans font-semibold tracking-wide">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="text-[14px] sm:text-[15px] md:text-[17px] text-white font-instrument-sans font-semibold tracking-wide">
                 Where We Operate
               </span>
               <img
                 src="/WHERE_WE_OPERATE_GLOBE.svg"
                 alt="Globe"
-                className="w-4 h-4 md:w-[22px] md:h-[22px] object-contain"
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-[22px] md:h-[22px] object-contain"
               />
             </div>
             <img
               src="/WHERE_WE_OPERATE.svg"
               alt="Arabian Gulf, Middle East, Asia"
-              className="h-[24px] sm:h-[26px] md:h-[30px] w-auto object-contain"
+              className="h-[21px] sm:h-[25px] md:h-[30px] w-auto object-contain"
             />
           </div>
         </div>

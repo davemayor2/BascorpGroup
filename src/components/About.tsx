@@ -73,7 +73,7 @@ export default function About() {
           duration: 0.7,
           stagger: 0.15,
           ease: "power3.out",
-          clearProps: "all",
+          clearProps: "opacity,transform",
           scrollTrigger: {
             trigger: cardsRef.current,
             start: "top 88%",
@@ -242,45 +242,32 @@ export default function About() {
             {/* Metric Cards Grid */}
             <div
               ref={cardsRef}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 w-full"
             >
               {/* Card 1: 20+ */}
               <div
-                className="about-card bg-white rounded-2xl border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col select-none"
-                style={{
-                  height: "262px",
-                  padding: "28px",
-                }}
+                className="about-card bg-white rounded-2xl sm:rounded-[22px] border border-gray-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between select-none min-h-[290px] sm:min-h-[310px] md:min-h-[330px]"
+                style={{ padding: "clamp(34px, 3.8vw, 48px)" }}
               >
                 <div
-                  className="flex items-center justify-center shrink-0"
-                  style={{
-                    width: "74px",
-                    height: "74px",
-                    backgroundColor: "#F3F3F3",
-                    borderRadius: "12px",
-                    marginBottom: "auto",
-                  }}
+                  className="flex items-center justify-center shrink-0 w-[64px] h-[64px] sm:w-[70px] sm:h-[70px] bg-[#F3F3F3] rounded-[12px] sm:rounded-[14px]"
                 >
                   <img
                     src="/20+_brain.svg"
                     alt="Years of Experience"
-                    className="object-contain"
-                    style={{ width: "36px", height: "36px" }}
+                    className="object-contain w-7 h-7 sm:w-8 sm:h-8"
                   />
                 </div>
 
-                <div className="flex flex-col" style={{ marginTop: "auto", gap: "6px" }}>
+                <div className="flex flex-col mt-8 sm:mt-10 gap-2">
                   <span
                     ref={metric1Ref}
-                    className="font-clash-grotesk font-medium text-[#00A2E2] leading-none"
-                    style={{ fontSize: "48px", fontWeight: 500 }}
+                    className="font-clash-grotesk font-medium text-[#00A2E2] leading-none text-[42px] sm:text-[46px] md:text-[50px]"
                   >
                     0
                   </span>
                   <span
-                    className="font-instrument-sans font-normal text-[#989898] leading-snug"
-                    style={{ fontSize: "14px" }}
+                    className="font-instrument-sans font-normal text-[#989898] leading-snug text-sm sm:text-[15px]"
                   >
                     Years of Experience
                   </span>
@@ -289,41 +276,28 @@ export default function About() {
 
               {/* Card 2: 6+ */}
               <div
-                className="about-card bg-white rounded-2xl border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col select-none"
-                style={{
-                  height: "262px",
-                  padding: "28px",
-                }}
+                className="about-card bg-white rounded-2xl sm:rounded-[22px] border border-gray-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between select-none min-h-[290px] sm:min-h-[310px] md:min-h-[330px]"
+                style={{ padding: "clamp(34px, 3.8vw, 48px)" }}
               >
                 <div
-                  className="flex items-center justify-center shrink-0"
-                  style={{
-                    width: "74px",
-                    height: "74px",
-                    backgroundColor: "#F3F3F3",
-                    borderRadius: "12px",
-                    marginBottom: "auto",
-                  }}
+                  className="flex items-center justify-center shrink-0 w-[64px] h-[64px] sm:w-[70px] sm:h-[70px] bg-[#F3F3F3] rounded-[12px] sm:rounded-[14px]"
                 >
                   <img
                     src="/pie_chart.svg"
                     alt="Investment Sectors"
-                    className="object-contain"
-                    style={{ width: "36px", height: "36px" }}
+                    className="object-contain w-7 h-7 sm:w-8 sm:h-8"
                   />
                 </div>
 
-                <div className="flex flex-col" style={{ marginTop: "auto", gap: "6px" }}>
+                <div className="flex flex-col mt-8 sm:mt-10 gap-2">
                   <span
                     ref={metric2Ref}
-                    className="font-clash-grotesk font-medium text-[#00A2E2] leading-none"
-                    style={{ fontSize: "48px", fontWeight: 500 }}
+                    className="font-clash-grotesk font-medium text-[#00A2E2] leading-none text-[42px] sm:text-[46px] md:text-[50px]"
                   >
                     0
                   </span>
                   <span
-                    className="font-instrument-sans font-normal text-[#989898] leading-snug"
-                    style={{ fontSize: "14px" }}
+                    className="font-instrument-sans font-normal text-[#989898] leading-snug text-sm sm:text-[15px]"
                   >
                     Investment Sectors
                   </span>
@@ -332,41 +306,28 @@ export default function About() {
 
               {/* Card 3: Global */}
               <div
-                className="about-card bg-white rounded-2xl border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col select-none"
-                style={{
-                  height: "262px",
-                  padding: "28px",
-                }}
+                className="about-card bg-white rounded-2xl sm:rounded-[22px] border border-gray-200/60 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between select-none min-h-[290px] sm:min-h-[310px] md:min-h-[330px]"
+                style={{ padding: "clamp(34px, 3.8vw, 48px)" }}
               >
                 <div
-                  className="flex items-center justify-center shrink-0"
-                  style={{
-                    width: "74px",
-                    height: "74px",
-                    backgroundColor: "#F3F3F3",
-                    borderRadius: "12px",
-                    marginBottom: "auto",
-                  }}
+                  className="flex items-center justify-center shrink-0 w-[64px] h-[64px] sm:w-[70px] sm:h-[70px] bg-[#F3F3F3] rounded-[12px] sm:rounded-[14px]"
                 >
                   <img
                     src="/globe_blue.svg"
                     alt="Investment Perspective"
-                    className="object-contain"
-                    style={{ width: "36px", height: "36px" }}
+                    className="object-contain w-7 h-7 sm:w-8 sm:h-8"
                   />
                 </div>
 
-                <div className="flex flex-col" style={{ marginTop: "auto", gap: "6px" }}>
+                <div className="flex flex-col mt-8 sm:mt-10 gap-2">
                   <span
                     ref={metric3Ref}
-                    className="font-clash-grotesk font-medium text-[#00A2E2] leading-none"
-                    style={{ fontSize: "48px", fontWeight: 500 }}
+                    className="font-clash-grotesk font-medium text-[#00A2E2] leading-none text-[42px] sm:text-[46px] md:text-[50px]"
                   >
                     Global
                   </span>
                   <span
-                    className="font-instrument-sans font-normal text-[#989898] leading-snug"
-                    style={{ fontSize: "14px" }}
+                    className="font-instrument-sans font-normal text-[#989898] leading-snug text-sm sm:text-[15px]"
                   >
                     Investment Perspective
                   </span>

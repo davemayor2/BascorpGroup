@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -73,24 +73,60 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 90%",
           toggleActions: "play none none none",
+          once: true,
         },
       });
 
       tl.fromTo(
         leftColRef.current,
         { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          clearProps: "all",
+        }
       ).fromTo(
         rightColRef.current,
         { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-        "-=0.4"
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          clearProps: "all",
+        },
+        "-=0.35"
       );
     },
     { scope: containerRef }
   );
+
+  useEffect(() => {
+    const handleLoad = () => {
+      ScrollTrigger.refresh();
+    };
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        ScrollTrigger.refresh();
+      } else {
+        window.addEventListener("load", handleLoad);
+      }
+    }
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 400);
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleLoad);
+      }
+      clearTimeout(timer);
+    };
+  }, []);
 
   const handleBookCall = (e: React.MouseEvent) => {
     e.preventDefault();

@@ -98,11 +98,36 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(0.95);
 }
 
-/* Services Carousel Mask (desktop only >= 1024px) */
+/* Services Carousel Mask - sharp subject card on left, smooth fade cut out on trailing edge */
+.services-carousel-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 90%,
+    transparent 100%
+  );
+}
+
 @media (min-width: 1024px) {
   .services-carousel-mask {
-    -webkit-mask-image: linear-gradient(to right, black 0%, black 62%, transparent 100%);
-    mask-image: linear-gradient(to right, black 0%, black 62%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 68%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 68%,
+      transparent 100%
+    );
   }
 }
 
@@ -117,6 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
 /* Mission Section Guaranteed Permanent Spacing */
 .mission-dark-wrapper {
   padding: clamp(36px, 4.5vw, 64px) !important;
@@ -125,6 +151,24 @@ h1, h2, h3, h4, h5, h6 {
 .mission-card {
   padding: clamp(24px, 2.6vw, 36px) !important;
 }
+
+/* About Section Stat Cards Guaranteed Generous Spacing */
+.about-card {
+  padding: 36px 32px !important;
+}
+
+@media (min-width: 640px) {
+  .about-card {
+    padding: 42px 36px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-card {
+    padding: 48px 44px !important;
+  }
+}
+
 
 /* Management Team Section Guaranteed Spacing */
 .team-photo-frame {
@@ -137,6 +181,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .team-member-role {
   margin-top: 4px !important;
+}
+
+.overview-header {
+  margin-bottom: clamp(68px, 7.5vw, 104px) !important;
+}
+
+.team-header-content {
+  margin-bottom: clamp(64px, 7vw, 100px) !important;
+}
+
+.services-progress-wrapper {
+  margin-top: clamp(84px, 9vw, 120px) !important;
 }
 
 /* Universal White Button Corner Radius (8pt) */
