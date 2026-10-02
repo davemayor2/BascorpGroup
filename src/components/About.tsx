@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -73,9 +73,11 @@ export default function About() {
           duration: 0.7,
           stagger: 0.15,
           ease: "power3.out",
+          clearProps: "all",
           scrollTrigger: {
             trigger: cardsRef.current,
-            start: "top 85%",
+            start: "top 88%",
+            toggleActions: "play none none none",
             once: true,
           },
         }
@@ -160,12 +162,35 @@ export default function About() {
     { scope: sectionRef }
   );
 
+  useEffect(() => {
+    const handleLoad = () => {
+      ScrollTrigger.refresh();
+    };
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        ScrollTrigger.refresh();
+      } else {
+        window.addEventListener("load", handleLoad);
+      }
+    }
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 350);
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleLoad);
+      }
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <section
       id="about"
       ref={sectionRef}
       className="bg-[#F3F3F3]"
-      style={{ paddingTop: "140px", paddingBottom: "140px" }}
+      style={{ paddingTop: "clamp(64px, 7vw, 110px)", paddingBottom: "clamp(80px, 9vw, 130px)" }}
     >
       <div className="container-custom relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">

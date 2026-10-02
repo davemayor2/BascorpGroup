@@ -19,20 +19,20 @@ const col1 = [
     height: 399,
   },
   {
-    title: "Transportation",
+    title: "Aviation",
     description:
       "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
-    image: "/images/transportation.jpg",
+    image: "/images/Aviation.jpg",
     height: 242,
   },
 ];
 
 const col2 = [
   {
-    title: "Wholesale & Retail Trade",
+    title: "Construction Trade",
     description:
       "Bascorp Group is the flagship of our Hospitality vertical. Middle East -renowned, the Retail and Mall are the epitome of luxury and have won numerous international travel and tourism awards.",
-    image: "/images/Wholesale & Retail Trade.jpg",
+    image: "/images/Construction Trade.jpg",
     height: 321,
   },
   {
@@ -53,10 +53,10 @@ const col3 = [
     height: 399,
   },
   {
-    title: "Public Equity",
+    title: "Real Estate",
     description:
       "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
-    image: "/images/public equity.png",
+    image: "/images/Real Estate.png",
     height: 242,
   },
 ];

@@ -11,6 +11,7 @@ export default function LetsConnectPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -49,12 +50,19 @@ export default function LetsConnectPage() {
         heroRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.7, delay: 0.1 }
-      ).fromTo(
-        cardRef.current,
-        { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 0.75 },
-        "-=0.35"
-      );
+      )
+        .fromTo(
+          cardRef.current,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          "-=0.35"
+        )
+        .fromTo(
+          mapRef.current,
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          "-=0.4"
+        );
     },
     { scope: containerRef }
   );
@@ -232,12 +240,21 @@ export default function LetsConnectPage() {
                           Office Location
                         </span>
                       </div>
-                      <span
-                        className="font-instrument-sans font-normal text-[#71717A] sm:text-right max-w-[270px] leading-snug pl-[60px] sm:pl-0"
+                      <a
+                        href="#office-map"
+                        className="group/loc flex flex-col sm:items-end text-left sm:text-right max-w-[280px] pl-[60px] sm:pl-0 transition-colors"
                         style={{ fontSize: "15px" }}
                       >
-                        1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain
-                      </span>
+                        <span className="font-instrument-sans font-normal text-[#71717A] group-hover/loc:text-[#00A2E2] transition-colors leading-snug">
+                          1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain
+                        </span>
+                        <span className="font-instrument-sans text-[13px] text-[#00A2E2] font-medium flex items-center gap-1 mt-1 group-hover/loc:underline">
+                          <span>View on map</span>
+                          <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover/loc:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </span>
+                      </a>
                     </div>
                     {/* Delicate 1px Stroke Divider */}
                     <div className="w-full h-[1px] bg-[#E8E8E8]" />
@@ -545,10 +562,171 @@ export default function LetsConnectPage() {
         </section>
 
         {/* =====================================================================
+            GOOGLE MAP LOCATION SECTION
+            - Centered container matching Navbar & Contact card (.container-custom)
+            - Generous padding adhering to strict universal rules
+            - Header with location pin badge & "Get Directions" button
+            - Embedded interactive Google Map for:
+              "1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain"
+            - Office location details grid with generous breathing room
+           ===================================================================== */}
+        <section
+          id="office-map"
+          ref={mapRef}
+          className="w-full flex justify-center scroll-mt-24"
+          style={{
+            paddingBottom: "clamp(36px, 4.5vw, 60px)",
+          }}
+        >
+          <div className="container-custom w-full">
+            <div
+              className="w-full bg-white border border-black/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
+              style={{
+                borderRadius: "0px",
+                padding: "clamp(28px, 4.8vw, 72px)",
+              }}
+            >
+              {/* Header inside the Card with Generous Spacing */}
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#E8E8E8]">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00A2E2]/10 text-[#00A2E2] text-[12px] font-semibold uppercase tracking-wider rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00A2E2] animate-pulse" />
+                      Office Location
+                    </span>
+                  </div>
+                  <h2
+                    className="font-clash-grotesk font-medium text-[#111111] leading-tight tracking-tight"
+                    style={{ fontSize: "clamp(26px, 2.5vw, 36px)" }}
+                  >
+                    Find Us on Google Maps
+                  </h2>
+                  <p
+                    className="font-instrument-sans font-normal text-[#666666] leading-relaxed mt-2 max-w-xl"
+                    style={{ fontSize: "clamp(15px, 1.05vw, 17px)" }}
+                  >
+                    1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain
+                  </p>
+                </div>
+
+                {/* External Action Button: Open in Google Maps */}
+                <div className="flex items-center gap-4 shrink-0">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=1+Sheikh+Issa+Ave,+Building+440,+Manama,+Kingdom+Of+Bahrain"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-between gap-5 bg-black text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] group select-none cursor-pointer shrink-0"
+                    style={{
+                      paddingLeft: "24px",
+                      paddingRight: "8px",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                      height: "50px",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <span
+                      className="font-instrument-sans font-medium text-white leading-none"
+                      style={{ fontSize: "15px" }}
+                    >
+                      Get Directions
+                    </span>
+                    <div
+                      className="flex items-center justify-center bg-[#00A2E2] group-hover:bg-[#008bc4] transition-all duration-300 shrink-0"
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      <svg
+                        className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              {/* Map Viewport Frame with Generous Padding */}
+              <div className="pt-8">
+                <div
+                  className="w-full relative overflow-hidden border border-black/[0.08] shadow-[0_2px_12px_rgba(0,0,0,0.04)] bg-[#F5F5F5]"
+                  style={{
+                    height: "clamp(340px, 40vw, 480px)",
+                    borderRadius: "0px",
+                  }}
+                >
+                  <iframe
+                    src="https://www.google.com/maps/embed?origin=mfe&pb=!1m4!2m1!1s1+Sheikh+Issa+Ave,+Building+440,+Manama,+Kingdom+Of+Bahrain!5e0!6i15"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Bascorp Group Office Location Map"
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+
+              {/* Bottom Quick Reference Grid with Generous Spacing */}
+              <div className="pt-8 mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-[#E8E8E8]">
+                <div className="flex flex-col gap-1">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                    Premises
+                  </span>
+                  <p className="font-instrument-sans text-[15px] font-medium text-[#111111]">
+                    Building 440, Sheikh Issa Ave
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                    Location
+                  </span>
+                  <p className="font-instrument-sans text-[15px] font-medium text-[#111111]">
+                    Manama, Kingdom Of Bahrain
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                    Working Hours
+                  </span>
+                  <p className="font-instrument-sans text-[15px] font-medium text-[#111111]">
+                    Mon – Fri: 9:00 AM – 6:00 PM CET
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                    General Enquiries
+                  </span>
+                  <a
+                    href="mailto:info@bascorpgroup.com"
+                    className="font-instrument-sans text-[15px] font-medium text-[#00A2E2] hover:underline"
+                  >
+                    info@bascorpgroup.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================================
             FREQUENTLY ASKED QUESTIONS SECTION
             - Questions & Answers heading + Can't find an answer call booking card
             - Interactive accordion FAQ items with custom divider lines
-           ===================================================================== */}
+            ===================================================================== */}
         <FAQSection />
       </main>
 

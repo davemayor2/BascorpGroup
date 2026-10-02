@@ -33,7 +33,7 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "Which sectors does Bascorp invest in?",
     answer:
-      "Our investment activities span healthcare and pharmaceuticals, wholesale and retail trade, private equity, transportation, telecommunications, and public equity.",
+      "Our investment activities span healthcare and pharmaceuticals, wholesale and retail trade, private equity, Aviation, telecommunications, and Real Estate.",
   },
   {
     question: "Does Bascorp provide financing solutions?",
@@ -227,11 +227,10 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
                     }}
                   >
                     <span
-                      className={`font-instrument-sans transition-colors leading-snug pr-2 ${
-                        isOpen
-                          ? "text-[#00A2E2]"
-                          : "text-[#111111] group-hover:text-[#00A2E2]"
-                      }`}
+                      className={`font-instrument-sans transition-colors leading-snug pr-2 ${isOpen
+                        ? "text-[#00A2E2]"
+                        : "text-[#111111] group-hover:text-[#00A2E2]"
+                        }`}
                       style={{
                         fontSize: "clamp(18px, 1.35vw, 20px)",
                         fontWeight: 500,
@@ -242,11 +241,10 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
 
                     {/* Plus / Close Icon (Rotates 45deg to close, turns cyan when open) */}
                     <span
-                      className={`shrink-0 flex items-center justify-center w-7 h-7 transition-colors ${
-                        isOpen
-                          ? "text-[#00A2E2]"
-                          : "text-[#111111] group-hover:text-[#00A2E2]"
-                      }`}
+                      className={`shrink-0 flex items-center justify-center w-7 h-7 transition-colors ${isOpen
+                        ? "text-[#00A2E2]"
+                        : "text-[#111111] group-hover:text-[#00A2E2]"
+                        }`}
                     >
                       <svg
                         width="20"
@@ -257,9 +255,8 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
                         strokeWidth="1.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className={`transition-transform duration-300 ${
-                          isOpen ? "rotate-45" : "rotate-0"
-                        }`}
+                        className={`transition-transform duration-300 ${isOpen ? "rotate-45" : "rotate-0"
+                          }`}
                       >
                         <line x1="12" y1="5" x2="12" y2="19" />
                         <line x1="5" y1="12" x2="19" y2="12" />
@@ -269,9 +266,8 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
 
                   {/* Smooth Collapsible Answer Container */}
                   <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-out overflow-hidden ${
-                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                    }`}
+                    className={`grid transition-[grid-template-rows] duration-300 ease-out overflow-hidden ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
                   >
                     <div className="overflow-hidden">
                       <p

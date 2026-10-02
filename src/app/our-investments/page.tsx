@@ -24,8 +24,8 @@ const SECTOR_CARDS = [
   },
   {
     id: "retail",
-    category: "Wholesale & Retail Trade",
-    title: "Wholesale & Retail Trade",
+    category: "Construction Trade",
+    title: "Construction Trade",
     description:
       "Supporting resilient supply chains, commercial distribution networks, and modern consumer retail platforms connecting high-growth consumer markets.",
     image: "/images/card2.png",
@@ -41,13 +41,13 @@ const SECTOR_CARDS = [
     icon: "/private_equity.svg",
   },
   {
-    id: "transportation",
-    category: "Transportation",
-    title: "Transportation",
+    id: "Aviation",
+    category: "Aviation",
+    title: "Aviation",
     description:
       "Financing fleet infrastructure, multimodal logistics hubs, and supply chain technologies that streamline regional transit and freight efficiency.",
     image: "/images/card4.png",
-    icon: "/transportation.svg",
+    icon: "/Aviation.svg",
   },
   {
     id: "telecommunications",
@@ -60,8 +60,8 @@ const SECTOR_CARDS = [
   },
   {
     id: "public-equity",
-    category: "Public Equity",
-    title: "Public Equity",
+    category: "Real Estate",
+    title: "Real Estate",
     description:
       "Active participation in publicly listed securities with attractive valuation multiples, sound corporate governance, and disciplined capital allocation policies.",
     image: "/images/card6.png",

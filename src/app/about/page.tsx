@@ -251,27 +251,41 @@ export default function AboutPage() {
       });
 
       // 2. Overview Section ScrollTrigger
-      gsap.from(".overview-header", {
-        scrollTrigger: {
-          trigger: overviewRef.current,
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power3.out",
-      });
+      gsap.fromTo(
+        ".overview-header",
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power3.out",
+          clearProps: "all",
+          scrollTrigger: {
+            trigger: overviewRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
 
-      gsap.from(".overview-banner", {
-        scrollTrigger: {
-          trigger: overviewRef.current,
-          start: "top 75%",
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.9,
-        ease: "power3.out",
-      });
+      gsap.fromTo(
+        ".overview-banner",
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "all",
+          scrollTrigger: {
+            trigger: overviewRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
 
       // Parallax scroll on Overview Banner Image (moves UPWARD as user scrolls down)
       if (imageRef.current && bannerRef.current) {
@@ -455,7 +469,7 @@ export default function AboutPage() {
           ref={heroRef}
           style={{
             paddingTop: "148px",
-            paddingBottom: "110px",
+            paddingBottom: "clamp(48px, 5vw, 68px)",
             marginLeft: "auto",
             marginRight: "auto",
             width: "calc(100% - 32px)",
@@ -509,7 +523,7 @@ export default function AboutPage() {
             </p>
 
             {/* White CTA Button: Book A Call (Home Page Component Style) */}
-            <div className="hero-fade-up" style={{ marginBottom: "70px" }}>
+            <div className="hero-fade-up" style={{ marginBottom: "clamp(32px, 3.5vw, 44px)" }}>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-between gap-6 sm:gap-8 bg-white text-black transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-xs hover:shadow-md border border-gray-200/80 group select-none cursor-pointer"
@@ -546,7 +560,7 @@ export default function AboutPage() {
             <div
               ref={statsRef}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8 w-full max-w-5xl"
-              style={{ marginTop: "24px" }}
+              style={{ marginTop: "12px" }}
             >
               {HERO_STATS.map((stat, idx) => (
                 <div
@@ -583,7 +597,7 @@ export default function AboutPage() {
         <section
           id="overview"
           ref={overviewRef}
-          style={{ paddingTop: "130px", paddingBottom: "clamp(36px, 4vw, 52px)" }}
+          style={{ paddingTop: "clamp(44px, 5vw, 68px)", paddingBottom: "clamp(36px, 4vw, 52px)" }}
           className="relative w-full"
         >
           {/* Header remains inside container-custom */}
@@ -595,7 +609,7 @@ export default function AboutPage() {
             />
 
             {/* Section Header */}
-            <div className="overview-header" style={{ marginBottom: "56px" }}>
+            <div className="overview-header" style={{ marginBottom: "clamp(30px, 3.5vw, 42px)" }}>
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block"
                 style={{ marginBottom: "24px" }}
@@ -622,13 +636,19 @@ export default function AboutPage() {
               style={{
                 top: "-30%",
                 height: "160%",
+                transform: "translate3d(0, 0, 0)",
+                WebkitTransform: "translate3d(0, 0, 0)",
               }}
             >
               <img
                 ref={imageRef}
                 src="/images/about_us_image.png"
                 alt="Bascorp Group Overview"
-                className="overview-parallax-img w-full h-full object-cover object-[70%_center] md:object-[68%_center]"
+                className="overview-parallax-img w-full h-full object-cover object-[70%_center] md:object-[68%_center] will-change-transform"
+                style={{
+                  transform: "translate3d(0, 0, 0)",
+                  WebkitTransform: "translate3d(0, 0, 0)",
+                }}
               />
             </div>
 

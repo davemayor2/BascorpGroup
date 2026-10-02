@@ -308,11 +308,11 @@ export default function ContactForm() {
                       <option value="debt-funding">Debt Funding</option>
                       <option value="finance-investments">Finance Investments</option>
                       <option value="private-equity">Private Equity</option>
-                      <option value="public-equity">Public Equity</option>
+                      <option value="public-equity">Real Estate</option>
                       <option value="business-dev">Business Development</option>
-                      <option value="wholesale-retail">Wholesale & Retail Trade</option>
+                      <option value="wholesale-retail">Construction Trade</option>
                       <option value="telecommunications">Telecommunications</option>
-                      <option value="transportation">Transportation</option>
+                      <option value="Aviation">Aviation</option>
                     </select>
                     {errors.interest && (
                       <span className="text-[10px] text-red-400 font-semibold px-1">{errors.interest}</span>

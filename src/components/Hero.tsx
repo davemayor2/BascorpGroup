@@ -99,7 +99,7 @@ export default function Hero() {
       id="home"
       ref={containerRef}
       className="relative flex flex-col justify-start md:justify-center items-start bg-black overflow-hidden"
-      style={{ minHeight: "820px" }}
+      style={{ minHeight: "clamp(680px, 86vh, 820px)" }}
     >
       {/* Background Image - framed on both subjects */}
       <div
