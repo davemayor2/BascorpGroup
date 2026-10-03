@@ -64,10 +64,26 @@ const CRITERIA_POINTS = [
   "Clearly defined exit framework",
 ];
 
+const renderScrubText = (text: string) => {
+  const words = text.trim().split(/\s+/);
+  return words.map((word, i) => (
+    <React.Fragment key={i}>
+      <span
+        className="word-scrub inline-block transition-none"
+        style={{ opacity: 0.3, willChange: "opacity" }}
+      >
+        {word}
+      </span>
+      {i < words.length - 1 ? " " : ""}
+    </React.Fragment>
+  ));
+};
+
 export default function DisciplinedInvestmentStrategyPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const introRef = useRef<HTMLElement>(null);
+  const problemDescRef = useRef<HTMLDivElement>(null);
   const howItWorksRef = useRef<HTMLElement>(null);
   const split1Ref = useRef<HTMLElement>(null);
   const split2Ref = useRef<HTMLElement>(null);
@@ -95,38 +111,48 @@ export default function DisciplinedInvestmentStrategyPage() {
           "-=0.4"
         );
 
-      // 2. Intro Section Scroll Reveal - Slow, elegant fade in
+      // 2. Intro Section Scroll Reveal (Category Label & Deliverables)
       const introTl = gsap.timeline({
         scrollTrigger: {
           trigger: introRef.current,
-          start: "top 78%",
+          start: "top 80%",
           once: true,
         },
       });
-      introTl
-        .fromTo(
-          introRef.current,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.6,
-            ease: "power2.out",
-            clearProps: "opacity",
-          }
-        )
-        .fromTo(
-          ".intro-anim-item",
-          { opacity: 0, y: 32 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.5,
-            stagger: 0.32,
-            ease: "power2.out",
-            clearProps: "transform,opacity",
-          },
-          "-=0.2"
-        );
+      introTl.fromTo(
+        ".intro-anim-item",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.18,
+          ease: "power2.out",
+          clearProps: "transform",
+        }
+      );
+
+      // 3. "The Problem We Solve" Word-by-Word Scroll Scrub Animation
+      if (problemDescRef.current) {
+        const words = problemDescRef.current.querySelectorAll<HTMLElement>(".word-scrub");
+        if (words.length > 0) {
+          gsap.fromTo(
+            words,
+            { opacity: 0.3 },
+            {
+              opacity: 1,
+              ease: "none",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: problemDescRef.current,
+                start: "top 78%",
+                end: "bottom 52%",
+                scrub: 0.6,
+              },
+            }
+          );
+        }
+      }
 
       // 3. "How it works" White Box Scroll Reveal
       const howTl = gsap.timeline({
@@ -373,34 +399,34 @@ export default function DisciplinedInvestmentStrategyPage() {
                 The Problem We Solve
               </h2>
 
-              {/* Large Intro Paragraph 1 (48pt, border to border) */}
-              <p
-                className="intro-anim-item font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
-                style={{
-                  fontSize: "clamp(28px, 3.8vw, 48pt)",
-                  lineHeight: "1.24",
-                  marginBottom: "clamp(36px, 4vw, 56px)",
-                }}
-              >
-                Investment opportunities can look attractive on the surface, but
-                sustainable value depends on the strength of the business,
-                management team, financial performance, and the underlying
-                market.
-              </p>
+              {/* Large Intro Paragraphs with Word-by-Word Scrub */}
+              <div ref={problemDescRef} className="problem-desc-container w-full">
+                <p
+                  className="font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
+                  style={{
+                    fontSize: "clamp(28px, 3.8vw, 48pt)",
+                    lineHeight: "1.24",
+                    marginBottom: "clamp(36px, 4vw, 56px)",
+                  }}
+                >
+                  {renderScrubText(
+                    "Investment opportunities can look attractive on the surface, but sustainable value depends on the strength of the business, management team, financial performance, and the underlying market."
+                  )}
+                </p>
 
-              {/* Intro Paragraph 2 (48pt, border to border) */}
-              <p
-                className="intro-anim-item font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
-                style={{
-                  fontSize: "clamp(28px, 3.8vw, 48pt)",
-                  lineHeight: "1.24",
-                  marginBottom: "clamp(64px, 7vw, 96px)",
-                }}
-              >
-                Bascorp applies a disciplined investment framework to identify
-                opportunities with strong fundamentals, realistic growth plans,
-                and clearly defined paths to value creation.
-              </p>
+                <p
+                  className="font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
+                  style={{
+                    fontSize: "clamp(28px, 3.8vw, 48pt)",
+                    lineHeight: "1.24",
+                    marginBottom: "clamp(64px, 7vw, 96px)",
+                  }}
+                >
+                  {renderScrubText(
+                    "Bascorp applies a disciplined investment framework to identify opportunities with strong fundamentals, realistic growth plans, and clearly defined paths to value creation."
+                  )}
+                </p>
+              </div>
 
               {/* Deliverables Section */}
               <div className="intro-anim-item w-full">

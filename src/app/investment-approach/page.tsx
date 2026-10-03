@@ -66,10 +66,26 @@ const VALUE_POINTS = [
   "Partnerships are built around sustainable growth",
 ];
 
+const renderScrubText = (text: string) => {
+  const words = text.trim().split(/\s+/);
+  return words.map((word, i) => (
+    <React.Fragment key={i}>
+      <span
+        className="word-scrub inline-block transition-none"
+        style={{ opacity: 0.3, willChange: "opacity" }}
+      >
+        {word}
+      </span>
+      {i < words.length - 1 ? " " : ""}
+    </React.Fragment>
+  ));
+};
+
 export default function InvestmentApproachPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const introRef = useRef<HTMLElement>(null);
+  const problemDescRef = useRef<HTMLDivElement>(null);
   const howItWorksRef = useRef<HTMLElement>(null);
   const split1Ref = useRef<HTMLElement>(null);
   const split2Ref = useRef<HTMLElement>(null);
@@ -97,38 +113,48 @@ export default function InvestmentApproachPage() {
           "-=0.4"
         );
 
-      // 2. Intro Section Scroll Reveal - Slow, elegant fade in
+      // 2. Intro Section Scroll Reveal (Category Label & Deliverables)
       const introTl = gsap.timeline({
         scrollTrigger: {
           trigger: introRef.current,
-          start: "top 78%",
+          start: "top 80%",
           once: true,
         },
       });
-      introTl
-        .fromTo(
-          introRef.current,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.6,
-            ease: "power2.out",
-            clearProps: "opacity",
-          }
-        )
-        .fromTo(
-          ".intro-anim-item",
-          { opacity: 0, y: 32 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.5,
-            stagger: 0.32,
-            ease: "power2.out",
-            clearProps: "transform,opacity",
-          },
-          "-=0.2"
-        );
+      introTl.fromTo(
+        ".intro-anim-item",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.18,
+          ease: "power2.out",
+          clearProps: "transform",
+        }
+      );
+
+      // 3. "The Problem We Solve" Word-by-Word Scroll Scrub Animation
+      if (problemDescRef.current) {
+        const words = problemDescRef.current.querySelectorAll<HTMLElement>(".word-scrub");
+        if (words.length > 0) {
+          gsap.fromTo(
+            words,
+            { opacity: 0.3 },
+            {
+              opacity: 1,
+              ease: "none",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: problemDescRef.current,
+                start: "top 78%",
+                end: "bottom 52%",
+                scrub: 0.6,
+              },
+            }
+          );
+        }
+      }
 
       // 3. "How it works" White Box Scroll Reveal
       const howTl = gsap.timeline({
@@ -374,32 +400,34 @@ export default function InvestmentApproachPage() {
                 The Problem We Solve
               </h2>
 
-              {/* Large Intro Paragraph 1 (48pt, end to end, border to border) */}
-              <p
-                className="intro-anim-item font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
-                style={{
-                  fontSize: "clamp(28px, 3.8vw, 48pt)",
-                  lineHeight: "1.24",
-                  marginBottom: "clamp(36px, 4vw, 56px)",
-                }}
-              >
-                Most companies get stuck not because they lack talent, but because
-                they lack direction. When priorities shift weekly and decisions are
-                reactive, teams lose alignment, energy, and momentum.
-              </p>
+              {/* Large Intro Paragraphs with Word-by-Word Scrub */}
+              <div ref={problemDescRef} className="problem-desc-container w-full">
+                <p
+                  className="font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
+                  style={{
+                    fontSize: "clamp(28px, 3.8vw, 48pt)",
+                    lineHeight: "1.24",
+                    marginBottom: "clamp(36px, 4vw, 56px)",
+                  }}
+                >
+                  {renderScrubText(
+                    "Most companies get stuck not because they lack talent, but because they lack direction. When priorities shift weekly and decisions are reactive, teams lose alignment, energy, and momentum."
+                  )}
+                </p>
 
-              {/* Intro Paragraph 2 (48pt, end to end, border to border) */}
-              <p
-                className="intro-anim-item font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
-                style={{
-                  fontSize: "clamp(28px, 3.8vw, 48pt)",
-                  lineHeight: "1.24",
-                  marginBottom: "clamp(64px, 7vw, 96px)",
-                }}
-              >
-                Our Business Strategy service replaces uncertainty with clarity -
-                giving you a plan and a confident path forward.
-              </p>
+                <p
+                  className="font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
+                  style={{
+                    fontSize: "clamp(28px, 3.8vw, 48pt)",
+                    lineHeight: "1.24",
+                    marginBottom: "clamp(64px, 7vw, 96px)",
+                  }}
+                >
+                  {renderScrubText(
+                    "Our Business Strategy service replaces uncertainty with clarity - giving you a plan and a confident path forward."
+                  )}
+                </p>
+              </div>
 
               {/* Deliverables Section */}
               <div className="intro-anim-item w-full">

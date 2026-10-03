@@ -9,6 +9,21 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const renderScrubText = (text: string) => {
+  const words = text.trim().split(/\s+/);
+  return words.map((word, i) => (
+    <React.Fragment key={i}>
+      <span
+        className="word-scrub inline-block transition-none"
+        style={{ opacity: 0.3, willChange: "opacity" }}
+      >
+        {word}
+      </span>
+      {i < words.length - 1 ? " " : ""}
+    </React.Fragment>
+  ));
+};
+
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -18,49 +33,28 @@ export default function About() {
   const metric2Ref = useRef<HTMLSpanElement>(null);
   const metric3Ref = useRef<HTMLSpanElement>(null);
 
-  // Structured vision statement blocks matching design reference & exact grammar
-  const visionBlocks = [
-    {
-      text: "Our Vision is to be a trusted gateway for businesses ",
-      isMuted: false,
-    },
-    {
-      text: "seeking growth across the Middle East and beyond, ",
-      isMuted: true,
-    },
-    {
-      text: "creating lasting value through strategic investments, ",
-      isMuted: false,
-    },
-    {
-      text: "partnerships and opportunities across diverse industries.",
-      isMuted: true,
-    },
-  ];
-
   useGSAP(
     () => {
-      // ── Vision Statement Text Animation (Desktop only) ──
-      const isMobile = window.innerWidth < 768;
-
-      if (isMobile) {
-        gsap.set(".about-muted-word", {
-          color: "#000000",
-          opacity: 1,
-        });
-      } else {
-        gsap.to(".about-muted-word", {
-          color: "#000000",
-          opacity: 1,
-          stagger: 0.06,
-          ease: "none",
-          scrollTrigger: {
-            trigger: textRef.current,
-            start: "top 75%",
-            end: "bottom 50%",
-            scrub: 0.5,
-          },
-        });
+      // ── Vision Statement Word-by-Word Scroll Scrub Animation ──
+      if (textRef.current) {
+        const words = textRef.current.querySelectorAll<HTMLElement>(".word-scrub");
+        if (words.length > 0) {
+          gsap.fromTo(
+            words,
+            { opacity: 0.3 },
+            {
+              opacity: 1,
+              ease: "none",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: textRef.current,
+                start: "top 78%",
+                end: "bottom 52%",
+                scrub: 0.6,
+              },
+            }
+          );
+        }
       }
 
       // ── Card Fade/Entrance Animation ──
@@ -216,26 +210,9 @@ export default function About() {
                 className="text-2xl sm:text-3xl md:text-[38px] leading-relaxed font-normal"
                 style={{ fontFamily: "var(--font-instrument-sans), sans-serif" }}
               >
-                {visionBlocks.map((block, bIdx) => {
-                  const words = block.text.split(" ");
-                  return words.map((word, wIdx) => {
-                    if (!word) return null;
-                    return (
-                      <React.Fragment key={`${bIdx}-${wIdx}`}>
-                        {block.isMuted ? (
-                          <span className="about-muted-word inline text-[#989898] opacity-40 font-normal transition-colors duration-200">
-                            {word}
-                          </span>
-                        ) : (
-                          <span className="inline text-black font-normal">
-                            {word}
-                          </span>
-                        )}
-                        {" "}
-                      </React.Fragment>
-                    );
-                  });
-                })}
+                {renderScrubText(
+                  "Our Vision is to be a trusted gateway for businesses seeking growth across the Middle East and beyond, creating lasting value through strategic investments, partnerships and opportunities across diverse industries."
+                )}
               </p>
             </div>
 

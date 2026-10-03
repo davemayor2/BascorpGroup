@@ -122,10 +122,10 @@ export default function Hero() {
           paddingBottom: "clamp(80px, 10vh, 120px)",
         }}
       >
-        <div className="max-w-[310px] xs:max-w-[340px] sm:max-w-2xl md:max-w-3xl flex flex-col gap-2.5 sm:gap-4 md:gap-5">
+        <div className="w-full max-w-full sm:max-w-2xl md:max-w-3xl flex flex-col gap-3 sm:gap-4 md:gap-5">
           <h1
             ref={titleRef}
-            className="text-[36px] xs:text-[40px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-white font-medium font-clash-grotesk tracking-[-0.01em] leading-[1.14] sm:leading-[1.16] max-w-[290px] xs:max-w-[320px] sm:max-w-none"
+            className="text-[34px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-white font-medium font-clash-grotesk tracking-[-0.01em] leading-[1.14] sm:leading-[1.16] w-full max-w-full sm:max-w-none"
           >
             Building Partnerships<br />
             That Create{" "}
@@ -136,7 +136,7 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="text-[16px] sm:text-[17px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.55] sm:leading-[1.65] max-w-[290px] xs:max-w-[320px] sm:max-w-lg md:max-w-xl"
+            className="text-[16px] sm:text-[17px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.6] sm:leading-[1.65] w-full max-w-full sm:max-w-lg md:max-w-xl"
           >
             We partner with businesses across the Middle East, the Arabian Gulf and Asia,
             bringing strategic insight, market expertise and a strong network to support

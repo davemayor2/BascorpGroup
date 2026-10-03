@@ -633,7 +633,7 @@ export default function AboutPage() {
             ref={bannerRef}
             className="overview-banner relative w-full overflow-hidden border-y border-[#989898]/40 flex items-end shadow-xs"
             style={{
-              minHeight: "clamp(520px, 50vw, 660px)",
+              minHeight: "clamp(380px, 36vw, 440px)",
             }}
           >
             {/* Parallax Background Image Container with Expanded Bleed */}
@@ -665,8 +665,8 @@ export default function AboutPage() {
             <div
               className="container-custom relative z-20 w-full"
               style={{
-                paddingTop: "clamp(48px, 6vw, 80px)",
-                paddingBottom: "clamp(56px, 7vw, 90px)",
+                paddingTop: "clamp(36px, 4vw, 48px)",
+                paddingBottom: "clamp(44px, 5vw, 56px)",
               }}
             >
               <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-5">
@@ -864,23 +864,23 @@ export default function AboutPage() {
             <div
               className="team-header-content flex flex-col items-start"
               style={{
-                marginBottom: "clamp(64px, 7vw, 100px)",
-                paddingBottom: "clamp(16px, 2vw, 24px)",
+                marginBottom: "clamp(48px, 5.5vw, 80px)",
+                paddingBottom: "clamp(12px, 1.5vw, 20px)",
               }}
             >
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block select-none"
-                style={{ marginBottom: "clamp(28px, 3.2vw, 42px)" }}
+                style={{ marginBottom: "clamp(20px, 2.2vw, 32px)" }}
               >
                 Management Team
               </span>
               <h2
-                className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[44px] lg:text-[48px] leading-[1.12] text-[#111111] mb-7 sm:mb-8 tracking-tight"
+                className="font-clash-grotesk font-semibold text-2xl sm:text-3xl md:text-[38px] lg:text-[42px] leading-[1.15] text-[#111111] mb-5 sm:mb-6 tracking-tight"
               >
                 Meet Bascorp Group
               </h2>
               <p
-                className="font-instrument-sans text-sm sm:text-[15.5px] text-[#737373] leading-[1.7] max-w-xl font-normal"
+                className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#737373] leading-[1.65] max-w-lg font-normal"
               >
                 We are dedicated to building a diverse team in all aspects. While we
                 haven&apos;t reached full diversity yet, here&apos;s our current progress with
@@ -890,33 +890,33 @@ export default function AboutPage() {
 
             {/* Team Cards Grid: 3 columns on desktop, 5 cards matching reference layout */}
             <div
-              className="team-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
-              style={{ marginTop: "clamp(28px, 3vw, 48px)" }}
+              className="team-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-8"
+              style={{ marginTop: "clamp(20px, 2.2vw, 36px)" }}
             >
               {MANAGEMENT_TEAM.map((member, idx) => (
                 <div key={idx} className="team-card-wrapper w-full h-full flex flex-col">
                   <div
                     className="w-full h-full bg-white rounded-none border border-black/[0.04] shadow-[0_2px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center text-center select-none"
                     style={{
-                      paddingTop: "clamp(48px, 5.2vw, 68px)",
-                      paddingBottom: "clamp(48px, 5.2vw, 68px)",
-                      paddingLeft: "clamp(28px, 3vw, 44px)",
-                      paddingRight: "clamp(28px, 3vw, 44px)",
-                      minHeight: "clamp(330px, 32vw, 390px)",
+                      paddingTop: "clamp(40px, 4.2vw, 56px)",
+                      paddingBottom: "clamp(40px, 4.2vw, 56px)",
+                      paddingLeft: "clamp(24px, 2.5vw, 36px)",
+                      paddingRight: "clamp(24px, 2.5vw, 36px)",
+                      minHeight: "clamp(290px, 28vw, 340px)",
                     }}
                   >
                     {/* Name and Role Block */}
                     <div className="flex flex-col items-center justify-center w-full">
                       {/* Member Name */}
                       <h3
-                        className="font-clash-grotesk font-medium text-[22px] sm:text-[24px] lg:text-[26px] text-[#111111] leading-[1.24] tracking-tight mb-3 whitespace-pre-line"
+                        className="font-clash-grotesk font-medium text-[20px] sm:text-[22px] lg:text-[23px] text-[#111111] leading-[1.24] tracking-tight mb-2.5 whitespace-pre-line"
                       >
                         {member.name}
                       </h3>
 
                       {/* Member Role */}
                       <p
-                        className="font-instrument-sans font-normal text-[13.5px] sm:text-[14px] text-[#787878] leading-relaxed max-w-[270px] whitespace-pre-line"
+                        className="font-instrument-sans font-normal text-[12.5px] sm:text-[13px] text-[#787878] leading-relaxed max-w-[250px] whitespace-pre-line"
                       >
                         {member.role}
                       </p>
@@ -924,17 +924,17 @@ export default function AboutPage() {
 
                     {/* Social Action Icon Buttons */}
                     <div
-                      className="flex items-center justify-center gap-3"
-                      style={{ marginTop: "clamp(34px, 3.8vw, 48px)" }}
+                      className="flex items-center justify-center gap-2.5"
+                      style={{ marginTop: "clamp(26px, 3vw, 38px)" }}
                     >
                       {/* Mail Button */}
                       <a
                         href={`mailto:${member.email}`}
-                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-[4px] bg-[#ECECEC] hover:bg-[#00A2E2] flex items-center justify-center transition-all duration-200 group/icon cursor-pointer shadow-none"
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-[4px] bg-[#ECECEC] hover:bg-[#00A2E2] flex items-center justify-center transition-all duration-200 group/icon cursor-pointer shadow-none"
                         aria-label={`Email ${member.name.replace("\n", " ")}`}
                       >
                         <TeamEmailIcon
-                          className="w-[19px] h-[19px] text-[#A8A8A8] group-hover/icon:text-white transition-colors duration-200"
+                          className="w-[17px] h-[17px] text-[#A8A8A8] group-hover/icon:text-white transition-colors duration-200"
                         />
                       </a>
 
@@ -944,11 +944,11 @@ export default function AboutPage() {
                           href={member.whatsapp}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 sm:w-11 sm:h-11 rounded-[4px] bg-[#ECECEC] hover:bg-[#00A2E2] flex items-center justify-center transition-all duration-200 group/icon cursor-pointer shadow-none"
+                          className="w-9 h-9 sm:w-10 sm:h-10 rounded-[4px] bg-[#ECECEC] hover:bg-[#00A2E2] flex items-center justify-center transition-all duration-200 group/icon cursor-pointer shadow-none"
                           aria-label={`WhatsApp ${member.name.replace("\n", " ")}`}
                         >
                           <TeamWhatsAppIcon
-                            className="w-[19px] h-[19px] text-[#A8A8A8] group-hover/icon:text-white transition-colors duration-200"
+                            className="w-[17px] h-[17px] text-[#A8A8A8] group-hover/icon:text-white transition-colors duration-200"
                           />
                         </a>
                       )}

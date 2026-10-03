@@ -21,13 +21,13 @@ const BASE_SERVICES = [
     title: "Finance Investments",
     description:
       "As part of its strategy to seek consistent growth opportunities, Bascorp Group diversified its operations in the Financial Investments sector, with strategic investments and partnerships.",
-    image: "/images/tele-communications.jpg",
+    image: "/images/business dev.jpg",
   },
   {
     title: "Business Development",
     description:
       "Since its conception, Bascorp Group has been committed to helping businesses through all stages of their development. Our involvement with a client begins from concept and ends with implementation.",
-    image: "/images/request a callback.jpg",
+    image: "/images/financial investments.jpg",
   },
 ];
 
