@@ -27,7 +27,7 @@ const BASE_SERVICES = [
     title: "Business Development",
     description:
       "Since its conception, Bascorp Group has been committed to helping businesses through all stages of their development. Our involvement with a client begins from concept and ends with implementation.",
-    image: "/images/financial investments.jpg",
+    image: "/images/financial investments.webp",
   },
 ];
 

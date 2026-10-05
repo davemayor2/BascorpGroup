@@ -55,7 +55,7 @@ const SECTOR_CARDS = [
     title: "Telecommunications",
     description:
       "Backing essential digital infrastructure, high-speed connectivity networks, and enterprise telecommunication assets powering modern digital economies.",
-    image: "/images/card5.png",
+    image: "/images/telecomm.webp",
     icon: "/tele_comms.svg",
   },
   {

@@ -22,7 +22,7 @@ const col1 = [
     title: "Aviation",
     description:
       "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
-    image: "/images/Aviation.jpg",
+    image: "/images/aviation.webp",
     height: 242,
   },
 ];
@@ -32,14 +32,14 @@ const col2 = [
     title: "Construction Trade",
     description:
       "Bascorp Group is the flagship of our Hospitality vertical. Middle East -renowned, the Retail and Mall are the epitome of luxury and have won numerous international travel and tourism awards.",
-    image: "/images/Construction Trade.jpg",
+    image: "/images/mega-menu-featured.jpg",
     height: 321,
   },
   {
     title: "Tele-communications",
     description:
       "Bascorp Group is the flagship of our Hospitality vertical. Middle East -renowned, the Retail and Mall are the epitome of luxury and have won numerous international travel and tourism awards.",
-    image: "/images/tele-communications.jpg",
+    image: "/images/telecomms2.webp",
     height: 321,
   },
 ];
@@ -56,7 +56,7 @@ const col3 = [
     title: "Real Estate",
     description:
       "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
-    image: "/images/Real Estate.png",
+    image: "/images/real_estate.webp",
     height: 242,
   },
 ];
