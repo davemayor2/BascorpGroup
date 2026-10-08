@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -43,17 +43,6 @@ export default function Footer() {
                 <img
                   src="/email_icon.svg"
                   alt="Email"
-                  className="w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-110"
-                />
-              </a>
-              <a
-                href="tel:+97317530816"
-                className="flex items-center justify-center w-11 h-11 rounded-[8px] bg-white border border-gray-200/60 hover:border-[#00A2E2] hover:bg-[#00A2E2]/10 transition-all duration-200 shadow-xs group"
-                aria-label="Phone"
-              >
-                <img
-                  src="/call_icon_black.svg"
-                  alt="Phone"
                   className="w-5 h-5 object-contain transition-transform duration-200 group-hover:scale-110"
                 />
               </a>
@@ -148,12 +137,6 @@ export default function Footer() {
               Contact Us
             </h3>
             <ul className="flex flex-col gap-4 font-instrument-sans text-[#1A1A1A]/75" style={{ fontSize: "16px" }}>
-              <li className="flex gap-3 items-start">
-                <Phone className="w-4 h-4 text-[#00A2E2] shrink-0 mt-1" />
-                <a href="tel:+97317530816" className="hover:text-[#00A2E2] transition-colors">
-                  +973 1753 0816
-                </a>
-              </li>
               <li className="flex gap-3 items-start">
                 <Mail className="w-4 h-4 text-[#00A2E2] shrink-0 mt-1" />
                 <a href="mailto:info@bascorpgroup.com" className="hover:text-[#00A2E2] transition-colors break-all">
