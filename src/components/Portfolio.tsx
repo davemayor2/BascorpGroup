@@ -14,14 +14,14 @@ const col1 = [
   {
     title: "Healthcare & Pharmaceuticals",
     description:
-      "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
+      "BASCORP seeks opportunities across healthcare and pharmaceuticals, supporting businesses involved in healthcare services, medical products, pharmaceutical development, and related technologies. Our focus is on businesses with strong fundamentals, scalable models, and the potential to contribute to the evolution of healthcare delivery.",
     image: "/images/health.jpg",
     height: 399,
   },
   {
     title: "Aviation",
     description:
-      "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
+      "Our aviation interests extend across businesses and opportunities connected to air transport, aviation services, infrastructure, and related commercial activities. BASCORP seeks to support operators and businesses positioned to benefit from the continued development of regional and international connectivity.",
     image: "/images/aviation.webp",
     height: 242,
   },
@@ -29,16 +29,16 @@ const col1 = [
 
 const col2 = [
   {
-    title: "Construction Trade",
+    title: "Construction & Trade",
     description:
-      "Bascorp Group is the flagship of our Hospitality vertical. Middle East -renowned, the Retail and Mall are the epitome of luxury and have won numerous international travel and tourism awards.",
+      "BASCORP participates in construction, infrastructure, contracting, and related trading activities, supporting businesses that contribute to the development of commercial, industrial, and urban infrastructure. We seek opportunities where strong execution capabilities and strategic market positioning can generate sustainable growth.",
     image: "/images/mega-menu-featured.jpg",
     height: 321,
   },
   {
-    title: "Tele-communications",
+    title: "Telecommunications",
     description:
-      "Bascorp Group is the flagship of our Hospitality vertical. Middle East -renowned, the Retail and Mall are the epitome of luxury and have won numerous international travel and tourism awards.",
+      "BASCORP’s interests in telecommunications focus on businesses and opportunities connected to digital connectivity, communications infrastructure, technology-enabled services, and related sectors. We recognise the strategic importance of connectivity and seek investments capable of benefiting from long-term digital transformation.",
     image: "/images/telecomms2.webp",
     height: 321,
   },
@@ -46,16 +46,16 @@ const col2 = [
 
 const col3 = [
   {
-    title: "Private Equity",
+    title: "Maritime",
     description:
-      "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
-    image: "/images/private equity.png",
+      "BASCORP’s maritime interests encompass businesses and opportunities connected to commercial shipping, marine logistics, port infrastructure, and offshore support services. We focus on resilient operations and strategic assets positioned to benefit from expanding regional trade corridors, fleet modernization, and the critical role of maritime connectivity in global commerce.",
+    image: "/images/maritime.jpg",
     height: 399,
   },
   {
     title: "Real Estate",
     description:
-      "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings.",
+      "BASCORP considers real estate opportunities across selected commercial, residential, hospitality, mixed use, and development assets. Our approach combines disciplined investment analysis with active portfolio oversight, with a focus on quality assets, strategic locations, sustainable returns, and long term value creation.",
     image: "/images/real_estate.webp",
     height: 242,
   },
@@ -111,8 +111,8 @@ function PortfolioCard({ title, description, image, height }: PortfolioCardProps
           {title}
         </h3>
         <p
-          className="font-instrument-sans font-normal leading-snug text-white/85"
-          style={{ fontSize: "15px" }}
+          className={`font-instrument-sans font-normal leading-snug text-white/85 ${height <= 260 ? "line-clamp-3" : "line-clamp-5"}`}
+          style={{ fontSize: "14.5px" }}
         >
           {description}
         </p>
@@ -201,8 +201,7 @@ export default function Portfolio() {
             className="portfolio-header-reveal font-instrument-sans font-normal leading-relaxed text-grey-medium max-w-xl"
             style={{ fontSize: "17px" }}
           >
-            Our portfolio reflects our commitment to partnering with businesses to
-            support sustainable growth and create value across multiple sectors.
+            Through a disciplined approach to investment and partnerships, BASCORP seeks to build, develop, and support businesses with strong potential while maintaining a clear focus on governance, risk management, and enduring value.
           </p>
         </div>
 
@@ -263,7 +262,7 @@ export default function Portfolio() {
                   {item.title}
                 </h3>
                 <p
-                  className="font-instrument-sans font-normal text-white/90 leading-relaxed"
+                  className="font-instrument-sans font-normal text-white/90 leading-relaxed line-clamp-4"
                   style={{ fontSize: "13.5px" }}
                 >
                   {item.description}

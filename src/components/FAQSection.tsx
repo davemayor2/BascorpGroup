@@ -33,7 +33,7 @@ const FAQ_ITEMS: FAQItem[] = [
   {
     question: "Which sectors does Bascorp invest in?",
     answer:
-      "Our investment activities span healthcare and pharmaceuticals, wholesale and retail trade, private equity, Aviation, telecommunications, and Real Estate.",
+      "Our investment activities span healthcare and pharmaceuticals, construction and trade, Maritime, Aviation, telecommunications, and Real Estate.",
   },
   {
     question: "Does Bascorp provide financing solutions?",

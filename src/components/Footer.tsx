@@ -19,7 +19,7 @@ export default function Footer() {
               />
             </Link>
             <p className="font-instrument-sans text-[16px] text-[#1A1A1A]/75 leading-relaxed max-w-sm">
-              Bascorp Group is a diversified investment company with a growing portfolio of businesses and strategic partnerships across the Arabian Gulf, Middle East, and Asia.
+              BASCORP Group is a diversified investment and business group operating at the intersection of investment, strategic capital, business development, and long-term value creation across the Arabian Gulf, the wider Middle East, and Asia.
             </p>
             <div className="flex items-center gap-3">
               <a
@@ -79,18 +79,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="hover:text-[#00A2E2] transition-colors duration-200">
-                  About Consulting
+                <Link href="/business-building-development" className="hover:text-[#00A2E2] transition-colors duration-200">
+                  Business Building & Development
                 </Link>
               </li>
               <li>
-                <Link href="/disciplined-investment-strategy" className="hover:text-[#00A2E2] transition-colors duration-200">
-                  Disciplined Investment Strategy
+                <Link href="/strategic-partnerships" className="hover:text-[#00A2E2] transition-colors duration-200">
+                  Strategic Partnerships
                 </Link>
               </li>
               <li>
-                <Link href="/corporate-governance" className="hover:text-[#00A2E2] transition-colors duration-200">
-                  Corporate Governance
+                <Link href="/portfolio-management" className="hover:text-[#00A2E2] transition-colors duration-200">
+                  Portfolio Management
                 </Link>
               </li>
               <li>

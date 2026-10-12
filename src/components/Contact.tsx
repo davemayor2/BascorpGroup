@@ -88,7 +88,7 @@ export default function Contact() {
             className="font-instrument-sans font-normal text-white/85 leading-relaxed max-w-xl"
             style={{ fontSize: "clamp(17px, 1.6vw, 19px)" }}
           >
-            Whether you&apos;re seeking investment, exploring a strategic partnership, or looking to expand into the Middle East, we&apos;re ready to start the conversation.
+            Whether you are seeking strategic capital, exploring a long-term partnership, or looking to unlock opportunities across the Middle East and Asia, we are ready to build lasting value together.
           </p>
 
           {/* Let's Connect Button with blue SVG arrow */}

@@ -14,56 +14,50 @@ if (typeof window !== "undefined") {
 }
 
 const DELIVERABLES = [
-  "Bespoke Private Debt Financing",
-  "Flexible Capital Solutions",
-  "Direct Investment in Debt Instruments",
-  "Debt & Equity Solutions",
-  "Capital Preservation",
-  "Risk-Adjusted Investment Strategy",
-  "Strategic Investment Partnerships",
-  "Long-Term Investment Perspective",
-  "Customized Investment Solutions",
-  "Structured Growth Capital",
-  "Portfolio Risk Assessment",
-  "Comprehensive Valuation & Modeling",
-  "Cross-Border Transaction Advisory",
-  "Tailored Liquidity Solutions",
+  "Disciplined Capital Allocation",
+  "Strategic Asset Selection",
+  "Fundamental Opportunity Analysis",
+  "Prudent Risk Assessment",
+  "Long-Term Value Creation",
+  "Quality Growth Evaluation",
+  "Tailored Investment Structuring",
+  "Selective Direct Investment",
 ];
 
 const STEPS = [
   {
     tag: "Step 1",
-    title: "Understand",
+    title: "Identify & Screen",
     description:
-      "We assess the business, investment opportunity, capital requirements, objectives, and timeline for execution context.",
+      "We identify and review businesses, assets, and opportunities with strong fundamentals, attractive growth prospects, and strategic market relevance.",
   },
   {
     tag: "Step 2",
-    title: "Evaluate & Structure",
+    title: "Evaluate Opportunity & Risk",
     description:
-      "We evaluate the opportunity and determine an appropriate financing or investment structure tailored to its requirements and potential.",
+      "We rigorously evaluate quality, downside protection, financial sustainability, and risk-return profiles before committing capital.",
   },
   {
     tag: "Step 3",
-    title: "Align & Execute",
+    title: "Selective Capital Allocation",
     description:
-      "We work with the relevant stakeholders to agree on terms and structure the investment or financing transaction.",
+      "Capital is allocated selectively and disciplined, tailoring the investment structure to the specific requirements and potential of the opportunity.",
   },
   {
     tag: "Step 4",
-    title: "Build Long-Term Value",
+    title: "Long-Term Value Realisation",
     description:
-      "We support the investment through a long-term partnership approach, focused on sustainable growth and alignment between stakeholders.",
+      "We focus on long-term potential, supporting management teams with patient capital and strategic perspective to create enduring value.",
   },
 ];
 
 const VALUE_POINTS = [
-  "Capital is aligned with the needs of the business",
-  "Investment structures are tailored to each opportunity",
-  "Risk and return are considered together",
-  "Businesses gain access to flexible capital solutions",
-  "Decisions are guided by long-term value creation",
-  "Partnerships are built around sustainable growth",
+  "Capital allocated on the basis of opportunity, risk, quality, and long-term potential",
+  "Disciplined selection criteria focused on businesses with strong fundamentals",
+  "Long-term investment perspective prioritizing sustainable growth over short-term trends",
+  "Prudent risk management and governance embedded into every transaction",
+  "Strategic alignment between capital providers and operating management",
+  "Active capability to support portfolio companies through their next stage of development",
 ];
 
 const renderScrubText = (text: string) => {
@@ -303,12 +297,12 @@ export default function InvestmentApproachPage() {
           <div className="relative z-10 w-full container-custom">
             <div className="max-w-[1140px] w-full mx-auto">
               <div className="max-w-2xl flex flex-col items-start">
-                {/* Small Tag: What We Do */}
+                {/* Small Tag: Our Core Activities */}
                 <span
                   className="hero-anim-item font-instrument-sans text-xs sm:text-[13px] text-white/70 font-medium tracking-wide block select-none"
                   style={{ marginBottom: "18px" }}
                 >
-                  What We Do
+                  Our Core Activities
                 </span>
 
                 {/* Main Title: Investment Approach (Approach in primary blue) */}
@@ -324,8 +318,7 @@ export default function InvestmentApproachPage() {
                   className="hero-anim-item font-instrument-sans text-sm sm:text-base text-white/80 leading-relaxed max-w-lg"
                   style={{ marginBottom: "36px" }}
                 >
-                  A disciplined investment approach providing tailored solutions
-                  for sustainable growth across various sectors.
+                  We identify and invest in businesses, assets, and opportunities with strong fundamentals, allocating capital on the basis of opportunity, risk, quality, and long-term potential.
                 </p>
 
                 {/* Book A Call Button - 8pt corner radius */}
@@ -411,7 +404,7 @@ export default function InvestmentApproachPage() {
                   }}
                 >
                   {renderScrubText(
-                    "Most companies get stuck not because they lack talent, but because they lack direction. When priorities shift weekly and decisions are reactive, teams lose alignment, energy, and momentum."
+                    "We identify and invest in businesses, assets, and opportunities with strong fundamentals, attractive growth prospects, and strategic relevance."
                   )}
                 </p>
 
@@ -424,7 +417,7 @@ export default function InvestmentApproachPage() {
                   }}
                 >
                   {renderScrubText(
-                    "Our Business Strategy service replaces uncertainty with clarity - giving you a plan and a confident path forward."
+                    "Our investment approach is selective and disciplined, with capital allocated on the basis of opportunity, risk, quality, and long-term potential."
                   )}
                 </p>
               </div>
@@ -634,7 +627,7 @@ export default function InvestmentApproachPage() {
 
                 {/* Right Column: Title and Bullet Points */}
                 <div className="lg:col-span-6">
-                  {/* Eyebrow: "INVESTMENT APPROACH" in Clash display, size 18, weight medium */}
+                  {/* Eyebrow: "INVESTMENT PRINCIPLES" */}
                   <span
                     className="font-clash-grotesk font-medium text-[#111111] uppercase tracking-wide block"
                     style={{
@@ -643,10 +636,10 @@ export default function InvestmentApproachPage() {
                       marginBottom: "16px",
                     }}
                   >
-                    INVESTMENT APPROACH
+                    INVESTMENT PRINCIPLES
                   </span>
 
-                  {/* Heading: "The value of a thoughtful investment approach", size 32, regular weight, Instrument Sans */}
+                  {/* Heading */}
                   <h2
                     className="font-instrument-sans font-normal text-[#111111] tracking-tight"
                     style={{
@@ -657,7 +650,7 @@ export default function InvestmentApproachPage() {
                       marginBottom: "36px",
                     }}
                   >
-                    The value of a thoughtful investment approach
+                    A disciplined approach to capital and enduring value
                   </h2>
 
                   {/* Bullet points: size 20, weight regular, color fill #737373, perfectly aligned, reduced dot size */}
@@ -733,7 +726,7 @@ export default function InvestmentApproachPage() {
                     WHO IT IS FOR
                   </span>
 
-                  {/* Heading: "Businesses seeking the right capital for their next stage", size 32, regular weight, Instrument Sans */}
+                  {/* Heading */}
                   <h2
                     className="font-instrument-sans font-normal text-[#111111] tracking-tight"
                     style={{
@@ -744,7 +737,7 @@ export default function InvestmentApproachPage() {
                       marginBottom: "36px",
                     }}
                   >
-                    Businesses seeking the right capital for their next stage
+                    Businesses with strong fundamentals seeking strategic capital
                   </h2>
 
                   {/* Description: size 20, weight regular, color fill #737373 */}
@@ -757,10 +750,7 @@ export default function InvestmentApproachPage() {
                       color: "#737373",
                     }}
                   >
-                    Our approach is designed for established entities, private
-                    companies, family offices, and financial sponsors seeking
-                    tailored investment or financing solutions for growth,
-                    acquisitions, refinancing, or other strategic requirements.
+                    Our approach is designed for established entities, operating businesses, and high-potential enterprises seeking disciplined capital, institutional perspective, and a long-term partner committed to sustainable value creation.
                   </p>
                 </div>
 

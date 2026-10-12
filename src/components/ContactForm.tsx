@@ -307,10 +307,10 @@ export default function ContactForm() {
                       <option value="" disabled>Area of Interest</option>
                       <option value="debt-funding">Debt Funding</option>
                       <option value="finance-investments">Finance Investments</option>
-                      <option value="private-equity">Private Equity</option>
+                      <option value="maritime">Maritime</option>
                       <option value="public-equity">Real Estate</option>
                       <option value="business-dev">Business Development</option>
-                      <option value="wholesale-retail">Construction Trade</option>
+                      <option value="construction-trade">Construction & Trade</option>
                       <option value="telecommunications">Telecommunications</option>
                       <option value="Aviation">Aviation</option>
                     </select>

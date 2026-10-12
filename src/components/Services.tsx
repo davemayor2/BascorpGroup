@@ -224,7 +224,7 @@ export default function Services() {
               className="font-clash-grotesk font-semibold text-white leading-tight"
               style={{ fontSize: "clamp(32px, 3.2vw, 46px)" }}
             >
-              Strategic Services<br />for Organization
+              Creating Value<br />Beyond Capital
             </h2>
 
             {/* Description — All texts white with generous clearance to the cards */}
@@ -232,9 +232,9 @@ export default function Services() {
               className="font-instrument-sans font-normal leading-relaxed text-white max-w-sm lg:max-w-[330px] xl:max-w-[370px]"
               style={{ fontSize: "16px", color: "#FFFFFF" }}
             >
-              We partner with businesses across the Middle East, the Arabian Gulf
-              and Asia, bringing strategic insight, market expertise and a strong
-              network to support sustainable growth.
+              We bring together investment discipline, strategic insight, commercial
+              expertise, governance, and an established network of relationships to
+              help businesses realise their full potential.
             </p>
 
             {/* Discover More — White button, black text */}

@@ -18,34 +18,34 @@ const SECTOR_CARDS = [
     category: "Healthcare & Pharmaceuticals",
     title: "Healthcare & Pharmaceuticals",
     description:
-      "Bascorp Group is a private concern that combines the strength and security of a large, international institution with the nimbleness of our entrepreneurial beginnings. We have the financial capabilities to participate in major transactions, the resilience to withstand market volatility and the agility to quickly capitalize on new opportunities as they arise..",
+      "BASCORP seeks opportunities across healthcare and pharmaceuticals, supporting businesses involved in healthcare services, medical products, pharmaceutical development, and related technologies. Our focus is on businesses with strong fundamentals, scalable models, and the potential to contribute to the evolution of healthcare delivery.",
     image: "/images/card1.png",
     icon: "/Icon_1.svg",
   },
   {
     id: "retail",
-    category: "Construction Trade",
-    title: "Construction Trade",
+    category: "Construction & Trade",
+    title: "Construction & Trade",
     description:
-      "Supporting resilient supply chains, commercial distribution networks, and modern consumer retail platforms connecting high-growth consumer markets.",
+      "BASCORP participates in construction, infrastructure, contracting, and related trading activities, supporting businesses that contribute to the development of commercial, industrial, and urban infrastructure. We seek opportunities where strong execution capabilities and strategic market positioning can generate sustainable growth.",
     image: "/images/card2.png",
     icon: "/icon_retail.svg",
   },
   {
-    id: "private-equity",
-    category: "Private Equity",
-    title: "Private Equity",
+    id: "maritime",
+    category: "Maritime",
+    title: "Maritime",
     description:
-      "Deploying flexible, strategic capital into high-potential companies with strong management teams, proven unit economics, and clear pathways to operational scale and value creation.",
-    image: "/images/card3.png",
-    icon: "/private_equity.svg",
+      "BASCORP’s maritime interests encompass businesses and opportunities connected to commercial shipping, marine logistics, port infrastructure, and offshore support services. We focus on resilient operations and strategic assets positioned to benefit from expanding regional trade corridors, fleet modernization, and the critical role of maritime connectivity in global commerce.",
+    image: "/images/maritime.jpg",
+    icon: "/maritime.svg",
   },
   {
     id: "Aviation",
     category: "Aviation",
     title: "Aviation",
     description:
-      "Financing fleet infrastructure, multimodal logistics hubs, and supply chain technologies that streamline regional transit and freight efficiency.",
+      "Our aviation interests extend across businesses and opportunities connected to air transport, aviation services, infrastructure, and related commercial activities. BASCORP seeks to support operators and businesses positioned to benefit from the continued development of regional and international connectivity.",
     image: "/images/card4.png",
     icon: "/Aviation.svg",
   },
@@ -54,7 +54,7 @@ const SECTOR_CARDS = [
     category: "Telecommunications",
     title: "Telecommunications",
     description:
-      "Backing essential digital infrastructure, high-speed connectivity networks, and enterprise telecommunication assets powering modern digital economies.",
+      "BASCORP’s interests in telecommunications focus on businesses and opportunities connected to digital connectivity, communications infrastructure, technology-enabled services, and related sectors. We recognise the strategic importance of connectivity and seek investments capable of benefiting from long-term digital transformation.",
     image: "/images/telecomm.webp",
     icon: "/tele_comms.svg",
   },
@@ -63,7 +63,7 @@ const SECTOR_CARDS = [
     category: "Real Estate",
     title: "Real Estate",
     description:
-      "Active participation in publicly listed securities with attractive valuation multiples, sound corporate governance, and disciplined capital allocation policies.",
+      "BASCORP considers real estate opportunities across selected commercial, residential, hospitality, mixed use, and development assets. Our approach combines disciplined investment analysis with active portfolio oversight, with a focus on quality assets, strategic locations, sustainable returns, and long term value creation.",
     image: "/images/card6.png",
     icon: "/public_equity.svg",
   },

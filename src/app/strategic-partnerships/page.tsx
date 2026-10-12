@@ -1,0 +1,759 @@
+"use client";
+
+import React, { useRef, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
+
+const DELIVERABLES = [
+  "Institutional Alliances",
+  "Co-Investment Frameworks",
+  "Regional Market Entry",
+  "Complementary Capabilities",
+  "Shared Resource Networks",
+  "Governance Alignment",
+  "Long-Term Joint Ventures",
+  "Cross-Border Synergy",
+];
+
+const STEPS = [
+  {
+    tag: "Step 1",
+    title: "Mutual Alignment",
+    description:
+      "We connect with entrepreneurs, investors, and institutions who share our commitment to long-term value creation, trust, and operational integrity.",
+  },
+  {
+    tag: "Step 2",
+    title: "Strategic Structuring",
+    description:
+      "We design partnership frameworks that ensure transparent governance, equitable incentives, and aligned strategic objectives.",
+  },
+  {
+    tag: "Step 3",
+    title: "Deploy Capabilities",
+    description:
+      "We combine networks, capital, and regional commercial insight to unlock opportunities neither party could capture alone.",
+  },
+  {
+    tag: "Step 4",
+    title: "Enduring Value",
+    description:
+      "We actively nurture partnerships through open communication and shared stewardship, navigating market cycles together.",
+  },
+];
+
+const VALUE_POINTS = [
+  "Deep alignment around shared, long-term strategic objectives and fiduciary standards",
+  "Transparent, trust-based collaboration built on mutual respect and shared ethics",
+  "Unlocking cross-border market access across the Arabian Gulf, Middle East, and Asia",
+  "Combining complementary capabilities, industry expertise, and execution resources",
+  "Enduring institutional partnerships designed to outlast short-term market fluctuations",
+  "Creating compounding, sustainable value for partners, founders, and stakeholders",
+];
+
+const renderScrubText = (text: string) => {
+  const words = text.trim().split(/\s+/);
+  return words.map((word, i) => (
+    <React.Fragment key={i}>
+      <span
+        className="word-scrub inline-block transition-none"
+        style={{ opacity: 0.3, willChange: "opacity" }}
+      >
+        {word}
+      </span>
+      {i < words.length - 1 ? " " : ""}
+    </React.Fragment>
+  ));
+};
+
+export default function StrategicPartnershipsPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const introRef = useRef<HTMLElement>(null);
+  const problemDescRef = useRef<HTMLDivElement>(null);
+  const howItWorksRef = useRef<HTMLElement>(null);
+  const split1Ref = useRef<HTMLElement>(null);
+  const split2Ref = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // 1. Hero Entrance Animation
+      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTl
+        .fromTo(
+          heroRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.6, clearProps: "opacity" }
+        )
+        .fromTo(
+          ".hero-anim-item",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, clearProps: "transform,opacity" },
+          "-=0.3"
+        );
+
+      // 2. Intro Section Entrance Animation
+      const introTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: introRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+      introTl.fromTo(
+        ".intro-anim-item",
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power2.out",
+          clearProps: "transform",
+        }
+      );
+
+      // 3. Word-by-Word Scroll Scrub Animation
+      if (problemDescRef.current) {
+        const words = problemDescRef.current.querySelectorAll<HTMLElement>(".word-scrub");
+        if (words.length > 0) {
+          gsap.fromTo(
+            words,
+            { opacity: 0.3 },
+            {
+              opacity: 1,
+              ease: "none",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: problemDescRef.current,
+                start: "top 78%",
+                end: "bottom 52%",
+                scrub: 0.6,
+              },
+            }
+          );
+        }
+      }
+
+      // 4. "How It Works" Section Scroll Reveal
+      const howTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: howItWorksRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+      howTl
+        .fromTo(
+          ".how-box-container",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            clearProps: "transform",
+          }
+        )
+        .fromTo(
+          ".step-row-anim",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: "power2.out",
+            clearProps: "transform",
+          },
+          "-=0.4"
+        );
+
+      // 5. First Split Section Scroll Reveal
+      const split1Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: split1Ref.current,
+          start: "top 82%",
+          once: true,
+        },
+      });
+      split1Tl.fromTo(
+        split1Ref.current,
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          clearProps: "transform",
+        }
+      );
+
+      // 6. Second Split Section Scroll Reveal
+      const split2Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: split2Ref.current,
+          start: "top 82%",
+          once: true,
+        },
+      });
+      split2Tl.fromTo(
+        split2Ref.current,
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          clearProps: "transform",
+        }
+      );
+
+      ScrollTrigger.refresh();
+    },
+    { scope: containerRef }
+  );
+
+  useEffect(() => {
+    const handleLoad = () => {
+      ScrollTrigger.refresh();
+    };
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        ScrollTrigger.refresh();
+      } else {
+        window.addEventListener("load", handleLoad);
+      }
+    }
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 350);
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleLoad);
+      }
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-hidden font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
+    >
+      <Navbar />
+
+      <main className="w-full">
+        {/* =====================================================================
+            1. HERO SECTION
+           ===================================================================== */}
+        <section
+          ref={heroRef}
+          className="relative bg-cover bg-center bg-no-repeat overflow-hidden flex flex-col justify-end min-h-screen"
+          style={{
+            backgroundImage: "url('/images/business-partners-team-walking-down-discussing-work.webp')",
+            backgroundPosition: "center 50%",
+            minHeight: "100vh",
+            paddingTop: "160px",
+            paddingBottom: "clamp(44px, 5.5vh, 76px)",
+          }}
+        >
+          {/* Moody Dark Overlays */}
+          <div
+            className="absolute inset-0 z-1"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(10, 12, 16, 0.72) 0%, rgba(10, 12, 16, 0.3) 38%, rgba(10, 12, 16, 0.88) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 z-1"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(10, 12, 16, 0.85) 0%, rgba(10, 12, 16, 0.45) 50%, transparent 100%)",
+            }}
+          />
+
+          <div className="relative z-10 w-full container-custom">
+            <div className="max-w-[1140px] w-full mx-auto">
+              <div className="max-w-2xl flex flex-col items-start">
+                {/* Small Tag: Our Core Activities */}
+                <span
+                  className="hero-anim-item font-instrument-sans text-xs sm:text-[13px] text-white/70 font-medium tracking-wide block select-none"
+                  style={{ marginBottom: "18px" }}
+                >
+                  Our Core Activities
+                </span>
+
+                {/* Main Title */}
+                <h1
+                  className="hero-anim-item font-clash-grotesk font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-[68px] text-white leading-[1.08] tracking-tight"
+                  style={{ marginBottom: "20px" }}
+                >
+                  Strategic <span className="text-[#00A2E2]">Partnerships</span>
+                </h1>
+
+                {/* Subtitle */}
+                <p
+                  className="hero-anim-item font-instrument-sans text-sm sm:text-base text-white/80 leading-relaxed max-w-lg"
+                  style={{ marginBottom: "36px" }}
+                >
+                  We build long-term relationships with entrepreneurs, investors, businesses, and institutions where complementary capabilities, resources, and networks create mutual value.
+                </p>
+
+                {/* Book A Call Button */}
+                <div className="hero-anim-item">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center justify-between gap-6 sm:gap-8 bg-white text-black transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-md border border-gray-200/80 group select-none cursor-pointer w-fit"
+                    style={{
+                      paddingLeft: "24px",
+                      paddingRight: "8px",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                      height: "52px",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <span
+                      className="font-instrument-sans font-medium text-black leading-none"
+                      style={{ fontSize: "16px" }}
+                    >
+                      Book A Call
+                    </span>
+                    <div
+                      className="flex items-center justify-center bg-[#00A2E2] group-hover:bg-[#008bc4] transition-all duration-300 shrink-0"
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      <img
+                        src="/button arrow.svg"
+                        alt="Arrow"
+                        style={{
+                          width: "16px",
+                          height: "16px",
+                          objectFit: "contain",
+                        }}
+                        className="transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================================
+            2. THE LIGHT GREY INTRO SECTION & DELIVERABLES
+           ===================================================================== */}
+        <section
+          ref={introRef}
+          className="bg-[#F3F3F3] text-[#111111]"
+          style={{
+            paddingTop: "140px",
+            paddingBottom: "100px",
+          }}
+        >
+          <div className="container-custom">
+            <div className="w-full">
+              {/* Category Label */}
+              <h2
+                className="intro-anim-item font-clash-grotesk font-medium text-[#111111] block"
+                style={{
+                  fontSize: "18pt",
+                  fontWeight: 500,
+                  marginBottom: "clamp(32px, 3.5vw, 52px)",
+                }}
+              >
+                The Problem We Solve
+              </h2>
+
+              {/* Large Intro Paragraphs with Word-by-Word Scrub */}
+              <div ref={problemDescRef} className="problem-desc-container w-full">
+                <p
+                  className="font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
+                  style={{
+                    fontSize: "clamp(28px, 3.8vw, 48pt)",
+                    lineHeight: "1.24",
+                    marginBottom: "clamp(36px, 4vw, 56px)",
+                  }}
+                >
+                  {renderScrubText(
+                    "We build long-term relationships with entrepreneurs, investors, businesses, and institutions where complementary capabilities, resources, and networks can create mutual value."
+                  )}
+                </p>
+
+                <p
+                  className="font-instrument-sans font-normal text-[#111111] w-full tracking-tight"
+                  style={{
+                    fontSize: "clamp(28px, 3.8vw, 48pt)",
+                    lineHeight: "1.24",
+                    marginBottom: "clamp(64px, 7vw, 96px)",
+                  }}
+                >
+                  {renderScrubText(
+                    "Our partnerships are designed around alignment, trust, and shared long-term objectives, establishing relationships that endure across changing market cycles."
+                  )}
+                </p>
+              </div>
+
+              {/* Deliverables Section */}
+              <div className="intro-anim-item w-full">
+                <h3
+                  className="font-clash-grotesk font-medium text-[#111111] block"
+                  style={{
+                    fontSize: "18pt",
+                    fontWeight: 500,
+                    marginBottom: "24px",
+                  }}
+                >
+                  Deliverables:
+                </h3>
+                <div className="flex flex-wrap gap-3 sm:gap-3.5 w-full">
+                  {DELIVERABLES.map((item, idx) => (
+                    <span
+                      key={idx}
+                      className="border border-[#6C6C6C] text-[#6C6C6C] rounded-full font-instrument-sans font-normal text-[15px] sm:text-[16px] transition-all duration-200 hover:border-[#00A2E2] hover:text-[#00A2E2] select-none whitespace-nowrap"
+                      style={{
+                        paddingLeft: "16pt",
+                        paddingRight: "16pt",
+                        paddingTop: "6pt",
+                        paddingBottom: "6pt",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================================
+            3. "HOW IT WORKS" WHITE BOX SECTION
+           ===================================================================== */}
+        <section
+          ref={howItWorksRef}
+          className="bg-[#F3F3F3] text-[#111111]"
+          style={{
+            paddingTop: "40px",
+            paddingBottom: "140px",
+          }}
+        >
+          <div className="container-custom">
+            <div className="w-full">
+              <div
+                className="how-box-container bg-white w-full rounded-[24px] sm:rounded-[32px] border border-[#E5E5E5] shadow-xs"
+                style={{
+                  paddingTop: "64px",
+                  paddingBottom: "64px",
+                  paddingLeft: "clamp(28px, 6vw, 76px)",
+                  paddingRight: "clamp(28px, 6vw, 76px)",
+                }}
+              >
+                <div
+                  className="flex flex-col md:flex-row items-start gap-6 sm:gap-8 md:gap-12"
+                  style={{ marginBottom: "56px" }}
+                >
+                  <div className="hidden md:block shrink-0 md:w-36" aria-hidden="true" />
+                  <h2
+                    className="font-clash-grotesk font-medium text-[#111111] tracking-tight"
+                    style={{
+                      fontSize: "clamp(32px, 3.8vw, 48px)",
+                      fontWeight: 500,
+                      lineHeight: "1.15",
+                    }}
+                  >
+                    How it works
+                  </h2>
+                </div>
+
+                <div className="divide-y divide-[#EAEAEA]">
+                  {STEPS.map((step, idx) => (
+                    <div
+                      key={idx}
+                      className="step-row-anim flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8 md:gap-12 group"
+                      style={{
+                        paddingTop: "32px",
+                        paddingBottom: "32px",
+                      }}
+                    >
+                      <div className="shrink-0 w-auto md:w-36">
+                        <span
+                          className="inline-block border border-[#6C6C6C] text-[#6C6C6C] bg-transparent rounded-full font-instrument-sans font-normal select-none"
+                          style={{
+                            fontSize: "20px",
+                            paddingLeft: "16px",
+                            paddingRight: "16px",
+                            paddingTop: "6px",
+                            paddingBottom: "6px",
+                          }}
+                        >
+                          {step.tag}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="font-clash-grotesk font-medium text-[#111111] md:w-[340px] lg:w-[400px] shrink-0"
+                        style={{
+                          fontSize: "clamp(24px, 2.5vw, 32px)",
+                          fontWeight: 500,
+                          lineHeight: "1.2",
+                        }}
+                      >
+                        {step.title}
+                      </h3>
+
+                      <p className="font-instrument-sans text-[#737373] leading-relaxed max-w-xl md:flex-1 text-[14.5px] sm:text-[15.5px]">
+                        {step.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================================
+            4. FIRST SPLIT SECTION
+           ===================================================================== */}
+        <section
+          ref={split1Ref}
+          className="bg-[#F3F3F3] text-[#111111]"
+          style={{
+            paddingTop: "0px",
+            paddingBottom: "140px",
+          }}
+        >
+          <div className="container-custom">
+            <div className="w-full">
+              <div
+                className="grid grid-cols-1 lg:grid-cols-12 items-center"
+                style={{
+                  columnGap: "clamp(48px, 6vw, 96px)",
+                  rowGap: "48px",
+                }}
+              >
+                <div className="lg:col-span-6 relative">
+                  <div
+                    className="relative overflow-hidden aspect-square border border-neutral-200/80 shadow-sm group"
+                    style={{ borderRadius: "14px" }}
+                  >
+                    <img
+                      src="/images/corporate_governance_2.png"
+                      alt="Strategic Partnerships Handshake and Meeting"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+
+                    <a
+                      href="#contact"
+                      className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-white shadow-sm flex flex-col justify-between transition-all duration-300 group/btn hover:shadow-md cursor-pointer select-none"
+                      style={{
+                        borderRadius: "8px",
+                        width: "306px",
+                        maxWidth: "calc(100% - 32px)",
+                        height: "162px",
+                        paddingTop: "14px",
+                        paddingRight: "14px",
+                        paddingBottom: "14px",
+                        paddingLeft: "16px",
+                      }}
+                    >
+                      <div className="self-end">
+                        <img
+                          src="/guidance_up-arrow.svg"
+                          alt="Arrow"
+                          className="w-6 h-6 object-contain transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                          style={{ width: "24px", height: "24px" }}
+                        />
+                      </div>
+                      <span
+                        className="font-instrument-sans font-medium text-[#111111] leading-none block"
+                        style={{ fontSize: "18px", fontWeight: 500 }}
+                      >
+                        Book A Call
+                      </span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-6">
+                  <span
+                    className="font-clash-grotesk font-medium text-[#111111] uppercase tracking-wide block"
+                    style={{ fontSize: "18px", fontWeight: 500, marginBottom: "16px" }}
+                  >
+                    PARTNERSHIP PRINCIPLES
+                  </span>
+
+                  <h2
+                    className="font-instrument-sans font-normal text-[#111111] tracking-tight"
+                    style={{
+                      fontFamily: "var(--font-instrument-sans)",
+                      fontSize: "32px",
+                      fontWeight: 400,
+                      lineHeight: "1.24",
+                      marginBottom: "36px",
+                    }}
+                  >
+                    Creating mutual value through trust, alignment, and network synergy
+                  </h2>
+
+                  <ul className="space-y-4 sm:space-y-5">
+                    {VALUE_POINTS.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-3.5">
+                        <div
+                          className="shrink-0 flex items-center justify-center select-none"
+                          style={{ height: "28px", width: "12px" }}
+                        >
+                          <span
+                            className="rounded-full shrink-0"
+                            style={{
+                              width: "5px",
+                              height: "5px",
+                              backgroundColor: "#737373",
+                            }}
+                          />
+                        </div>
+                        <span
+                          className="font-instrument-sans font-normal"
+                          style={{
+                            fontSize: "20px",
+                            lineHeight: "28px",
+                            fontWeight: 400,
+                            color: "#737373",
+                          }}
+                        >
+                          {point}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================================
+            5. SECOND SPLIT SECTION
+           ===================================================================== */}
+        <section
+          ref={split2Ref}
+          className="bg-[#F3F3F3] text-[#111111]"
+          style={{
+            paddingTop: "0px",
+            paddingBottom: "140px",
+          }}
+        >
+          <div className="container-custom">
+            <div className="w-full">
+              <div
+                className="grid grid-cols-1 lg:grid-cols-12 items-center"
+                style={{
+                  columnGap: "clamp(48px, 6vw, 96px)",
+                  rowGap: "48px",
+                }}
+              >
+                <div className="lg:col-span-6">
+                  <span
+                    className="font-clash-grotesk font-medium text-[#111111] uppercase tracking-wide block"
+                    style={{ fontSize: "18px", fontWeight: 500, marginBottom: "16px" }}
+                  >
+                    WHO IT IS FOR
+                  </span>
+
+                  <h2
+                    className="font-instrument-sans font-normal text-[#111111] tracking-tight"
+                    style={{
+                      fontFamily: "var(--font-instrument-sans)",
+                      fontSize: "32px",
+                      fontWeight: 400,
+                      lineHeight: "1.24",
+                      marginBottom: "36px",
+                    }}
+                  >
+                    Entrepreneurs, institutions, and co-investors seeking an aligned partner
+                  </h2>
+
+                  <p
+                    className="font-instrument-sans font-normal"
+                    style={{
+                      fontSize: "20px",
+                      lineHeight: "28px",
+                      fontWeight: 400,
+                      color: "#737373",
+                    }}
+                  >
+                    Suited for visionary entrepreneurs, corporate partners, and institutional investors looking to co-create value, enter new geographies, and build high-impact joint initiatives with an aligned investment group committed to enduring outcomes.
+                  </p>
+                </div>
+
+                <div className="lg:col-span-6 relative">
+                  <div
+                    className="relative overflow-hidden aspect-square border border-neutral-200/80 shadow-sm group"
+                    style={{ borderRadius: "14px" }}
+                  >
+                    <img
+                      src="/images/corporate_governance_3.png"
+                      alt="Strategic partners reviewing international development plan"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+
+                    <a
+                      href="#contact"
+                      className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 bg-white shadow-sm flex flex-col justify-between transition-all duration-300 group/btn hover:shadow-md cursor-pointer select-none"
+                      style={{
+                        borderRadius: "8px",
+                        width: "306px",
+                        maxWidth: "calc(100% - 32px)",
+                        height: "162px",
+                        paddingTop: "14px",
+                        paddingRight: "14px",
+                        paddingBottom: "14px",
+                        paddingLeft: "16px",
+                      }}
+                    >
+                      <div className="self-end">
+                        <img
+                          src="/guidance_up-arrow.svg"
+                          alt="Arrow"
+                          className="w-6 h-6 object-contain transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                          style={{ width: "24px", height: "24px" }}
+                        />
+                      </div>
+                      <span
+                        className="font-instrument-sans font-medium text-[#111111] leading-none block"
+                        style={{ fontSize: "18px", fontWeight: 500 }}
+                      >
+                        Let&apos;s Connect
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Contact />
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

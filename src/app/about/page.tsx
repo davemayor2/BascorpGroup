@@ -39,21 +39,21 @@ const HERO_STATS = [
 const CORE_PILLARS = [
   {
     id: "(01)",
-    title: "Our Mission",
+    title: "Our Purpose",
     description:
-      "To identify, develop, and support businesses with the potential to grow, while creating meaningful partnerships across the markets we serve.",
+      "Through a disciplined approach to investment and partnerships, BASCORP seeks to build, develop, and support businesses with strong potential while maintaining a clear focus on governance, risk management, and enduring value.",
   },
   {
     id: "(02)",
-    title: "Our Vision",
+    title: "Value Beyond Capital",
     description:
-      "To build a diversified portfolio of businesses and partnerships that create lasting value and connect opportunities across emerging markets.",
+      "We combine capital with capability and long-term commitment, working alongside management teams to unlock opportunities, enter new markets, and build sustainable competitive advantage.",
   },
   {
     id: "(03)",
-    title: "Our Approach",
+    title: "Governance & Discipline",
     description:
-      "Identifying opportunities with strong potential for sustainable growth. Building relationships that create long-term value for businesses and stakeholders.",
+      "Governance is a fundamental discipline embedded in how we lead, make decisions, and manage risk, maintaining a clear balance between authority, accountability, and effective oversight.",
   },
 ];
 
@@ -517,9 +517,7 @@ export default function AboutPage() {
               className="hero-fade-up font-instrument-sans text-sm sm:text-base md:text-[17px] text-[#555555] max-w-2xl leading-relaxed font-normal"
               style={{ marginBottom: "42px" }}
             >
-              A diversified investment group connecting businesses, partnerships,
-              <br className="hidden sm:inline" />
-              and opportunities across the Middle East and Asia.
+              A diversified investment and business group operating at the intersection of investment, strategic capital, business development, and long-term value creation across the Arabian Gulf, the wider Middle East, and Asia.
             </p>
 
             {/* White CTA Button: Book A Call (Home Page Component Style) */}
@@ -623,7 +621,7 @@ export default function AboutPage() {
                 Overview
               </span>
               <h2 className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[46px] leading-[1.12] text-[#111111] max-w-2xl">
-                Innovative Business Solutions for Success Company
+                Creating Value Beyond Capital
               </h2>
             </div>
           </div>
@@ -671,10 +669,10 @@ export default function AboutPage() {
             >
               <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-5">
                 <p className="font-instrument-sans text-xs sm:text-[14.5px] md:text-[15.5px] text-white/95 leading-[1.65] font-normal">
-                  Our focus is on maximizing each business opportunity which is presented to us, and creating mutually beneficial partnerships with like-minded companies and entrepreneurs, both in the Middle East and around the world.
+                  BASCORP’s proposition extends beyond providing capital. We bring together investment discipline, strategic insight, commercial expertise, governance, and an established network of relationships to help businesses realise their potential.
                 </p>
                 <p className="font-instrument-sans text-xs sm:text-[14.5px] md:text-[15.5px] text-white/90 leading-[1.65] font-normal">
-                  We work with our partners to create long-term business relationships, utilizing our expertise, professionalism and diverse network. Positioning ourselves for global expansion, we actively assess outbound as well as inbound investment propositions, placing capital in businesses and other vehicles that are designed to generate tangible social impact as well as a financial return.
+                  Our objective is not simply to invest in businesses, but to help build stronger businesses, create lasting value, and establish partnerships that endure. As an investor and long-term strategic partner, BASCORP works alongside management teams and partners to strengthen businesses, unlock opportunities, enter new markets, and build sustainable competitive advantage.
                 </p>
               </div>
             </div>
@@ -757,7 +755,7 @@ export default function AboutPage() {
                 {/* Bottom Element Wrapper */}
                 <div className="mt-8 md:mt-0 pt-6 md:pt-10 flex flex-col items-start" style={{ gap: "32px" }}>
                   <p className="font-instrument-sans text-sm sm:text-base text-white leading-relaxed max-w-sm">
-                    Connecting businesses with opportunities across the Middle East and wider Asian markets.
+                    Operating at the intersection of investment, strategic capital, and long-term value creation to support sustainable growth across the Arabian Gulf, the wider Middle East, and Asia.
                   </p>
 
                   {/* Button */}
@@ -882,9 +880,7 @@ export default function AboutPage() {
               <p
                 className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#737373] leading-[1.65] max-w-lg font-normal"
               >
-                We are dedicated to building a diverse team in all aspects. While we
-                haven&apos;t reached full diversity yet, here&apos;s our current progress with
-                open and honest communication.
+                BASCORP maintains a clear distinction between management responsibility and governance oversight. Our executive leadership executes strategy, manages operations, and delivers agreed objectives under disciplined oversight, integrity, and accountability.
               </p>
             </div>
 

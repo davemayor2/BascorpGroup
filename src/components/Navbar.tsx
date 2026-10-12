@@ -18,23 +18,30 @@ const SERVICES_LIST: ServiceItem[] = [
   {
     title: "Investment Approach",
     description:
-      "Bascorp Group works with companies to develop capital solutions tailored around specific requirements.",
+      "Selective and disciplined capital allocation based on opportunity, risk, quality, and long-term potential.",
     iconSrc: "/investment_approach.svg",
     href: "/investment-approach",
   },
   {
-    title: "Disciplined Investment Strategy",
+    title: "Business Building & Development",
     description:
-      "Bascorp Group works with companies to develop capital solutions tailored around specific requirements.",
+      "Strengthening, developing, and scaling operations with strategic direction, commercial expertise, and market access.",
     iconSrc: "/Disciplined_icon.svg",
-    href: "/disciplined-investment-strategy",
+    href: "/business-building-development",
   },
   {
-    title: "Corporate Governance",
+    title: "Strategic Partnerships",
     description:
-      "Bascorp Group works with companies to develop capital solutions tailored around specific requirements.",
+      "Building long-term relationships where complementary capabilities, resources, and networks create mutual value.",
     iconSrc: "/corporate_governance.svg",
-    href: "/corporate-governance",
+    href: "/strategic-partnerships",
+  },
+  {
+    title: "Portfolio Management",
+    description:
+      "Actively overseeing and developing investments through strategic oversight, performance monitoring, and governance.",
+    iconSrc: "/portfolio_icon_black.svg",
+    href: "/portfolio-management",
   },
 ];
 
@@ -42,11 +49,12 @@ export default function Navbar() {
   const pathname = usePathname();
   const isAbout = pathname === "/about";
   const isInvestmentApproach = pathname === "/investment-approach";
-  const isDisciplined = pathname === "/disciplined-investment-strategy";
-  const isCorporateGovernance = pathname === "/corporate-governance";
+  const isBusinessBuilding = pathname === "/business-building-development" || pathname === "/disciplined-investment-strategy";
+  const isStrategicPartnerships = pathname === "/strategic-partnerships";
+  const isPortfolioManagement = pathname === "/portfolio-management" || pathname === "/corporate-governance";
   const isOurInvestments = pathname === "/our-investments" || pathname === "/our-investment";
   const isContact = pathname === "/lets-connect" || pathname === "/contact";
-  const isServicePage = isInvestmentApproach || isDisciplined || isCorporateGovernance;
+  const isServicePage = isInvestmentApproach || isBusinessBuilding || isStrategicPartnerships || isPortfolioManagement;
   const isHome = (pathname === "/" || !pathname) && !isAbout && !isServicePage && !isOurInvestments && !isContact;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -384,12 +392,12 @@ export default function Navbar() {
               <div className="flex-1 flex flex-col justify-center pr-2 py-4">
                 <div>
                   <h3 className="text-black text-[20px] lg:text-[22px] font-semibold font-instrument-sans tracking-tight">
-                    Services
+                    Our Core Activities
                   </h3>
                   <div
                     style={{
                       marginTop: "16px",
-                      marginBottom: "36px",
+                      marginBottom: "24px",
                       height: "1px",
                       backgroundColor: "rgba(0, 0, 0, 0.08)",
                       width: "100%",
@@ -400,7 +408,7 @@ export default function Navbar() {
                 <div
                   className="flex flex-col"
                   style={{
-                    gap: "20px",
+                    gap: "14px",
                   }}
                 >
                   {SERVICES_LIST.map((service) => {

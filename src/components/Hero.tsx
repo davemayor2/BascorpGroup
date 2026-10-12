@@ -107,7 +107,7 @@ export default function Hero() {
       <div
         className="hero-bg-image absolute inset-0 bg-cover bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/hero section image.jpg')",
+          backgroundImage: "url('/images/new hero section.webp')",
         }}
       />
       {/* Dark overlay gradients matching reference */}
@@ -138,9 +138,7 @@ export default function Hero() {
             ref={subtitleRef}
             className="text-[16px] sm:text-[17px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.6] sm:leading-[1.65] w-full max-w-full sm:max-w-lg md:max-w-xl"
           >
-            We partner with businesses across the Middle East, the Arabian Gulf and Asia,
-            bringing strategic insight, market expertise and a strong network to support
-            sustainable growth.
+            Operating at the intersection of investment, strategic capital, business development, and long-term value creation across the Arabian Gulf, the wider Middle East, and Asia.
           </p>
 
           {/* CTA Button with comfortable separation */}
