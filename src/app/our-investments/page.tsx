@@ -46,7 +46,7 @@ const SECTOR_CARDS = [
     title: "Aviation",
     description:
       "Our aviation interests extend across businesses and opportunities connected to air transport, aviation services, infrastructure, and related commercial activities. BASCORP seeks to support operators and businesses positioned to benefit from the continued development of regional and international connectivity.",
-    image: "/images/card4.png",
+    image: "/images/aviation_icon.svg",
     icon: "/Aviation.svg",
   },
   {
