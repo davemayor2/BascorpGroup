@@ -262,7 +262,7 @@ export default function AboutPage() {
           clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: overviewRef.current,
-            start: "top 85%",
+            start: "top 92%",
             toggleActions: "play none none none",
             once: true,
           },
@@ -280,20 +280,20 @@ export default function AboutPage() {
           clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: overviewRef.current,
-            start: "top 85%",
+            start: "top 92%",
             toggleActions: "play none none none",
             once: true,
           },
         }
       );
 
-      // Parallax scroll on Overview Banner Image (moves UPWARD as user scrolls down)
+      // Parallax scroll on Overview Banner Image
       if (imageRef.current && bannerRef.current) {
         gsap.fromTo(
           imageRef.current,
-          { yPercent: 20 },
+          { yPercent: 15 },
           {
-            yPercent: -20,
+            yPercent: -15,
             ease: "none",
             scrollTrigger: {
               trigger: bannerRef.current,
@@ -323,10 +323,10 @@ export default function AboutPage() {
         }
       );
 
-      // Glitch Animation for the Big letters only in the stat cards below the picture frame
+      // Glitch Animation for the Big letters in stat cards
       ScrollTrigger.create({
         trigger: ".overview-stat-row",
-        start: "top 85%",
+        start: "top 92%",
         once: true,
         onEnter: () => {
           if (statFoundedRef.current) {
@@ -346,24 +346,28 @@ export default function AboutPage() {
       });
 
       // 3. Mission, Vision & Excellence Section ScrollTrigger
-      gsap.from(pillarsRef.current, {
-        scrollTrigger: {
-          trigger: pillarsRef.current,
-          start: "top 85%",
-          once: true,
-        },
-        opacity: 0,
-        y: 35,
-        duration: 0.8,
-        ease: "power3.out",
-        clearProps: "transform,opacity",
-      });
+      gsap.fromTo(
+        pillarsRef.current,
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+          scrollTrigger: {
+            trigger: pillarsRef.current,
+            start: "top 92%",
+            once: true,
+          },
+        }
+      );
 
       // Mission Section Scroll Slider Indicator Animation
       const missionSlider = gsap.timeline({
         scrollTrigger: {
           trigger: pillarsRef.current,
-          start: "top 75%",
+          start: "top 80%",
           end: "bottom 35%",
           scrub: 0.4,
         },
@@ -398,7 +402,7 @@ export default function AboutPage() {
           clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: teamRef.current,
-            start: "top 85%",
+            start: "top 92%",
             once: true,
           },
         }
@@ -416,13 +420,11 @@ export default function AboutPage() {
           clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: teamRef.current,
-            start: "top 85%",
+            start: "top 92%",
             once: true,
           },
         }
       );
-
-
 
       // Refresh ScrollTrigger calculations
       ScrollTrigger.refresh();
@@ -431,32 +433,77 @@ export default function AboutPage() {
   );
 
   useEffect(() => {
-    const handleLoad = () => {
+    // Force 2D rendering to prevent older Intel GPU compositing bugs in Safari
+    gsap.config({ force3D: false });
+
+    const handleRefresh = () => {
       ScrollTrigger.refresh();
     };
+
     if (typeof window !== "undefined") {
-      if (document.readyState === "complete") {
-        ScrollTrigger.refresh();
-      } else {
-        window.addEventListener("load", handleLoad);
+      window.addEventListener("load", handleRefresh);
+      window.addEventListener("resize", handleRefresh);
+      if (document.fonts) {
+        document.fonts.ready.then(handleRefresh);
       }
     }
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 350);
+
+    const t1 = setTimeout(handleRefresh, 250);
+    const t2 = setTimeout(handleRefresh, 750);
+    const t3 = setTimeout(handleRefresh, 1500);
+
+    // Failsafe Observer: Ensure no content stays stuck at opacity 0 on legacy Safari / older Macs
+    const failsafeElements = containerRef.current?.querySelectorAll<HTMLElement>(
+      ".overview-header, .overview-banner, .overview-stat, .team-header-content, .team-card-wrapper, .mission-dark-wrapper"
+    );
+
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              if (window.getComputedStyle(el).opacity === "0") {
+                gsap.to(el, { opacity: 1, y: 0, duration: 0.5, clearProps: "transform,opacity" });
+              }
+            }
+          });
+        },
+        { rootMargin: "50px 0px 50px 0px" }
+      );
+      failsafeElements?.forEach((el) => observer?.observe(el));
+    }
+
+    const handleScrollFallback = () => {
+      failsafeElements?.forEach((el) => {
+        if (window.getComputedStyle(el).opacity === "0") {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 80) {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "transform,opacity" });
+          }
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScrollFallback, { passive: true });
 
     return () => {
       if (typeof window !== "undefined") {
-        window.removeEventListener("load", handleLoad);
+        window.removeEventListener("load", handleRefresh);
+        window.removeEventListener("resize", handleRefresh);
+        window.removeEventListener("scroll", handleScrollFallback);
       }
-      clearTimeout(timer);
+      observer?.disconnect();
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-hidden font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
+      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-clip font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
     >
       {/* Floating Dark Navbar */}
       <Navbar />

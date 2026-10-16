@@ -26,14 +26,17 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Note: scroll-behavior: smooth is intentionally omitted as it breaks GSAP ScrollTrigger calculation in Safari */
+  width: 100%;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-instrument-sans), sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  min-height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {

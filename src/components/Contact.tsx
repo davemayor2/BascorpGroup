@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -18,8 +19,9 @@ export default function Contact() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 92%",
           toggleActions: "play none none none",
+          once: true,
         },
       });
 
@@ -31,7 +33,7 @@ export default function Contact() {
           y: 0,
           duration: 0.65,
           ease: "power2.out",
-          clearProps: "transform",
+          clearProps: "all",
         }
       ).fromTo(
         contentRef.current,
@@ -41,7 +43,7 @@ export default function Contact() {
           opacity: 1,
           duration: 0.75,
           ease: "power3.out",
-          clearProps: "transform",
+          clearProps: "all",
         },
         "-=0.15"
       );
@@ -49,28 +51,103 @@ export default function Contact() {
     { scope: containerRef }
   );
 
+  React.useEffect(() => {
+    gsap.config({ force3D: false });
+
+    const handleRefresh = () => {
+      ScrollTrigger.refresh();
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("load", handleRefresh);
+      window.addEventListener("resize", handleRefresh);
+      if (document.fonts) {
+        document.fonts.ready.then(handleRefresh);
+      }
+    }
+
+    const t1 = setTimeout(handleRefresh, 250);
+    const t2 = setTimeout(handleRefresh, 750);
+
+    const el = containerRef.current;
+    let observer: IntersectionObserver | null = null;
+    if (el && typeof window !== "undefined" && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (window.getComputedStyle(el).opacity === "0") {
+                gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
+              }
+              if (contentRef.current && window.getComputedStyle(contentRef.current).opacity === "0") {
+                gsap.to(contentRef.current, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
+              }
+            }
+          });
+        },
+        { rootMargin: "50px 0px 50px 0px" }
+      );
+      observer.observe(el);
+    }
+
+    const handleScrollFallback = () => {
+      if (el && window.getComputedStyle(el).opacity === "0") {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 80) {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
+          if (contentRef.current) {
+            gsap.to(contentRef.current, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScrollFallback, { passive: true });
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleRefresh);
+        window.removeEventListener("resize", handleRefresh);
+        window.removeEventListener("scroll", handleScrollFallback);
+      }
+      observer?.disconnect();
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
+
   return (
     <section
       id="contact"
       ref={containerRef}
-      className="w-full relative bg-cover bg-no-repeat overflow-hidden flex items-center"
+      className="w-full relative overflow-hidden flex flex-col justify-center"
       style={{
-        backgroundImage: "url('/images/request a callback.jpg')",
-        backgroundPosition: "center 35%",
-        minHeight: "480px",
-        paddingTop: "90px",
-        paddingBottom: "90px",
+        backgroundColor: "#161616",
+        minHeight: "clamp(480px, 46vh, 560px)",
+        paddingTop: "clamp(100px, 9vw, 140px)",
+        paddingBottom: "clamp(100px, 9vw, 140px)",
       }}
     >
-      {/* Dark overlay gradients matching reference design */}
-      <div
-        className="absolute inset-0 z-1"
-        style={{
-          background:
-            "linear-gradient(to right, rgba(17, 17, 17, 0.88) 0%, rgba(17, 17, 17, 0.65) 45%, rgba(17, 17, 17, 0.25) 100%)",
-        }}
-      />
-      <div className="absolute inset-0 bg-black/30 z-1 md:hidden" />
+      {/* Background Image Container with Next.js Image optimization */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <Image
+          src="/images/request-a-callback.jpg"
+          alt="Have an Opportunity in Mind"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_35%]"
+        />
+
+        {/* Dark overlay gradients matching reference design */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(17, 17, 17, 0.90) 0%, rgba(17, 17, 17, 0.72) 48%, rgba(17, 17, 17, 0.30) 100%)",
+          }}
+        />
+        <div className="absolute inset-0 bg-black/30 md:hidden" />
+      </div>
 
       {/* Main Left-Aligned CTA Content */}
       <div className="container-custom relative z-10 w-full">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 const SECTOR_CARDS = [
@@ -87,18 +87,17 @@ export default function OurInvestmentsPage() {
     () => {
       // 1. Hero Content Entrance Animation
       const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      heroTl
-        .fromTo(
-          ".hero-fade-item",
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.75,
-            stagger: 0.12,
-            clearProps: "transform,opacity",
-          }
-        );
+      heroTl.fromTo(
+        ".hero-fade-item",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          stagger: 0.12,
+          clearProps: "transform,opacity",
+        }
+      );
 
       // 2. Sector Cards Scroll Reveal Animation
       const cards = gsap.utils.toArray<HTMLElement>(".sector-card");
@@ -111,9 +110,10 @@ export default function OurInvestmentsPage() {
             y: 0,
             duration: 0.85,
             ease: "power2.out",
+            clearProps: "transform,opacity",
             scrollTrigger: {
               trigger: card,
-              start: "top 85%",
+              start: "top 92%",
               once: true,
             },
           }
@@ -125,10 +125,76 @@ export default function OurInvestmentsPage() {
     { scope: containerRef }
   );
 
+  // Multi-stage refresh & failsafe fallback for legacy Safari / older Macs
+  useEffect(() => {
+    gsap.config({ force3D: false });
+
+    const handleRefresh = () => {
+      ScrollTrigger.refresh();
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("load", handleRefresh);
+      window.addEventListener("resize", handleRefresh);
+      if (document.fonts) {
+        document.fonts.ready.then(handleRefresh);
+      }
+    }
+
+    const t1 = setTimeout(handleRefresh, 250);
+    const t2 = setTimeout(handleRefresh, 750);
+    const t3 = setTimeout(handleRefresh, 1500);
+
+    // Failsafe Observer: Ensure no sector cards stay stuck at opacity 0 on legacy Safari / older Macs
+    const failsafeCards = containerRef.current?.querySelectorAll<HTMLElement>(".sector-card");
+
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              if (window.getComputedStyle(el).opacity === "0") {
+                gsap.to(el, { opacity: 1, y: 0, duration: 0.5, clearProps: "transform,opacity" });
+              }
+            }
+          });
+        },
+        { rootMargin: "50px 0px 50px 0px" }
+      );
+      failsafeCards?.forEach((el) => observer?.observe(el));
+    }
+
+    const handleScrollFallback = () => {
+      failsafeCards?.forEach((el) => {
+        if (window.getComputedStyle(el).opacity === "0") {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 80) {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "transform,opacity" });
+          }
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScrollFallback, { passive: true });
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("load", handleRefresh);
+        window.removeEventListener("resize", handleRefresh);
+        window.removeEventListener("scroll", handleScrollFallback);
+      }
+      observer?.disconnect();
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, []);
+
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-hidden font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
+      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-clip font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
     >
       {/* 1. Top Standard Floating Dark Navbar */}
       <Navbar />

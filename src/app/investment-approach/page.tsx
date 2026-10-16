@@ -111,7 +111,7 @@ export default function InvestmentApproachPage() {
       const introTl = gsap.timeline({
         scrollTrigger: {
           trigger: introRef.current,
-          start: "top 80%",
+          start: "top 92%",
           once: true,
         },
       });
@@ -124,13 +124,15 @@ export default function InvestmentApproachPage() {
           duration: 0.9,
           stagger: 0.18,
           ease: "power2.out",
-          clearProps: "transform",
+          clearProps: "transform,opacity",
         }
       );
 
       // 3. "The Problem We Solve" Word-by-Word Scroll Scrub Animation
       if (problemDescRef.current) {
-        const words = problemDescRef.current.querySelectorAll<HTMLElement>(".word-scrub");
+        const words = problemDescRef.current.querySelectorAll<HTMLElement>(
+          ".word-scrub"
+        );
         if (words.length > 0) {
           gsap.fromTo(
             words,
@@ -141,7 +143,7 @@ export default function InvestmentApproachPage() {
               stagger: 0.1,
               scrollTrigger: {
                 trigger: problemDescRef.current,
-                start: "top 78%",
+                start: "top 90%",
                 end: "bottom 52%",
                 scrub: 0.6,
               },
@@ -154,7 +156,7 @@ export default function InvestmentApproachPage() {
       const howTl = gsap.timeline({
         scrollTrigger: {
           trigger: howItWorksRef.current,
-          start: "top 82%",
+          start: "top 92%",
           once: true,
         },
       });
@@ -168,7 +170,7 @@ export default function InvestmentApproachPage() {
             scale: 1,
             duration: 0.75,
             ease: "power2.out",
-            clearProps: "transform",
+            clearProps: "transform,opacity",
           }
         )
         .fromTo(
@@ -180,7 +182,7 @@ export default function InvestmentApproachPage() {
             stagger: 0.1,
             duration: 0.6,
             ease: "power3.out",
-            clearProps: "transform",
+            clearProps: "transform,opacity",
           },
           "-=0.3"
         );
@@ -189,7 +191,7 @@ export default function InvestmentApproachPage() {
       const split1Tl = gsap.timeline({
         scrollTrigger: {
           trigger: split1Ref.current,
-          start: "top 82%",
+          start: "top 92%",
           once: true,
         },
       });
@@ -201,7 +203,7 @@ export default function InvestmentApproachPage() {
           y: 0,
           duration: 0.75,
           ease: "power2.out",
-          clearProps: "transform",
+          clearProps: "transform,opacity",
         }
       );
 
@@ -209,7 +211,7 @@ export default function InvestmentApproachPage() {
       const split2Tl = gsap.timeline({
         scrollTrigger: {
           trigger: split2Ref.current,
-          start: "top 82%",
+          start: "top 92%",
           once: true,
         },
       });
@@ -221,7 +223,7 @@ export default function InvestmentApproachPage() {
           y: 0,
           duration: 0.75,
           ease: "power2.out",
-          clearProps: "transform",
+          clearProps: "transform,opacity",
         }
       );
 
@@ -231,32 +233,76 @@ export default function InvestmentApproachPage() {
   );
 
   useEffect(() => {
-    const handleLoad = () => {
+    gsap.config({ force3D: false });
+
+    const handleRefresh = () => {
       ScrollTrigger.refresh();
     };
+
     if (typeof window !== "undefined") {
-      if (document.readyState === "complete") {
-        ScrollTrigger.refresh();
-      } else {
-        window.addEventListener("load", handleLoad);
+      window.addEventListener("load", handleRefresh);
+      window.addEventListener("resize", handleRefresh);
+      if (document.fonts) {
+        document.fonts.ready.then(handleRefresh);
       }
     }
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 350);
+
+    const t1 = setTimeout(handleRefresh, 250);
+    const t2 = setTimeout(handleRefresh, 750);
+    const t3 = setTimeout(handleRefresh, 1500);
+
+    // Failsafe Observer: Ensure no critical section stays stuck at opacity 0 on legacy Safari / older Macs
+    const failsafeElements = containerRef.current?.querySelectorAll<HTMLElement>(
+      ".intro-anim-item, .how-box-container, .step-row-anim, section"
+    );
+
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              if (window.getComputedStyle(el).opacity === "0") {
+                gsap.to(el, { opacity: 1, y: 0, duration: 0.5, clearProps: "transform,opacity" });
+              }
+            }
+          });
+        },
+        { rootMargin: "50px 0px 50px 0px" }
+      );
+      failsafeElements?.forEach((el) => observer?.observe(el));
+    }
+
+    const handleScrollFallback = () => {
+      failsafeElements?.forEach((el) => {
+        if (window.getComputedStyle(el).opacity === "0") {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 80) {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "transform,opacity" });
+          }
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScrollFallback, { passive: true });
 
     return () => {
       if (typeof window !== "undefined") {
-        window.removeEventListener("load", handleLoad);
+        window.removeEventListener("load", handleRefresh);
+        window.removeEventListener("resize", handleRefresh);
+        window.removeEventListener("scroll", handleScrollFallback);
       }
-      clearTimeout(timer);
+      observer?.disconnect();
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-hidden font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
+      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-clip font-instrument-sans selection:bg-[#00A2E2] selection:text-white"
     >
       {/* Standard Floating Dark Navbar */}
       <Navbar />

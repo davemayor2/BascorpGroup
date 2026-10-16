@@ -68,32 +68,39 @@ export default function LetsConnectPage() {
   );
 
   useEffect(() => {
-    const handleLoad = () => {
+    gsap.config({ force3D: false });
+
+    const handleRefresh = () => {
       if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
         (window as any).ScrollTrigger.refresh();
       }
     };
     if (typeof window !== "undefined") {
-      window.addEventListener("load", handleLoad);
-    }
-    const timer = setTimeout(() => {
-      if (typeof window !== "undefined" && (window as any).ScrollTrigger) {
-        (window as any).ScrollTrigger.refresh();
+      window.addEventListener("load", handleRefresh);
+      window.addEventListener("resize", handleRefresh);
+      if (document.fonts) {
+        document.fonts.ready.then(handleRefresh);
       }
-    }, 450);
+    }
+    const t1 = setTimeout(handleRefresh, 250);
+    const t2 = setTimeout(handleRefresh, 750);
+    const t3 = setTimeout(handleRefresh, 1500);
 
     return () => {
       if (typeof window !== "undefined") {
-        window.removeEventListener("load", handleLoad);
+        window.removeEventListener("load", handleRefresh);
+        window.removeEventListener("resize", handleRefresh);
       }
-      clearTimeout(timer);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
     };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-hidden font-instrument-sans selection:bg-[#00A2E2] selection:text-white flex flex-col justify-between"
+      className="min-h-screen bg-[#F3F3F3] text-[#111111] overflow-x-clip font-instrument-sans selection:bg-[#00A2E2] selection:text-white flex flex-col justify-between"
     >
       {/* 1. Floating Dark Navigation Bar */}
       <Navbar />

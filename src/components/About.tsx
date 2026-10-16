@@ -70,7 +70,7 @@ export default function About() {
           clearProps: "opacity,transform",
           scrollTrigger: {
             trigger: cardsRef.current,
-            start: "top 88%",
+            start: "top 92%",
             toggleActions: "play none none none",
             once: true,
           },
@@ -157,25 +157,63 @@ export default function About() {
   );
 
   useEffect(() => {
-    const handleLoad = () => {
+    gsap.config({ force3D: false });
+
+    const handleRefresh = () => {
       ScrollTrigger.refresh();
     };
+
     if (typeof window !== "undefined") {
-      if (document.readyState === "complete") {
-        ScrollTrigger.refresh();
-      } else {
-        window.addEventListener("load", handleLoad);
+      window.addEventListener("load", handleRefresh);
+      window.addEventListener("resize", handleRefresh);
+      if (document.fonts) {
+        document.fonts.ready.then(handleRefresh);
       }
     }
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 350);
+
+    const t1 = setTimeout(handleRefresh, 250);
+    const t2 = setTimeout(handleRefresh, 750);
+
+    const cards = sectionRef.current?.querySelectorAll<HTMLElement>(".about-card");
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              if (window.getComputedStyle(el).opacity === "0") {
+                gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
+              }
+            }
+          });
+        },
+        { rootMargin: "50px 0px 50px 0px" }
+      );
+      cards?.forEach((el) => observer?.observe(el));
+    }
+
+    const handleScrollFallback = () => {
+      cards?.forEach((el) => {
+        if (window.getComputedStyle(el).opacity === "0") {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 80) {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
+          }
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScrollFallback, { passive: true });
 
     return () => {
       if (typeof window !== "undefined") {
-        window.removeEventListener("load", handleLoad);
+        window.removeEventListener("load", handleRefresh);
+        window.removeEventListener("resize", handleRefresh);
+        window.removeEventListener("scroll", handleScrollFallback);
       }
-      clearTimeout(timer);
+      observer?.disconnect();
+      clearTimeout(t1);
+      clearTimeout(t2);
     };
   }, []);
 
