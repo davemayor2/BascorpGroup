@@ -1,7 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=${DEPLOYPATH:-$HOME/public_html/}
+    - export DEPLOYPATH=/home/bascorpg/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R .next $DEPLOYPATH/ 2>/dev/null || true
     - /bin/mkdir -p $DEPLOYPATH/tmp
     - /bin/touch $DEPLOYPATH/tmp/restart.txt
