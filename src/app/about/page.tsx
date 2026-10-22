@@ -561,7 +561,7 @@ export default function AboutPage() {
 
             {/* Subtitle Paragraph */}
             <p
-              className="hero-fade-up font-instrument-sans text-sm sm:text-base md:text-[17px] text-[#555555] max-w-2xl leading-relaxed font-normal"
+              className="hero-fade-up font-instrument-sans text-sm sm:text-base md:text-[17px] text-[#222222] max-w-2xl leading-relaxed font-normal"
               style={{ marginBottom: "42px" }}
             >
               A diversified investment and business group operating at the intersection of investment, strategic capital, business development, and long-term value creation across the Arabian Gulf, the wider Middle East, and Asia.
@@ -627,7 +627,7 @@ export default function AboutPage() {
                   >
                     {stat.value}
                   </span>
-                  <span className="font-instrument-sans text-sm sm:text-[15px] text-[#737373] font-normal leading-tight">
+                  <span className="font-instrument-sans text-sm sm:text-[15px] text-[#2B2B2B] font-medium leading-tight">
                     {stat.label}
                   </span>
                 </div>
@@ -662,7 +662,7 @@ export default function AboutPage() {
               }}
             >
               <span
-                className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block"
+                className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block"
                 style={{ marginBottom: "24px" }}
               >
                 Overview
@@ -914,7 +914,7 @@ export default function AboutPage() {
               }}
             >
               <span
-                className="font-instrument-sans text-xs sm:text-sm text-[#8E8E93] font-medium tracking-wide block select-none"
+                className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block select-none"
                 style={{ marginBottom: "clamp(20px, 2.2vw, 32px)" }}
               >
                 Management Team
@@ -925,7 +925,7 @@ export default function AboutPage() {
                 Meet Bascorp Group
               </h2>
               <p
-                className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#737373] leading-[1.65] max-w-lg font-normal"
+                className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#2B2B2B] leading-[1.65] max-w-lg font-normal"
               >
                 BASCORP maintains a clear distinction between management responsibility and governance oversight. Our executive leadership executes strategy, manages operations, and delivers agreed objectives under disciplined oversight, integrity, and accountability.
               </p>
@@ -959,7 +959,7 @@ export default function AboutPage() {
 
                       {/* Member Role */}
                       <p
-                        className="font-instrument-sans font-normal text-[12.5px] sm:text-[13px] text-[#787878] leading-relaxed max-w-[250px] whitespace-pre-line"
+                        className="font-instrument-sans font-medium text-[12.5px] sm:text-[13px] text-[#2B2B2B] leading-relaxed max-w-[250px] whitespace-pre-line"
                       >
                         {member.role}
                       </p>

@@ -136,7 +136,7 @@ export default function LetsConnectPage() {
 
               {/* Subheading aligned to far border right */}
               <p
-                className="font-instrument-sans text-[#666666] leading-relaxed max-w-[420px] text-left md:text-left select-none"
+                className="font-instrument-sans text-[#222222] leading-relaxed max-w-[420px] text-left md:text-left select-none"
                 style={{
                   fontSize: "clamp(17px, 1.15vw, 18px)",
                   fontWeight: 400,
@@ -187,7 +187,7 @@ export default function LetsConnectPage() {
                       Get in touch
                     </h2>
                     <p
-                      className="font-instrument-sans font-normal text-[#666666] leading-relaxed mt-4 max-w-lg"
+                      className="font-instrument-sans font-normal text-[#2B2B2B] leading-relaxed mt-4 max-w-lg"
                       style={{ fontSize: "clamp(16px, 1.1vw, 18px)" }}
                     >
                       Provide context, describe your current situation, and outline what you’d like support with. The more detail you share, the more productive our first call will be.
@@ -228,7 +228,7 @@ export default function LetsConnectPage() {
                       </div>
                       <a
                         href="mailto:info@bascorpgroup.com"
-                        className="font-instrument-sans font-normal text-[#71717A] hover:text-[#00A2E2] transition-colors sm:text-right pl-[60px] sm:pl-0"
+                        className="font-instrument-sans font-medium text-[#222222] hover:text-[#00A2E2] transition-colors sm:text-right pl-[60px] sm:pl-0"
                         style={{ fontSize: "15px" }}
                       >
                         info@bascorpgroup.com
@@ -272,7 +272,7 @@ export default function LetsConnectPage() {
                         className="group/loc flex flex-col sm:items-end text-left sm:text-right max-w-[280px] pl-[60px] sm:pl-0 transition-colors"
                         style={{ fontSize: "15px" }}
                       >
-                        <span className="font-instrument-sans font-normal text-[#71717A] group-hover/loc:text-[#00A2E2] transition-colors leading-snug">
+                        <span className="font-instrument-sans font-medium text-[#222222] group-hover/loc:text-[#00A2E2] transition-colors leading-snug">
                           1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain
                         </span>
                         <span className="font-instrument-sans text-[13px] text-[#00A2E2] font-medium flex items-center gap-1 mt-1 group-hover/loc:underline">
@@ -317,7 +317,7 @@ export default function LetsConnectPage() {
                         </span>
                       </div>
                       <span
-                        className="font-instrument-sans font-normal text-[#71717A] sm:text-right pl-[60px] sm:pl-0"
+                        className="font-instrument-sans font-medium text-[#222222] sm:text-right pl-[60px] sm:pl-0"
                         style={{ fontSize: "15px" }}
                       >
                         Mon to Fri: 9:00 AM – 6:00 PM CET
@@ -348,7 +348,7 @@ export default function LetsConnectPage() {
                       <h3 className="font-instrument-sans text-[22px] font-semibold text-[#111111]">
                         Message Received
                       </h3>
-                      <p className="font-instrument-sans text-[15px] text-[#666666] max-w-md">
+                      <p className="font-instrument-sans text-[15px] text-[#2B2B2B] max-w-md">
                         Thank you for reaching out. We have received your submission and a member of our team will connect with you promptly.
                       </p>
                       <button
@@ -574,7 +574,7 @@ export default function LetsConnectPage() {
                         </button>
 
                         <p
-                          className="font-instrument-sans text-[#71717A] leading-snug max-w-[340px] select-none"
+                          className="font-instrument-sans text-[#2B2B2B] leading-snug max-w-[340px] select-none"
                           style={{ fontSize: "13px" }}
                         >
                           By sending this form, you agree to our Terms &amp; Conditions, Privacy and Data Protection Policy
@@ -644,7 +644,7 @@ export default function LetsConnectPage() {
                     Find Us on Google Maps
                   </h2>
                   <p
-                    className="font-instrument-sans font-normal text-[#666666] leading-relaxed mt-3 sm:mt-4 max-w-xl"
+                    className="font-instrument-sans font-normal text-[#222222] leading-relaxed mt-3 sm:mt-4 max-w-xl"
                     style={{ fontSize: "clamp(15px, 1.05vw, 17px)" }}
                   >
                     1 Sheikh Issa Ave, Building 440, Manama, Kingdom Of Bahrain
@@ -728,7 +728,7 @@ export default function LetsConnectPage() {
                 style={{ paddingTop: "36px" }}
               >
                 <div className="flex flex-col gap-1">
-                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#2B2B2B]">
                     Premises
                   </span>
                   <p className="font-instrument-sans text-[15px] font-medium text-[#111111]">
@@ -736,7 +736,7 @@ export default function LetsConnectPage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#2B2B2B]">
                     Location
                   </span>
                   <p className="font-instrument-sans text-[15px] font-medium text-[#111111]">
@@ -744,7 +744,7 @@ export default function LetsConnectPage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#2B2B2B]">
                     Working Hours
                   </span>
                   <p className="font-instrument-sans text-[15px] font-medium text-[#111111]">
@@ -752,7 +752,7 @@ export default function LetsConnectPage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#8E8E93]">
+                  <span className="font-instrument-sans text-[12px] font-semibold uppercase tracking-wider text-[#2B2B2B]">
                     General Enquiries
                   </span>
                   <a

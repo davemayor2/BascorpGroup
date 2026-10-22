@@ -15,8 +15,11 @@ const instrumentSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Bascorp Group | Building Partnerships That Create Lasting Value",
-  description: "Bascorp Group is a leading investment company with a track record of success and strategic partnerships across the Arabian Gulf, Middle East and Asia.",
+  title: {
+    default: "Home - BASCORP باسكورب",
+    template: "%s - BASCORP باسكورب",
+  },
+  description: "Home - BASCORP باسكورب",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

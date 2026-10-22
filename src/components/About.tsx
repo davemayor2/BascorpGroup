@@ -282,7 +282,7 @@ export default function About() {
                     0
                   </span>
                   <span
-                    className="font-instrument-sans font-normal text-[#989898] leading-snug text-sm sm:text-[15px]"
+                    className="font-instrument-sans font-medium text-[#2B2B2B] leading-snug text-sm sm:text-[15px]"
                   >
                     Years of Experience
                   </span>
@@ -312,7 +312,7 @@ export default function About() {
                     0
                   </span>
                   <span
-                    className="font-instrument-sans font-normal text-[#989898] leading-snug text-sm sm:text-[15px]"
+                    className="font-instrument-sans font-medium text-[#2B2B2B] leading-snug text-sm sm:text-[15px]"
                   >
                     Investment Sectors
                   </span>
@@ -342,7 +342,7 @@ export default function About() {
                     Global
                   </span>
                   <span
-                    className="font-instrument-sans font-normal text-[#989898] leading-snug text-sm sm:text-[15px]"
+                    className="font-instrument-sans font-medium text-[#2B2B2B] leading-snug text-sm sm:text-[15px]"
                   >
                     Investment Perspective
                   </span>

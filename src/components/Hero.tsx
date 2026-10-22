@@ -136,7 +136,7 @@ export default function Hero() {
 
           <p
             ref={subtitleRef}
-            className="text-[16px] sm:text-[17px] md:text-[18px] text-white/80 font-instrument-sans font-normal leading-[1.6] sm:leading-[1.65] w-full max-w-full sm:max-w-lg md:max-w-xl"
+            className="text-[16px] sm:text-[17px] md:text-[18px] text-white/95 font-instrument-sans font-normal leading-[1.6] sm:leading-[1.65] w-full max-w-full sm:max-w-lg md:max-w-xl"
           >
             Operating at the intersection of investment, strategic capital, business development, and long-term value creation across the Arabian Gulf, the wider Middle East, and Asia.
           </p>

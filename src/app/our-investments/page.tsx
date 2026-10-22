@@ -237,7 +237,7 @@ export default function OurInvestmentsPage() {
 
               {/* Subtitle Description */}
               <p
-                className="hero-fade-item font-instrument-sans text-[#666666] leading-relaxed max-w-2xl font-normal"
+                className="hero-fade-item font-instrument-sans text-[#222222] leading-relaxed max-w-2xl font-normal"
                 style={{
                   fontSize: "clamp(17px, 1.25vw, 19px)",
                   marginBottom: "36px",
@@ -310,7 +310,7 @@ export default function OurInvestmentsPage() {
               (sector, idx) => (
                 <div key={idx} className="flex items-center whitespace-nowrap">
                   <span
-                    className="font-instrument-sans font-medium text-[#383838] tracking-wider uppercase"
+                    className="font-instrument-sans font-semibold text-[#1A1A1A] tracking-wider uppercase"
                     style={{
                       fontSize: "clamp(12px, 1.1vw, 14px)",
                       paddingLeft: "28px",
@@ -468,7 +468,7 @@ export default function OurInvestmentsPage() {
                           {card.title}
                         </h3>
                         <p
-                          className="font-instrument-sans text-[#D1D5DB] leading-relaxed"
+                          className="font-instrument-sans text-[#F3F4F6] leading-relaxed"
                           style={{
                             fontSize: "16px",
                             fontWeight: 400,

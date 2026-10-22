@@ -348,7 +348,7 @@ export default function PortfolioManagementPage() {
 
                 {/* Subtitle */}
                 <p
-                  className="hero-anim-item font-instrument-sans text-sm sm:text-base text-white/80 leading-relaxed max-w-lg"
+                  className="hero-anim-item font-instrument-sans text-sm sm:text-base text-white/95 leading-relaxed max-w-lg"
                   style={{ marginBottom: "36px" }}
                 >
                   We actively oversee and develop our investments throughout their lifecycle, ensuring capital remains disciplined, protected, and focused on long-term value creation.
@@ -470,7 +470,7 @@ export default function PortfolioManagementPage() {
                   {DELIVERABLES.map((item, idx) => (
                     <span
                       key={idx}
-                      className="border border-[#6C6C6C] text-[#6C6C6C] rounded-full font-instrument-sans font-normal text-[15px] sm:text-[16px] transition-all duration-200 hover:border-[#00A2E2] hover:text-[#00A2E2] select-none whitespace-nowrap"
+                      className="border border-[#2B2B2B]/60 text-[#222222] rounded-full font-instrument-sans font-medium text-[15px] sm:text-[16px] transition-all duration-200 hover:border-[#00A2E2] hover:text-[#00A2E2] select-none whitespace-nowrap"
                       style={{
                         paddingLeft: "16pt",
                         paddingRight: "16pt",
@@ -538,7 +538,7 @@ export default function PortfolioManagementPage() {
                     >
                       <div className="shrink-0 w-auto md:w-36">
                         <span
-                          className="inline-block border border-[#6C6C6C] text-[#6C6C6C] bg-transparent rounded-full font-instrument-sans font-normal select-none"
+                          className="inline-block border border-[#2B2B2B]/60 text-[#222222] bg-transparent rounded-full font-instrument-sans font-medium select-none"
                           style={{
                             fontSize: "20px",
                             paddingLeft: "16px",
@@ -562,7 +562,7 @@ export default function PortfolioManagementPage() {
                         {step.title}
                       </h3>
 
-                      <p className="font-instrument-sans text-[#737373] leading-relaxed max-w-xl md:flex-1 text-[14.5px] sm:text-[15.5px]">
+                      <p className="font-instrument-sans text-[#2B2B2B] leading-relaxed max-w-xl md:flex-1 text-[14.5px] sm:text-[15.5px]">
                         {step.description}
                       </p>
                     </div>
@@ -669,7 +669,7 @@ export default function PortfolioManagementPage() {
                             style={{
                               width: "5px",
                               height: "5px",
-                              backgroundColor: "#737373",
+                              backgroundColor: "#2B2B2B",
                             }}
                           />
                         </div>
@@ -679,7 +679,7 @@ export default function PortfolioManagementPage() {
                             fontSize: "20px",
                             lineHeight: "28px",
                             fontWeight: 400,
-                            color: "#737373",
+                            color: "#2B2B2B",
                           }}
                         >
                           {point}
@@ -740,7 +740,7 @@ export default function PortfolioManagementPage() {
                       fontSize: "20px",
                       lineHeight: "28px",
                       fontWeight: 400,
-                      color: "#737373",
+                      color: "#2B2B2B",
                     }}
                   >
                     Ensures all businesses under BASCORP&apos;s umbrella benefit from disciplined governance, active strategic direction, performance monitoring, and institutional stewardship—empowering executive management while safeguarding long-term stakeholder value.

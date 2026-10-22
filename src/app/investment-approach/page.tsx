@@ -361,7 +361,7 @@ export default function InvestmentApproachPage() {
 
                 {/* Subtitle */}
                 <p
-                  className="hero-anim-item font-instrument-sans text-sm sm:text-base text-white/80 leading-relaxed max-w-lg"
+                  className="hero-anim-item font-instrument-sans text-sm sm:text-base text-white/95 leading-relaxed max-w-lg"
                   style={{ marginBottom: "36px" }}
                 >
                   We identify and invest in businesses, assets, and opportunities with strong fundamentals, allocating capital on the basis of opportunity, risk, quality, and long-term potential.
@@ -484,7 +484,7 @@ export default function InvestmentApproachPage() {
                   {DELIVERABLES.map((item, idx) => (
                     <span
                       key={idx}
-                      className="border border-[#6C6C6C] text-[#6C6C6C] rounded-full font-instrument-sans font-normal text-[15px] sm:text-[16px] transition-all duration-200 hover:border-[#00A2E2] hover:text-[#00A2E2] select-none whitespace-nowrap"
+                      className="border border-[#2B2B2B]/60 text-[#222222] rounded-full font-instrument-sans font-medium text-[15px] sm:text-[16px] transition-all duration-200 hover:border-[#00A2E2] hover:text-[#00A2E2] select-none whitespace-nowrap"
                       style={{
                         paddingLeft: "16pt",
                         paddingRight: "16pt",
@@ -560,7 +560,7 @@ export default function InvestmentApproachPage() {
                       {/* Left: Step Badge (stroke 6C6C6C, text 6C6C6C, size 20, px 16, py 6) */}
                       <div className="shrink-0 w-auto md:w-36">
                         <span
-                          className="inline-block border border-[#6C6C6C] text-[#6C6C6C] bg-transparent rounded-full font-instrument-sans font-normal select-none"
+                          className="inline-block border border-[#2B2B2B]/60 text-[#222222] bg-transparent rounded-full font-instrument-sans font-medium select-none"
                           style={{
                             fontSize: "20px",
                             paddingLeft: "16px",
@@ -585,9 +585,9 @@ export default function InvestmentApproachPage() {
                         {step.title}
                       </h3>
 
-                      {/* Right: Step Description (fill 737373) */}
+                      {/* Right: Step Description */}
                       <p
-                        className="font-instrument-sans text-[#737373] leading-relaxed max-w-xl md:flex-1 text-[14.5px] sm:text-[15.5px]"
+                        className="font-instrument-sans text-[#2B2B2B] leading-relaxed max-w-xl md:flex-1 text-[14.5px] sm:text-[15.5px]"
                       >
                         {step.description}
                       </p>
@@ -713,7 +713,7 @@ export default function InvestmentApproachPage() {
                             style={{
                               width: "5px",
                               height: "5px",
-                              backgroundColor: "#737373",
+                              backgroundColor: "#2B2B2B",
                             }}
                           />
                         </div>
@@ -723,7 +723,7 @@ export default function InvestmentApproachPage() {
                             fontSize: "20px",
                             lineHeight: "28px",
                             fontWeight: 400,
-                            color: "#737373",
+                            color: "#2B2B2B",
                           }}
                         >
                           {point}
@@ -786,14 +786,14 @@ export default function InvestmentApproachPage() {
                     Businesses with strong fundamentals seeking strategic capital
                   </h2>
 
-                  {/* Description: size 20, weight regular, color fill #737373 */}
+                  {/* Description: size 20, weight regular */}
                   <p
                     className="font-instrument-sans font-normal"
                     style={{
                       fontSize: "20px",
                       lineHeight: "28px",
                       fontWeight: 400,
-                      color: "#737373",
+                      color: "#2B2B2B",
                     }}
                   >
                     Our approach is designed for established entities, operating businesses, and high-potential enterprises seeking disciplined capital, institutional perspective, and a long-term partner committed to sustainable value creation.

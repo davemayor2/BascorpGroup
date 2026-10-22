@@ -273,7 +273,7 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
                   Can&apos;t find an answer to your question?
                 </h3>
                 <p
-                  className="font-instrument-sans text-[#71717A] group-hover:text-[#00A2E2] transition-colors duration-200 mt-2.5 font-normal"
+                  className="font-instrument-sans text-[#2B2B2B] font-medium group-hover:text-[#00A2E2] transition-colors duration-200 mt-2.5"
                   style={{ fontSize: "clamp(16px, 1.05vw, 17px)" }}
                 >
                   Click to book a call.
@@ -349,7 +349,7 @@ export default function FAQSection({ onBookCallClick }: FAQSectionProps) {
                   >
                     <div className="overflow-hidden">
                       <p
-                        className="font-instrument-sans text-[#666666] leading-relaxed pr-8"
+                        className="font-instrument-sans text-[#222222] leading-relaxed pr-8"
                         style={{
                           fontSize: "clamp(16px, 1.1vw, 17.5px)",
                           fontWeight: 400,

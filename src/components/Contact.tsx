@@ -19,23 +19,13 @@ export default function Contact() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 92%",
+          start: "top 90%",
           toggleActions: "play none none none",
           once: true,
         },
       });
 
       tl.fromTo(
-        containerRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.65,
-          ease: "power2.out",
-          clearProps: "all",
-        }
-      ).fromTo(
         contentRef.current,
         { y: 35, opacity: 0 },
         {
@@ -43,9 +33,8 @@ export default function Contact() {
           opacity: 1,
           duration: 0.75,
           ease: "power3.out",
-          clearProps: "all",
-        },
-        "-=0.15"
+          clearProps: "opacity,transform",
+        }
       );
     },
     { scope: containerRef }
@@ -70,34 +59,35 @@ export default function Contact() {
     const t2 = setTimeout(handleRefresh, 750);
 
     const el = containerRef.current;
+    const ensureVisible = () => {
+      if (contentRef.current) {
+        const op = parseFloat(window.getComputedStyle(contentRef.current).opacity || "1");
+        if (op < 0.95) {
+          gsap.to(contentRef.current, { opacity: 1, y: 0, duration: 0.35, clearProps: "opacity,transform" });
+        }
+      }
+    };
+
     let observer: IntersectionObserver | null = null;
     if (el && typeof window !== "undefined" && "IntersectionObserver" in window) {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              if (window.getComputedStyle(el).opacity === "0") {
-                gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
-              }
-              if (contentRef.current && window.getComputedStyle(contentRef.current).opacity === "0") {
-                gsap.to(contentRef.current, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
-              }
+              ensureVisible();
             }
           });
         },
-        { rootMargin: "50px 0px 50px 0px" }
+        { rootMargin: "60px 0px 60px 0px" }
       );
       observer.observe(el);
     }
 
     const handleScrollFallback = () => {
-      if (el && window.getComputedStyle(el).opacity === "0") {
+      if (el) {
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 80) {
-          gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
-          if (contentRef.current) {
-            gsap.to(contentRef.current, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
-          }
+        if (rect.top < window.innerHeight + 100) {
+          ensureVisible();
         }
       }
     };
@@ -119,12 +109,11 @@ export default function Contact() {
     <section
       id="contact"
       ref={containerRef}
-      className="w-full relative overflow-hidden flex flex-col justify-center"
+      className="w-full relative overflow-hidden flex flex-col py-36 sm:py-40 md:py-48 lg:py-52"
       style={{
         backgroundColor: "#161616",
-        minHeight: "clamp(480px, 46vh, 560px)",
-        paddingTop: "clamp(100px, 9vw, 140px)",
-        paddingBottom: "clamp(100px, 9vw, 140px)",
+        paddingTop: "clamp(160px, 14vw, 220px)",
+        paddingBottom: "clamp(160px, 14vw, 220px)",
       }}
     >
       {/* Background Image Container with Next.js Image optimization */}
@@ -162,7 +151,7 @@ export default function Contact() {
 
           {/* Subheading */}
           <p
-            className="font-instrument-sans font-normal text-white/85 leading-relaxed max-w-xl"
+            className="font-instrument-sans font-normal text-white leading-relaxed max-w-xl"
             style={{ fontSize: "clamp(17px, 1.6vw, 19px)" }}
           >
             Whether you are seeking strategic capital, exploring a long-term partnership, or looking to unlock opportunities across the Middle East and Asia, we are ready to build lasting value together.

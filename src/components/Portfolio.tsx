@@ -78,6 +78,7 @@ function PortfolioCard({ title, description, image, height }: PortfolioCardProps
       className="portfolio-card relative overflow-hidden group w-full"
       style={{
         height: `${height}px`,
+        minHeight: `${height}px`,
         borderRadius: `${CARD_RADIUS}px`,
       }}
     >
@@ -111,7 +112,7 @@ function PortfolioCard({ title, description, image, height }: PortfolioCardProps
           {title}
         </h3>
         <p
-          className={`font-instrument-sans font-normal leading-snug text-white/85 ${height <= 260 ? "line-clamp-3" : "line-clamp-5"}`}
+          className={`font-instrument-sans font-normal leading-snug text-white/95 ${height <= 260 ? "line-clamp-3" : "line-clamp-5"}`}
           style={{ fontSize: "14.5px" }}
         >
           {description}
@@ -126,42 +127,38 @@ export default function Portfolio() {
 
   useGSAP(
     () => {
-      gsap.fromTo(
-        ".portfolio-header-reveal",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          clearProps: "all",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 92%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        }
-      );
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+          once: true,
+        },
+      });
 
-      gsap.fromTo(
-        ".portfolio-card",
-        { y: 50, opacity: 0 },
+      tl.fromTo(
+        ".portfolio-header-reveal",
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.75,
-          stagger: 0.08,
-          ease: "power3.out",
-          clearProps: "all",
-          scrollTrigger: {
-            trigger: ".portfolio-bento-grid",
-            start: "top 92%",
-            toggleActions: "play none none none",
-            once: true,
-          },
+          duration: 0.65,
+          stagger: 0.12,
+          ease: "power2.out",
+          clearProps: "opacity,transform",
         }
+      ).fromTo(
+        ".portfolio-card",
+        { y: 35, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.65,
+          stagger: 0.06,
+          ease: "power2.out",
+          clearProps: "opacity,transform",
+        },
+        "-=0.2"
       );
     },
     { scope: containerRef }
@@ -182,37 +179,45 @@ export default function Portfolio() {
       }
     }
 
+    const showAllCards = () => {
+      const items = containerRef.current?.querySelectorAll<HTMLElement>(
+        ".portfolio-card, .portfolio-header-reveal"
+      );
+      items?.forEach((el) => {
+        const op = parseFloat(window.getComputedStyle(el).opacity || "1");
+        if (op < 0.95) {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.35, clearProps: "opacity,transform" });
+        }
+      });
+    };
+
     const t1 = setTimeout(handleRefresh, 250);
     const t2 = setTimeout(handleRefresh, 750);
+    const tFailsafe = setTimeout(showAllCards, 1200);
 
-    const cards = containerRef.current?.querySelectorAll<HTMLElement>(".portfolio-card, .portfolio-header-reveal");
+    const el = containerRef.current;
     let observer: IntersectionObserver | null = null;
-    if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+    if (el && typeof window !== "undefined" && "IntersectionObserver" in window) {
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              const el = entry.target as HTMLElement;
-              if (window.getComputedStyle(el).opacity === "0") {
-                gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
-              }
+              showAllCards();
             }
           });
         },
-        { rootMargin: "50px 0px 50px 0px" }
+        { rootMargin: "80px 0px 80px 0px" }
       );
-      cards?.forEach((el) => observer?.observe(el));
+      observer.observe(el);
     }
 
     const handleScrollFallback = () => {
-      cards?.forEach((el) => {
-        if (window.getComputedStyle(el).opacity === "0") {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight + 80) {
-            gsap.to(el, { opacity: 1, y: 0, duration: 0.4, clearProps: "all" });
-          }
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 100) {
+          showAllCards();
         }
-      });
+      }
     };
     window.addEventListener("scroll", handleScrollFallback, { passive: true });
 
@@ -225,6 +230,7 @@ export default function Portfolio() {
       observer?.disconnect();
       clearTimeout(t1);
       clearTimeout(t2);
+      clearTimeout(tFailsafe);
     };
   }, []);
 
@@ -263,7 +269,7 @@ export default function Portfolio() {
           </h2>
 
           <p
-            className="portfolio-header-reveal font-instrument-sans font-normal leading-relaxed text-grey-medium max-w-xl"
+            className="portfolio-header-reveal font-instrument-sans font-normal leading-relaxed text-[#2B2B2B] max-w-xl"
             style={{ fontSize: "17px" }}
           >
             Through a disciplined approach to investment and partnerships, BASCORP seeks to build, develop, and support businesses with strong potential while maintaining a clear focus on governance, risk management, and enduring value.
@@ -303,7 +309,7 @@ export default function Portfolio() {
             <div
               key={i}
               className="portfolio-card relative overflow-hidden group w-full shadow-md"
-              style={{ height: "310px", borderRadius: `${CARD_RADIUS}px` }}
+              style={{ height: "310px", minHeight: "310px", borderRadius: `${CARD_RADIUS}px` }}
             >
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -327,7 +333,7 @@ export default function Portfolio() {
                   {item.title}
                 </h3>
                 <p
-                  className="font-instrument-sans font-normal text-white/90 leading-relaxed line-clamp-4"
+                  className="font-instrument-sans font-normal text-white/95 leading-relaxed line-clamp-4"
                   style={{ fontSize: "13.5px" }}
                 >
                   {item.description}

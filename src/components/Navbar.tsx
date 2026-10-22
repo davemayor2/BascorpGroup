@@ -433,7 +433,7 @@ export default function Navbar() {
                           <span className="text-[17px] lg:text-[18px] font-semibold text-black group-hover:text-[#00A2E2] transition-colors duration-200 font-instrument-sans tracking-tight">
                             {service.title}
                           </span>
-                          <p className="text-[13px] lg:text-[13.5px] text-[#666666] leading-snug mt-1 font-instrument-sans">
+                          <p className="text-[13px] lg:text-[13.5px] text-[#333333] leading-snug mt-1 font-instrument-sans">
                             {service.description}
                           </p>
                         </div>
