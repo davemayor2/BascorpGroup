@@ -42,3 +42,9 @@ next-env.d.ts
 
 # archives
 *.zip
+
+# server and cPanel
+error_log
+error_log.*
+.cpanel/
+tmp/
