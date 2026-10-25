@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6">
             <Link href="/" className="inline-block transition-transform duration-200 hover:scale-[1.02]">
               <img
-                src="/logo.png"
+                src="/logo placeholder.png"
                 alt="Bascorp Group"
                 style={{ height: "42px", width: "auto", objectFit: "contain" }}
               />

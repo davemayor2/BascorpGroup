@@ -250,7 +250,7 @@ export default function Navbar() {
             style={{ height: "62px", paddingLeft: "24px", paddingRight: "24px" }}
           >
             <img
-              src="/logo.png"
+              src="/logo placeholder.png"
               alt="Bascorp Group"
               style={{ height: "42px", width: "auto", objectFit: "contain" }}
             />
