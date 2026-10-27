@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     template: "%s - BASCORP باسكورب",
   },
   description: "Home - BASCORP باسكورب",
+  icons: {
+    icon: [
+      { url: "/images/favicon.png" },
+      { url: "/favicon.png" },
+    ],
+    shortcut: "/images/favicon.png",
+    apple: "/images/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
