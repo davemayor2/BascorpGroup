@@ -305,45 +305,47 @@ export default function AboutPage() {
         );
       }
 
-      gsap.fromTo(
-        ".overview-stat",
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 0.75,
-          ease: "power3.out",
-          clearProps: "transform,opacity",
-          scrollTrigger: {
-            trigger: ".overview-stat-row",
-            start: "top 95%",
-            once: true,
-          },
-        }
-      );
+      if (document.querySelector(".overview-stat-row")) {
+        gsap.fromTo(
+          ".overview-stat",
+          { opacity: 0, y: 25 },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.75,
+            ease: "power3.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: {
+              trigger: ".overview-stat-row",
+              start: "top 95%",
+              once: true,
+            },
+          }
+        );
 
-      // Glitch Animation for the Big letters in stat cards
-      ScrollTrigger.create({
-        trigger: ".overview-stat-row",
-        start: "top 92%",
-        once: true,
-        onEnter: () => {
-          if (statFoundedRef.current) {
-            runGlitch(statFoundedRef.current, "2013", {
-              duration: 1.4,
-              chars: "0123456789",
-            });
-          }
-          if (statLocationRef.current) {
-            runGlitch(statLocationRef.current, "Bahrain", {
-              duration: 1.5,
-              delay: 0.1,
-              chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-            });
-          }
-        },
-      });
+        // Glitch Animation for the Big letters in stat cards
+        ScrollTrigger.create({
+          trigger: ".overview-stat-row",
+          start: "top 92%",
+          once: true,
+          onEnter: () => {
+            if (statFoundedRef.current) {
+              runGlitch(statFoundedRef.current, "2013", {
+                duration: 1.4,
+                chars: "0123456789",
+              });
+            }
+            if (statLocationRef.current) {
+              runGlitch(statLocationRef.current, "Bahrain", {
+                duration: 1.5,
+                delay: 0.1,
+                chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+              });
+            }
+          },
+        });
+      }
 
       // 3. Mission, Vision & Excellence Section ScrollTrigger
       gsap.fromTo(
@@ -642,7 +644,7 @@ export default function AboutPage() {
         <section
           id="overview"
           ref={overviewRef}
-          style={{ paddingTop: "clamp(52px, 6vw, 76px)", paddingBottom: "clamp(28px, 3vw, 40px)" }}
+          style={{ paddingTop: "clamp(52px, 6vw, 76px)", paddingBottom: "0px" }}
           className="relative w-full"
         >
           {/* Header remains inside container-custom */}
@@ -655,20 +657,27 @@ export default function AboutPage() {
 
             {/* Section Header */}
             <div
-              className="overview-header"
+              className="overview-header flex flex-col md:flex-row md:items-end justify-between gap-6"
               style={{
                 marginBottom: "clamp(24px, 2.5vw, 36px)",
               }}
             >
-              <span
-                className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block"
-                style={{ marginBottom: "12px" }}
-              >
-                Overview
-              </span>
-              <h2 className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[46px] leading-[1.12] text-[#111111] max-w-2xl">
-                Creating Value Beyond Capital
-              </h2>
+              <div className="flex-1 max-w-xl">
+                <span
+                  className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block"
+                  style={{ marginBottom: "12px" }}
+                >
+                  Overview
+                </span>
+                <h2 className="font-clash-grotesk font-semibold text-3xl sm:text-4xl md:text-[46px] leading-[1.12] text-[#111111]">
+                  Creating Value Beyond Capital
+                </h2>
+              </div>
+              <div className="md:w-1/2 lg:w-5/12 flex md:justify-end">
+                <p className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#2B2B2B] leading-[1.65] max-w-lg font-normal md:text-right">
+                  Combining strategic capital, operational capability, and disciplined governance to build enduring enterprise value across regional and international markets.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -718,57 +727,8 @@ export default function AboutPage() {
                   BASCORP’s proposition extends beyond providing capital. We bring together investment discipline, strategic insight, commercial expertise, governance, and an established network of relationships to help businesses realise their potential.
                 </p>
                 <p className="font-instrument-sans text-xs sm:text-[14.5px] md:text-[15.5px] text-white/90 leading-[1.65] font-normal">
-                  Our objective is not simply to invest in businesses, but to help build stronger businesses, create lasting value, and establish partnerships that endure. As an investor and long-term strategic partner, BASCORP works alongside management teams and partners to strengthen businesses, unlock opportunities, enter new markets, and build sustainable competitive advantage.
+                  At BASCORP, we go beyond mere capital injection. Our goal is to forge enduring alliances that drive robust company growth and generate permanent value. Acting as a committed strategic ally, we collaborate closely with leadership teams to optimize operations, discover fresh avenues for expansion, penetrate untapped markets, and secure a lasting edge over the competition.
                 </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Two Stat Highlights Below the Banner */}
-          <div className="container-custom" style={{ marginTop: "clamp(28px, 3.2vw, 42px)" }}>
-            <div className="overview-stat-row grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7 lg:gap-8">
-              {/* Stat 1: Founded In */}
-              <div
-                className="overview-stat bg-[#FFFFFF] rounded-[14px] sm:rounded-[18px] border border-[#CDCDCD] flex flex-col justify-between transition-all duration-300"
-                style={{
-                  paddingTop: "clamp(18px, 2.2vw, 26px)",
-                  paddingBottom: "clamp(18px, 2.2vw, 26px)",
-                  paddingLeft: "clamp(22px, 2.6vw, 32px)",
-                  paddingRight: "clamp(22px, 2.6vw, 32px)",
-                  minHeight: "clamp(135px, 14vw, 155px)",
-                }}
-              >
-                <span className="font-instrument-sans text-sm sm:text-base text-[#111111] font-medium leading-none block">
-                  Founded In
-                </span>
-                <span
-                  ref={statFoundedRef}
-                  className="font-instrument-sans font-normal text-4xl sm:text-5xl md:text-[50px] lg:text-[54px] text-[#111111] self-end text-right leading-none tracking-tight block"
-                >
-                  2013
-                </span>
-              </div>
-
-              {/* Stat 2: Serving Worldwide From Bahrain */}
-              <div
-                className="overview-stat bg-[#FFFFFF] rounded-[14px] sm:rounded-[18px] border border-[#CDCDCD] flex flex-col justify-between transition-all duration-300"
-                style={{
-                  paddingTop: "clamp(18px, 2.2vw, 26px)",
-                  paddingBottom: "clamp(18px, 2.2vw, 26px)",
-                  paddingLeft: "clamp(22px, 2.6vw, 32px)",
-                  paddingRight: "clamp(22px, 2.6vw, 32px)",
-                  minHeight: "clamp(135px, 14vw, 155px)",
-                }}
-              >
-                <span className="font-instrument-sans text-sm sm:text-base text-[#111111] font-medium leading-none block">
-                  Serving worldwide from
-                </span>
-                <span
-                  ref={statLocationRef}
-                  className="font-instrument-sans font-normal text-4xl sm:text-5xl md:text-[50px] lg:text-[54px] text-[#111111] self-end text-right leading-none tracking-tight block"
-                >
-                  Bahrain
-                </span>
               </div>
             </div>
           </div>
@@ -803,6 +763,10 @@ export default function AboutPage() {
                   <p className="font-instrument-sans text-sm sm:text-base text-white leading-relaxed max-w-sm">
                     Operating at the intersection of investment, strategic capital, and long-term value creation to support sustainable growth across the Arabian Gulf, the wider Middle East, and Asia.
                   </p>
+                  <p className="font-instrument-sans text-sm sm:text-base text-white leading-relaxed max-w-sm">
+                    Our objective is not simply to invest in businesses, but to help build stronger businesses, create lasting value, and establish partnerships that endure. By combining capital with capability and long term commitment, BASCORP aims to create meaningful outcomes for its portfolio companies, partners, and stakeholders
+                  </p>
+
 
                   {/* Button */}
                   <a
@@ -904,29 +868,33 @@ export default function AboutPage() {
               style={{ marginBottom: "clamp(12px, 1.4vw, 16px)" }}
             />
 
-            {/* Header Content: Eyebrow + Heading + Description */}
+            {/* Header Content: Left (Eyebrow + Heading) & Right (Subheading aligned to the right border) */}
             <div
-              className="team-header-content flex flex-col items-start"
+              className="team-header-content flex flex-col md:flex-row md:items-end justify-between gap-6"
               style={{
                 marginBottom: "clamp(28px, 3.2vw, 40px)",
               }}
             >
-              <span
-                className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block select-none"
-                style={{ marginBottom: "clamp(12px, 1.4vw, 18px)" }}
-              >
-                Management Team
-              </span>
-              <h2
-                className="font-clash-grotesk font-semibold text-2xl sm:text-3xl md:text-[38px] lg:text-[42px] leading-[1.15] text-[#111111] mb-3 sm:mb-4 tracking-tight"
-              >
-                Meet Bascorp Group
-              </h2>
-              <p
-                className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#2B2B2B] leading-[1.65] max-w-lg font-normal"
-              >
-                BASCORP maintains a clear distinction between management responsibility and governance oversight. Our executive leadership executes strategy, manages operations, and delivers agreed objectives under disciplined oversight, integrity, and accountability.
-              </p>
+              <div className="flex-1 max-w-xl">
+                <span
+                  className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block select-none"
+                  style={{ marginBottom: "clamp(12px, 1.4vw, 18px)" }}
+                >
+                  Management Team
+                </span>
+                <h2
+                  className="font-clash-grotesk font-semibold text-2xl sm:text-3xl md:text-[38px] lg:text-[42px] leading-[1.15] text-[#111111] tracking-tight"
+                >
+                  Meet Bascorp Group
+                </h2>
+              </div>
+              <div className="md:w-1/2 lg:w-5/12 flex md:justify-end">
+                <p
+                  className="font-instrument-sans text-[13.5px] sm:text-[14.5px] text-[#2B2B2B] leading-[1.65] max-w-lg font-normal md:text-right"
+                >
+                  BASCORP maintains a clear distinction between management responsibility and governance oversight. Our executive leadership executes strategy, manages operations, and delivers agreed objectives under disciplined oversight, integrity, and accountability.
+                </p>
+              </div>
             </div>
 
             {/* Team Cards Grid: 3 columns on desktop, 5 cards matching reference layout */}
