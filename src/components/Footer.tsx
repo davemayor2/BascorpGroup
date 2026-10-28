@@ -156,7 +156,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-[#D9D9D9] flex justify-center items-center text-[#1A1A1A] font-instrument-sans font-medium" style={{ paddingTop: "40px", paddingBottom: "40px", fontSize: "14px" }}>
-          <p>@Bascorpgroup 2026. All rights Reserved</p>
+          <p>© 2026 BASCORP Group. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

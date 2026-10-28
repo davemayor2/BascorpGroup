@@ -516,7 +516,7 @@ export default function AboutPage() {
           ref={heroRef}
           style={{
             paddingTop: "148px",
-            paddingBottom: "110px",
+            paddingBottom: "64px",
             marginLeft: "auto",
             marginRight: "auto",
             width: "calc(100% - 32px)",
@@ -642,7 +642,7 @@ export default function AboutPage() {
         <section
           id="overview"
           ref={overviewRef}
-          style={{ paddingTop: "130px", paddingBottom: "clamp(36px, 4vw, 52px)" }}
+          style={{ paddingTop: "clamp(52px, 6vw, 76px)", paddingBottom: "clamp(28px, 3vw, 40px)" }}
           className="relative w-full"
         >
           {/* Header remains inside container-custom */}
@@ -650,20 +650,19 @@ export default function AboutPage() {
             {/* Top Divider Line */}
             <div
               className="w-full h-[1px] bg-[#989898]"
-              style={{ marginBottom: "26px" }}
+              style={{ marginBottom: "20px" }}
             />
 
             {/* Section Header */}
             <div
               className="overview-header"
               style={{
-                marginBottom: "clamp(68px, 7.5vw, 104px)",
-                paddingBottom: "clamp(12px, 1.5vw, 20px)",
+                marginBottom: "clamp(24px, 2.5vw, 36px)",
               }}
             >
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block"
-                style={{ marginBottom: "24px" }}
+                style={{ marginBottom: "12px" }}
               >
                 Overview
               </span>
@@ -726,7 +725,7 @@ export default function AboutPage() {
           </div>
 
           {/* Two Stat Highlights Below the Banner */}
-          <div className="container-custom" style={{ marginTop: "clamp(56px, 7vw, 96px)" }}>
+          <div className="container-custom" style={{ marginTop: "clamp(28px, 3.2vw, 42px)" }}>
             <div className="overview-stat-row grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7 lg:gap-8">
               {/* Stat 1: Founded In */}
               <div
@@ -779,7 +778,7 @@ export default function AboutPage() {
             3. MISSION, VISION & EXCELLENCE SECTION
            ===================================================================== */}
         <section
-          style={{ paddingTop: "clamp(36px, 4vw, 52px)", paddingBottom: "clamp(70px, 8vw, 100px)" }}
+          style={{ paddingTop: "clamp(24px, 2.8vw, 38px)", paddingBottom: "clamp(28px, 3.2vw, 42px)" }}
           className="relative"
         >
           <div className="container-custom">
@@ -893,8 +892,8 @@ export default function AboutPage() {
           id="team"
           ref={teamRef}
           style={{
-            paddingTop: "clamp(60px, 7vw, 100px)",
-            paddingBottom: "clamp(90px, 10vw, 150px)",
+            paddingTop: "clamp(28px, 3.2vw, 42px)",
+            paddingBottom: "clamp(64px, 7vw, 96px)",
           }}
           className="relative bg-[#F3F3F3]"
         >
@@ -902,25 +901,24 @@ export default function AboutPage() {
             {/* Top Divider Line matching reference */}
             <div
               className="w-full h-[1px] bg-[#CDCDCD]"
-              style={{ marginBottom: "clamp(10px, 1.2vw, 14px)" }}
+              style={{ marginBottom: "clamp(12px, 1.4vw, 16px)" }}
             />
 
             {/* Header Content: Eyebrow + Heading + Description */}
             <div
               className="team-header-content flex flex-col items-start"
               style={{
-                marginBottom: "clamp(48px, 5.5vw, 80px)",
-                paddingBottom: "clamp(12px, 1.5vw, 20px)",
+                marginBottom: "clamp(28px, 3.2vw, 40px)",
               }}
             >
               <span
                 className="font-instrument-sans text-xs sm:text-sm text-[#333333] font-semibold tracking-wide block select-none"
-                style={{ marginBottom: "clamp(20px, 2.2vw, 32px)" }}
+                style={{ marginBottom: "clamp(12px, 1.4vw, 18px)" }}
               >
                 Management Team
               </span>
               <h2
-                className="font-clash-grotesk font-semibold text-2xl sm:text-3xl md:text-[38px] lg:text-[42px] leading-[1.15] text-[#111111] mb-5 sm:mb-6 tracking-tight"
+                className="font-clash-grotesk font-semibold text-2xl sm:text-3xl md:text-[38px] lg:text-[42px] leading-[1.15] text-[#111111] mb-3 sm:mb-4 tracking-tight"
               >
                 Meet Bascorp Group
               </h2>
@@ -934,7 +932,6 @@ export default function AboutPage() {
             {/* Team Cards Grid: 3 columns on desktop, 5 cards matching reference layout */}
             <div
               className="team-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 lg:gap-8"
-              style={{ marginTop: "clamp(20px, 2.2vw, 36px)" }}
             >
               {MANAGEMENT_TEAM.map((member, idx) => (
                 <div key={idx} className="team-card-wrapper w-full h-full flex flex-col">
